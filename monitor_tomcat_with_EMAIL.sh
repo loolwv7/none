@@ -4,7 +4,7 @@
 # Monitor TOMCAT server status.
 # Create by Merlyn [][]
 # Made in Wenzhou: 07/27 2013
-# Modified by 07-27 2013
+# Modified by 08-08 2013
 # ---------------------------------
 # 
 # 通过curl获取正常网页内容中的"关键字"来诊断网站能否提供正常服务，
