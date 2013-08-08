@@ -13,11 +13,16 @@
 #
 # -------------------------------------------------------------
 
-SERVER_IP="172.17.1.5"
+LOGFILE="/var/log/tomcat/catalina.`date +%F`.log"
+
+if [ -e ${LOGFILE} ]; then
+  cat ${LOGFILE} >> ${LOGFILE}.bak
+fi
+
+SERVER_IP="www.zjpy.gov.cn"
 KEYWORD="走进平阳"
 TEST=$(curl ${SERVER_IP} 2>&1 | grep ${KEYWORD} | awk -F">" '{ print $3 }' | awk -F"<" '{ print $1 }')
-LOGFILE="/var/log/tomcat/catalina.`date +%F`.log"
-OOME=$(tail -20 ${LOGFILE} | grep -m 1 -oh -i OutOfMemoryError)
+OOME=$(tail -20 ${LOGFILE} | egrep -m 1 -oh -i 'OutOfMemoryError|to prevent a memory leak')
 #OOME=$(grep -m 1 -oh -i OutOfMemoryError /var/log/tomcat/catalina.`date +%F`.log)
 
 if  [ ! -z $TEST ]; then 
@@ -28,7 +33,8 @@ else
 
 	if [ ! -z $OOME ]; then 
 		/etc/init.d/tomcat restart
-	sleep 3
+	sleep 33
+                echo "" > ${LOGFILE}
 		echo "注意，报$OOME错误! 已尝试自动重启tomcat服务，请检查服务器$SERVER_IP的情况!!!  `date +%F_%T`" >> /tmp/tomcat_status.log
 		echo "注意，报$OOME错误! 已尝试自动重启tomcat服务，请检查服务器$SERVER_IP的情况!!!  `date +%F_%T`" | mutt -s "温州市平阳县电子政务服务器网站错误!" loolwv7@gmail.com
 	fi
