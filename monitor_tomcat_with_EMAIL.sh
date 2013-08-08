@@ -32,7 +32,7 @@ else
 
 	if [ ! -z '$OOME' ]; then 
 		/etc/init.d/tomcat restart
-	sleep 33
+	sleep 3
                 echo "" > ${LOGFILE}
 		echo "注意，报'$OOME错误'! 已尝试自动重启tomcat服务，请检查服务器'$SERVER_IP'的情况!!!  `date +%F_%T`" >> /tmp/tomcat_status.log
 		echo "注意，报'$OOME错误'! 已尝试自动重启tomcat服务，请检查服务器'$SERVER_IP'的情况!!!  `date +%F_%T`" | mutt -s "温州市平阳县电子政务服务器网站错误!" loolwv7@gmail.com
