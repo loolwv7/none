@@ -24,13 +24,13 @@ KEYWORD="走进平阳"
 TEST=$(curl ${SERVER_IP} 2>&1 | grep -m 1 -oh ${KEYWORD})
 OOME=$(tail -100 ${LOGFILE} | egrep -m 1 -oh -i 'OutOfMemoryError|to prevent a memory leak')
 
-if  [ ! -z '$TEST' ]; then 
+if  [ ! -z $TEST ]; then 
 	echo " Tomcat is OK. `date +%F_%T`" >> /tmp/tomcat_status.log
 else
 	echo "Warning!!! Tomcat isn't running?? Please CHECK IT IMMEDIATELY!!! `date +%F_%T`" >> /tmp/tomcat_status.log
 	echo "警告，服务器'$SERVER_IP'运行不正常，请立刻检查!  `date +%F_%T`" | mutt -s "温州市平阳县电子政务服务器网站警告!" loolwv7@gmail.com
 
-	if [ ! -z '$OOME' ]; then 
+	if [ ! -z $OOME ]; then 
 		/etc/init.d/tomcat restart
 	sleep 3
                 echo "" > ${LOGFILE}
