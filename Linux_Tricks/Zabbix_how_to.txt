@@ -1,0 +1,77 @@
+1,Download and install postgresql in database server 
+=======================================================
+
+psql -U postgres
+\password
+
+CREATE USER zabbix WITH PASSWORD 'zabbix';
+CREATE DATABASE zabbix OWNER zabbix;
+
+# cd /usr/share/zabbix/database/postgresql
+psql -U zabbix -d zabbix -f schema.sql
+psql -U zabbix -d zabbix -f images.sql
+psql -U zabbix -d zabbix -f data.sql
+
+2, emerge -av zabbix
+=======================================================
+Setting up a local user account for zabbix in the database meant adding this line to /etc/postgresql-9.3/pg_hba.conf
+#
+local   zabbix      zabbix                            md5
+
+#/etc/php/fpm-php5.5/php.ini
+max_execution_time = 300
+max_input_time = 300
+post_max_size = 16M
+
+
+# sed '/^#/d;/^$/d' /etc/zabbix/zabbix_server.conf
+ LogFile=/var/log/zabbix/zabbix_server.log
+ LogFileSize=128
+ PidFile=/run/zabbix/zabbix_server.pid
+ DBHost=
+ DBName=zabbix
+ DBUser=zabbix
+ DBPassword=zabbix
+  SNMPTrapperFile=/tmp/zabbix_traps.tmp
+   StartSNMPTrapper=1
+   AlertScriptsPath=/var/lib/zabbix/alertscripts
+   ExternalScripts=/var/lib/zabbix/externalscripts
+   CacheSize=128M
+   HistoryCacheSize=128M
+   TrendCacheSize=64M
+   HistoryTextCacheSize=128M
+   Timeout=30
+
+/etc/init.d/zabbix-server restart
+
+3, /opt/nginx/conf/zabbix.conf
+=======================================================
+server {
+        listen 8080;
+        server_name localhost;
+        index index.html index.htm index.php;
+	root /usr/share/webapps/zabbix/2.2.5/htdocs;
+        access_log off;
+	error_log /tmp/xxxx.log;
+location ~ \.php {
+        fastcgi_pass    127.0.0.1:9000;
+	fastcgi_param SCRIPT_FILENAME /usr/share/webapps/zabbix/2.2.5/htdocs$fastcgi_script_name;
+	fastcgi_param QUERY_STRING $query_string;
+	include fastcgi_params;
+	} 
+}
+
+/etc/init.d/nginx restart
+
+
+4, 
+/etc/init.d/php-fpm start
+/etc/init.d/zabbix-server start
+
+http://127.0.0.1:8080
+User: Admin
+Password: zabbix
+
+
+
+http://www.linuxworms.in/2013/06/installing-zabbix-with-postgresql-in.html

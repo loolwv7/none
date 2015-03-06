@@ -1,0 +1,13 @@
+1, Upgrading from older versions of Kerio Connect 
+http://kb.kerio.com/product/kerio-connect/installation-and-upgrade/upgrading-from-older-versions-of-kerio-connect-451.html
+
+2, Configuration
+http://aplawrence.com/Kerio/configuration.html
+
+3, Data recovery in Kerio Connect 
+http://kb.kerio.com/product/kerio-connect/server-configuration/archiving-and-backup/data-recovery-in-kerio-connect-1142.html
+
+4, Transferring an installation of Kerio Connect to another server or Operating System 
+http://kb.kerio.com/product/kerio-connect/server-configuration/export-and-migration/transferring-an-installation-of-kerio-connect-to-another-server-or-operating-system-360.html
+
+
