@@ -1,0 +1,72 @@
+<a href="#" class="a_bgw">Top</a>
+<a name="top_consumers"></a>
+<h2>Top 10 Time Consuming Checks</h2>
+<p><b>NOTE:</b> This information is primarily used for helping Oracle optimize the run time of orachk.<br></br>These timings are not necessarily indicative of any problem and may vary widely from one system to another.</p>
+<table summary="Top Time Consuming Checks">
+<tr>
+<th scope="col">Name</th>
+<th scope="col">Type</th>
+<th scope="col">Target</th>
+<th scope="col">Execution Duration</th>
+</tr>
+<tr>
+<td scope="row">Patches for RDBMS Home</td>
+<td scope="row" align="center"> OS Collection </td>
+<td scope="row" align="center"> rac1 </td>
+<td scope="row" align="center">6 secs</td>
+</tr>
+<tr>
+<td scope="row">Active sessions load balance</td>
+<td scope="row" align="center"> SQL Collection </td>
+<td scope="row" align="center"> rac2:racdb2 </td>
+<td scope="row" align="center">6 secs</td>
+</tr>
+<tr>
+<td scope="row">Patches for RDBMS Home</td>
+<td scope="row" align="center"> OS Collection </td>
+<td scope="row" align="center"> rac2 </td>
+<td scope="row" align="center">6 secs</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#5DBA34B30892B010E0401490CACF2738_details">Asynch IO support in oracle binary</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac2:/u01/app/oracle/product/11.2.0.4/db_1 </td>
+<td scope="row" align="center">2 secs</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#5DBA34B30892B010E0401490CACF2738_details">Asynch IO support in oracle binary</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac1:/u01/app/oracle/product/11.2.0.4/db_1 </td>
+<td scope="row" align="center">2 secs</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#5DC9DADFC45FD615E0401490CACF5277_details">Asynch IO support in oracle binary</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac1:/u01/app/oracle/product/11.2.0.4/db_1 </td>
+<td scope="row" align="center">2 secs</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#5DC9DADFC45FD615E0401490CACF5277_details">Asynch IO support in oracle binary</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac2:/u01/app/oracle/product/11.2.0.4/db_1 </td>
+<td scope="row" align="center">2 secs</td>
+</tr>
+<tr>
+<td scope="row">Active sessions load balance</td>
+<td scope="row" align="center"> SQL Collection </td>
+<td scope="row" align="center"> rac2:mfsdb2 </td>
+<td scope="row" align="center">782 ms</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#E596FB09DE302047E04312C0E50AD481_details">Branch to execute consolidation checks</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac2 </td>
+<td scope="row" align="center">359 ms</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#C846692C524A7E24E0431EC0E50AF3F2_details">Is ASM running for ASM disk read write error</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac2 </td>
+<td scope="row" align="center">352 ms</td>
+</tr>
+</table>

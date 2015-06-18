@@ -1,0 +1,5 @@
+TO REVIEW COLLECTED DATA FROM RAC1 - /U01/APP/ORACLE/PRODUCT/11.2.0.4/DB_1 DATABASE_HOME - ORADISM EXECUTABLE PERMISSION 
+
+
+
+-rwsr-x--- 1 root oinstall 71790 Aug 24  2013 /u01/app/oracle/product/11.2.0.4/db_1/bin/oradism

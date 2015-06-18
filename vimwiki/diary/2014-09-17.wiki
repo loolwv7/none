@@ -1,0 +1,17 @@
+目前发现数据库异常可能的原因如下：
+1, 内存不足（系统页面文件、数据库SGA）。
+2, 磁盘性能不足。
+
+解决方法：
+1,  增加系统内存为8GB（编辑虚拟机硬件），调整Oracle SGA值由原来的293M至1700M。
+首先使用exp或expdp备份数据库,然后修改数据库参数。
+SQL> create pfile='c:\pfile_bak.ora' from spfile;
+SQL> alter system set sga_max_size=1700M scope=spfile;
+SQL> alter system set sga_target=1024M;
+重启数据库以生效：
+SQL> shutdown immediate;
+SQL> startup;
+
+2, 目前只能保持iSCSI环境。
+为系统打上必要的补丁以排除潜在的因素：
+http://support.microsoft.com/kb/970054

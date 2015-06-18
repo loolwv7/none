@@ -1,0 +1,9 @@
+
+racdb2destination ID = 1                                                        
+racdb2.current archive sequence # = 5                                           
+racdb2.last archived = 5                                                        
+                                                                                
+racdb1destination ID = 1                                                        
+racdb1.current archive sequence # = 5                                           
+racdb1.last archived = 0                                                        
+                                                                                

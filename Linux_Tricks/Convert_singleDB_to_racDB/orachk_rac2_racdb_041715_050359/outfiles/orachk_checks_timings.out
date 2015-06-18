@@ -1,0 +1,64 @@
+start time - Fri Apr 17 05:07:25 2015 - Asynch IO support in oracle binary on rac2 for /u01/app/oracle/product/11.2.0.4/db_1
+
+end time - Fri Apr 17 05:07:28 2015 - Asynch IO support in oracle binary on rac2 for /u01/app/oracle/product/11.2.0.4/db_1
+
+start time - Fri Apr 17 05:07:28 2015 - Asynch IO support in oracle binary on rac2 for /u01/app/oracle/product/11.2.0.4/db_1
+
+end time - Fri Apr 17 05:07:31 2015 - Asynch IO support in oracle binary on rac2 for /u01/app/oracle/product/11.2.0.4/db_1
+
+start time - Fri Apr 17 05:07:43 2015 - oradism executable permission on rac2 for /u01/app/oracle/product/11.2.0.4/db_1
+
+end time - Fri Apr 17 05:07:44 2015 - oradism executable permission on rac2 for /u01/app/oracle/product/11.2.0.4/db_1
+
+start time - Fri Apr 17 05:07:44 2015 - oradism executable ownership on rac2 for /u01/app/oracle/product/11.2.0.4/db_1
+
+end time - Fri Apr 17 05:07:45 2015 - oradism executable ownership on rac2 for /u01/app/oracle/product/11.2.0.4/db_1
+
+start time - Fri Apr 17 05:07:48 2015 - DB shell limits hard nproc on rac2
+
+end time -  Fri Apr 17 05:07:48 2015 - DB shell limits hard nproc on rac2
+
+start time - Fri Apr 17 05:07:50 2015 - If NOT VM Guest Do This on rac2
+
+end time -  Fri Apr 17 05:07:51 2015 - If NOT VM Guest Do This on rac2
+
+start time - Fri Apr 17 05:08:23 2015 - Is ASM running for ASM disk read write error on rac2
+
+end time -  Fri Apr 17 05:08:24 2015 - Is ASM running for ASM disk read write error on rac2
+
+start time - Fri Apr 17 05:08:44 2015 - Branch to execute consolidation checks on rac2
+
+end time -  Fri Apr 17 05:08:45 2015 - Branch to execute consolidation checks on rac2
+
+start time - Fri Apr 17 05:07:12 2015 - Asynch IO support in oracle binary on rac1 for /u01/app/oracle/product/11.2.0.4/db_1
+
+end time - Fri Apr 17 05:07:15 2015 - Asynch IO support in oracle binary on rac1 for /u01/app/oracle/product/11.2.0.4/db_1
+
+start time - Fri Apr 17 05:07:15 2015 - Asynch IO support in oracle binary on rac1 for /u01/app/oracle/product/11.2.0.4/db_1
+
+end time - Fri Apr 17 05:07:18 2015 - Asynch IO support in oracle binary on rac1 for /u01/app/oracle/product/11.2.0.4/db_1
+
+start time - Fri Apr 17 05:07:29 2015 - oradism executable permission on rac1 for /u01/app/oracle/product/11.2.0.4/db_1
+
+end time - Fri Apr 17 05:07:30 2015 - oradism executable permission on rac1 for /u01/app/oracle/product/11.2.0.4/db_1
+
+start time - Fri Apr 17 05:07:31 2015 - oradism executable ownership on rac1 for /u01/app/oracle/product/11.2.0.4/db_1
+
+end time - Fri Apr 17 05:07:31 2015 - oradism executable ownership on rac1 for /u01/app/oracle/product/11.2.0.4/db_1
+
+start time - Fri Apr 17 05:07:34 2015 - DB shell limits hard nproc on rac1
+
+end time -  Fri Apr 17 05:07:34 2015 - DB shell limits hard nproc on rac1
+
+start time - Fri Apr 17 05:07:36 2015 - If NOT VM Guest Do This on rac1
+
+end time -  Fri Apr 17 05:07:37 2015 - If NOT VM Guest Do This on rac1
+
+start time - Fri Apr 17 05:08:07 2015 - Is ASM running for ASM disk read write error on rac1
+
+end time -  Fri Apr 17 05:08:08 2015 - Is ASM running for ASM disk read write error on rac1
+
+start time - Fri Apr 17 05:08:27 2015 - Branch to execute consolidation checks on rac1
+
+end time -  Fri Apr 17 05:08:28 2015 - Branch to execute consolidation checks on rac1
+

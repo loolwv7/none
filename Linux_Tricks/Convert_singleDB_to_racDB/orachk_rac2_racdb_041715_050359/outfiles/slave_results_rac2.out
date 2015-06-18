@@ -1,0 +1,4 @@
+7EDDA570A1827FBAE040E50A1EC02EB1|PASS|OS||racdb||/u01/app/oracle/product/11.2.0.4/db_1||$ORACLE_HOME/bin/oradism setuid bit is set|rac2
+7EDE9EBEC9429FBAE040E50A1EC03AED|PASS|OS||racdb||/u01/app/oracle/product/11.2.0.4/db_1||$ORACLE_HOME/bin/oradism ownership is root|rac2
+841E706550975C68E040E50A1EC05EFB|PASS|OS||racdb||/u01/app/oracle/product/11.2.0.4/db_1||Shell limit hard nproc for DB is configured according to recommendation|rac2
+7E3FAC1843F137ABE040E50A1EC0139B|PASS|CLUSTERWIDE_CHECK||racdb||/u01/app/oracle/product/11.2.0.4/db_1||RDBMS software owner UID matches across cluster|Cluster Wide

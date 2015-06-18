@@ -1,0 +1,117 @@
+
+OWB version = 11.2.0.1.0                                                        
+OWB org_version =                                                               
+OWB prv_version =                                                               
+OWB modified date = 14-MAR-2015 20:48:48                                        
+OWB status = VALID                                                              
+                                                                                
+Oracle Application Express version = 3.2.1.00.10                                
+Oracle Application Express org_version =                                        
+Oracle Application Express prv_version =                                        
+Oracle Application Express modified date = 14-MAR-2015 20:48:48                 
+Oracle Application Express status = VALID                                       
+                                                                                
+OLAP Catalog version = 11.2.0.4.0                                               
+
+OLAP Catalog org_version = 11.2.0.1.0                                           
+OLAP Catalog prv_version = 11.2.0.1.0                                           
+OLAP Catalog modified date = 14-MAR-2015 20:48:48                               
+OLAP Catalog status = VALID                                                     
+                                                                                
+Spatial version = 11.2.0.4.0                                                    
+Spatial org_version = 11.2.0.1.0                                                
+Spatial prv_version = 11.2.0.1.0                                                
+Spatial modified date = 14-MAR-2015 20:48:48                                    
+Spatial status = VALID                                                          
+                                                                                
+Oracle Multimedia version = 11.2.0.4.0                                          
+Oracle Multimedia org_version = 11.2.0.1.0                                      
+
+Oracle Multimedia prv_version = 11.2.0.1.0                                      
+Oracle Multimedia modified date = 14-MAR-2015 20:48:46                          
+Oracle Multimedia status = VALID                                                
+                                                                                
+Oracle XML Database version = 11.2.0.4.0                                        
+Oracle XML Database org_version = 11.2.0.1.0                                    
+Oracle XML Database prv_version = 11.2.0.1.0                                    
+Oracle XML Database modified date = 14-MAR-2015 20:48:46                        
+Oracle XML Database status = VALID                                              
+                                                                                
+Oracle Text version = 11.2.0.4.0                                                
+Oracle Text org_version = 11.2.0.1.0                                            
+Oracle Text prv_version = 11.2.0.1.0                                            
+
+Oracle Text modified date = 14-MAR-2015 20:48:46                                
+Oracle Text status = VALID                                                      
+                                                                                
+Oracle Expression Filter version = 11.2.0.4.0                                   
+Oracle Expression Filter org_version = 11.2.0.1.0                               
+Oracle Expression Filter prv_version = 11.2.0.1.0                               
+Oracle Expression Filter modified date = 14-MAR-2015 20:48:46                   
+Oracle Expression Filter status = VALID                                         
+                                                                                
+Oracle Rules Manager version = 11.2.0.4.0                                       
+Oracle Rules Manager org_version = 11.2.0.1.0                                   
+Oracle Rules Manager prv_version = 11.2.0.1.0                                   
+Oracle Rules Manager modified date = 14-MAR-2015 20:48:46                       
+
+Oracle Rules Manager status = VALID                                             
+                                                                                
+Oracle Workspace Manager version = 11.2.0.4.0                                   
+Oracle Workspace Manager org_version =                                          
+Oracle Workspace Manager prv_version = 11.2.0.1.0                               
+Oracle Workspace Manager modified date = 14-MAR-2015 20:48:46                   
+Oracle Workspace Manager status = VALID                                         
+                                                                                
+Oracle Database Catalog Views version = 11.2.0.4.0                              
+Oracle Database Catalog Views org_version = 11.2.0.1.0                          
+Oracle Database Catalog Views prv_version = 11.2.0.1.0                          
+Oracle Database Catalog Views modified date = 14-MAR-2015 20:48:46              
+Oracle Database Catalog Views status = VALID                                    
+
+                                                                                
+Oracle Database Packages and Types version = 11.2.0.4.0                         
+Oracle Database Packages and Types org_version = 11.2.0.1.0                     
+Oracle Database Packages and Types prv_version = 11.2.0.1.0                     
+Oracle Database Packages and Types modified date = 14-MAR-2015 20:48:46         
+Oracle Database Packages and Types status = VALID                               
+                                                                                
+JServer JAVA Virtual Machine version = 11.2.0.4.0                               
+JServer JAVA Virtual Machine org_version = 11.2.0.1.0                           
+JServer JAVA Virtual Machine prv_version = 11.2.0.1.0                           
+JServer JAVA Virtual Machine modified date = 14-MAR-2015 20:48:46               
+JServer JAVA Virtual Machine status = VALID                                     
+                                                                                
+
+Oracle XDK version = 11.2.0.4.0                                                 
+Oracle XDK org_version = 11.2.0.1.0                                             
+Oracle XDK prv_version = 11.2.0.1.0                                             
+Oracle XDK modified date = 14-MAR-2015 20:48:46                                 
+Oracle XDK status = VALID                                                       
+                                                                                
+Oracle Database Java Packages version = 11.2.0.4.0                              
+Oracle Database Java Packages org_version = 11.2.0.1.0                          
+Oracle Database Java Packages prv_version = 11.2.0.1.0                          
+Oracle Database Java Packages modified date = 14-MAR-2015 20:48:46              
+Oracle Database Java Packages status = VALID                                    
+                                                                                
+OLAP Analytic Workspace version = 11.2.0.4.0                                    
+
+OLAP Analytic Workspace org_version = 11.2.0.1.0                                
+OLAP Analytic Workspace prv_version = 11.2.0.1.0                                
+OLAP Analytic Workspace modified date = 14-MAR-2015 20:48:46                    
+OLAP Analytic Workspace status = VALID                                          
+                                                                                
+Oracle OLAP API version = 11.2.0.4.0                                            
+Oracle OLAP API org_version = 11.2.0.1.0                                        
+Oracle OLAP API prv_version = 11.2.0.1.0                                        
+Oracle OLAP API modified date = 14-MAR-2015 20:48:47                            
+Oracle OLAP API status = VALID                                                  
+                                                                                
+Oracle Real Application Clusters version = 11.2.0.4.0                           
+Oracle Real Application Clusters org_version = 11.2.0.1.0                       
+
+Oracle Real Application Clusters prv_version = 11.2.0.1.0                       
+Oracle Real Application Clusters modified date = 14-MAR-2015 20:48:48           
+Oracle Real Application Clusters status = INVALID                               
+                                                                                

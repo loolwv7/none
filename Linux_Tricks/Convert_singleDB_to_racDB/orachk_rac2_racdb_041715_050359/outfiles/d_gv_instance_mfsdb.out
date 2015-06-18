@@ -1,0 +1,35 @@
+
+mfsdb2.instance_number = 2                                                      
+mfsdb2.host_name = rac2                                                         
+mfsdb2.audit_version = 11.2.0.4.0                                               
+mfsdb2.startup_time = 17-APR-15                                                 
+mfsdb2.status = OPEN                                                            
+mfsdb2.parallel = YES                                                           
+mfsdb2.thread# = 2                                                              
+mfsdb2.archiver = STARTED                                                       
+mfsdb2.log_switch_wait =                                                        
+mfsdb2.logins = ALLOWED                                                         
+mfsdb2.shutdown_pending = NO                                                    
+mfsdb2.database_status = ACTIVE                                                 
+mfsdb2.instance_role = PRIMARY_INSTANCE                                         
+
+mfsdb2.active_state = NORMAL                                                    
+mfsdb2.blocked = NO                                                             
+                                                                                
+mfsdb1.instance_number = 1                                                      
+mfsdb1.host_name = rac1                                                         
+mfsdb1.audit_version = 11.2.0.4.0                                               
+mfsdb1.startup_time = 17-APR-15                                                 
+mfsdb1.status = OPEN                                                            
+mfsdb1.parallel = YES                                                           
+mfsdb1.thread# = 1                                                              
+mfsdb1.archiver = STARTED                                                       
+mfsdb1.log_switch_wait =                                                        
+mfsdb1.logins = ALLOWED                                                         
+
+mfsdb1.shutdown_pending = NO                                                    
+mfsdb1.database_status = ACTIVE                                                 
+mfsdb1.instance_role = PRIMARY_INSTANCE                                         
+mfsdb1.active_state = NORMAL                                                    
+mfsdb1.blocked = NO                                                             
+                                                                                

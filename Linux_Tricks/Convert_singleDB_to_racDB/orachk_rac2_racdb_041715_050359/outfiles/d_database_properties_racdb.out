@@ -1,0 +1,14 @@
+
+Database Name = RACDB                                                           
+Database Role = PRIMARY                                                         
+Archive log mode = ARCHIVELOG                                                   
+Protection mode = MAXIMUM PERFORMANCE                                           
+Protection Level = MAXIMUM PERFORMANCE                                          
+Force Logging = NO                                                              
+Remove Archive = ENABLED                                                        
+Supplemental log data PK = NO                                                   
+Supplemental log data UI = NO                                                   
+Switchover Status = NOT ALLOWED                                                 
+Dataguard broker = DISABLED                                                     
+Flashback On = NO                                                               
+                                                                                

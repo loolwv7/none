@@ -1,0 +1,34 @@
+一、瓯海区府
+1, 手机OA的服务器起不来了。
+首先了解了一下事情经过，得知原硬盘已经转移到另一台相同的服务器上，并且系统已经开起来了。
+只是存储空间没有映射过来。
+现场查看了一下光纤线连接，发现是原光纤线是接入到一台老是光交上，存储是RAIDSYS9300。考虑到配制的复杂和尽快恢复业务。
+当时就决定把原来的服务器HBA卡拔过来，以便新的服务器正确识别存储硬盘。
+经过更换HBA卡之后，存储硬盘能正常识别到，应用运行正常。
+
+2, 服务器故障确认
+http://h20566.www2.hp.com/portal/site/hpsc/template.PAGE/public/kb/docDisplay/?sp4ts.oid=316583&spf_p.tpst=kbDocDisplay&spf_p.prp_kbDocDisplay=wsrp-navigationalState%3DdocId%253Demr_na-c00367305-2%257CdocLocale%253Den_US%257CcalledBy%253DSearch_Result&javax.portlet.begCacheTok=com.vignette.cachetoken&javax.portlet.endCacheTok=com.vignette.cachetoken#N10010
+http://www.manualsdir.com/manuals/397662/hp-proliant-dl560-server.html?page=21
+http://www.manualslib.com/manual/441277/Hewlett-Packard-Dl560-Proliant-1-Gb-Ram.html?page=21
+
+经过详细排查，问题定位到主板上。
+HP DL560 peripheral board interlock
+
+3, H3C 7506交换机CPU利用率太高。
+
+<huiju-7506>dis cpu
+Slot 0 CPU usage:
+      24% in last 5 seconds
+      14% in last 1 minute
+      12% in last 5 minutes
+
+Slot 2 CPU usage:
+     100% in last 5 seconds
+     100% in last 1 minute
+      79% in last 5 minutes
+
+Slot 3 CPU usage:
+     100% in last 5 seconds
+     100% in last 1 minute
+      76% in last 5 minutes
+收集了一下diag日志，以便原因。

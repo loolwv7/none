@@ -1,0 +1,18 @@
+
+racdb2.archive destination ID = 1                                               
+racdb2.archive standby logfile active = 0                                       
+racdb2.archived Sequence Number = 5                                             
+racdb2.database Mode = OPEN                                                     
+racdb2.recovery Mode = IDLE                                                     
+racdb2.protection Mode = MAXIMUM PERFORMANCE                                    
+racdb2.standby Logfile Count =                                                  
+                                                                                
+racdb1.archive destination ID = 1                                               
+racdb1.archive standby logfile active = 0                                       
+racdb1.archived Sequence Number = 0                                             
+racdb1.database Mode = OPEN                                                     
+racdb1.recovery Mode = IDLE                                                     
+
+racdb1.protection Mode = MAXIMUM PERFORMANCE                                    
+racdb1.standby Logfile Count =                                                  
+                                                                                

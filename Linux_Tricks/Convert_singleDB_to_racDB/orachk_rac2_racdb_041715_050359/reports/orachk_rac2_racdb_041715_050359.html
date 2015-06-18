@@ -1,0 +1,902 @@
+<html lang="en"><head>
+<style type="text/css">
+body {font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;
+    font-size: 14px;
+    background:white;
+}
+h1 {color:black;}
+h2 {color:black; background:white}
+h3 {color:black; background:white}
+a {color: #000000;}
+p {font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;
+    font-size: 14px;
+}
+.a_bgw {
+  color: #000000;
+  background:white;
+}
+
+.scrollc{
+        display:block;
+        border: 0px;
+        padding:5px;
+        margin-top:5px;
+        width:1500px;
+        height:450px;
+        overflow-y:hidden;
+        }
+
+.scrolle{
+        display:block;
+        border: 0px;
+        padding:5px;
+        margin-top:5px;
+        width:1500px;
+        height:100%;
+        overflow-y:hidden;
+        }
+table {
+    color: #000000;
+    font-weight: bold;
+    border-spacing: 0;
+    outline: medium none;
+font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;
+font-size: 14px;
+
+}
+
+th {
+ background: #F2F5F7;
+    border: 1px solid grey;
+    font-size: 14px;
+    font-weight: bold;
+}
+td {
+
+ background: #F2F5F7;
+    border: 1px solid grey;
+    font-weight: normal;
+    padding: 5;
+}
+
+.status_FAIL
+{
+    font-weight: bold;
+    color: #c70303;
+}
+.status_WARNING
+{
+    font-weight: bold;
+    color: #b05c1c;
+}
+.status_INFO
+{
+    font-weight: bold;
+    color: blue;
+}
+.status_PASS
+{
+    font-weight: bold;
+    color: #006600;
+}
+
+.td_output {
+  color: #000000;
+ background: white;
+    border: 1px solid grey;
+font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;
+font-size: 14px;
+    font-weight: normal;
+    padding: 1;
+}
+.td_column {
+ background: #F2F5F7;
+    border: 1px solid grey;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.td_title {
+
+ background: #F2F5F7;
+    border: 0px solid grey;
+    font-weight: normal;
+    padding: 5;
+}
+
+pre {
+ overflow-x: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+ white-space: pre-wrap; /* css-3 */
+ white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+ white-space: -pre-wrap; /* Opera 4-6 */
+ white-space: -o-pre-wrap; /* Opera 7 */
+ /* width: 99%; */
+ word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+.shs_bar {
+width: 500px ;
+height: 20px ;
+float: left ;
+border: 1px solid #444444;
+background-color: white ;
+}
+
+.shs_barfill {
+height: 20px ;
+float: left ;
+background-color: #00FF00 ;
+width: 100% ;
+}
+
+.more_less_style {
+  font-family: Lucida Grande,Lucida Sans,Arial,sans-serif;
+  font-weight: bold;
+  color: black;
+}
+
+</style>
+<script language="JavaScript">
+var report_format = "new";
+function processForm()
+{
+    
+    if (report_format == "old")
+    {
+        report_format = "new";
+	var i;
+	var bo = document.querySelectorAll("body");
+        for (i = 0; i < bo.length; i++) 
+        {
+                bo[i].style.fontSize = "14px";
+        }
+	var hc1 = document.querySelectorAll("h1");
+        for (i = 0; i < hc1.length; i++) 
+        {
+                hc1[i].style.color = "black";
+        }
+        var hc2 = document.querySelectorAll("h2");
+	for (i = 0; i < hc2.length; i++) 
+	{
+		hc2[i].style.color = "black";
+	}
+	var hc3 = document.querySelectorAll("h3");
+        for (i = 0; i < hc3.length; i++) 
+        {
+                hc3[i].style.color = "black";
+        }
+	var pf = document.querySelectorAll("p");
+        for (i = 0; i < pf.length; i++) 
+        {
+                pf[i].style.fontSize = "14px";
+        }
+	var tf = document.querySelectorAll("table");
+        for (i = 0; i < tf.length; i++) 
+        {
+                tf[i].style.fontSize = "14px";
+        }
+	var th = document.querySelectorAll("th");
+        for (i = 0; i < th.length; i++) 
+        {
+                th[i].style.background = "#F2F5F7";
+		th[i].style.border = "1px solid grey";
+		th[i].style.fontSize = "14px";
+        }
+	var td = document.querySelectorAll("td");
+        for (i = 0; i < td.length; i++) 
+        {
+                td[i].style.border = "1px solid grey";
+        }
+	var tdo = document.querySelectorAll(".td_output");
+        for (i = 0; i < tdo.length; i++) 
+        {
+                tdo[i].style.background = "white";
+                tdo[i].style.border = "1px solid grey";
+                tdo[i].style.fontSize = "14px";
+        }
+	var tdc = document.querySelectorAll(".td_column");
+        for (i = 0; i < tdc.length; i++) 
+        {
+                tdc[i].style.background = "#F2F5F7";
+                tdc[i].style.border = "1px solid grey";
+                tdc[i].style.fontSize = "14px";
+        }
+	var tdt = document.querySelectorAll(".td_title");
+        for (i = 0; i < tdt.length; i++) 
+        {
+                tdt[i].style.border = "0px solid grey";
+        }
+	var shs = document.querySelectorAll(".shs_bar");
+        for (i = 0; i < shs.length; i++) 
+        {
+                shs[i].style.background = "white";
+        }
+	var ml = document.querySelectorAll(".more_less_style");
+        for (i = 0; i < ml.length; i++) 
+        {
+                ml[i].style.color = "black";
+        }
+	document.getElementById('results').innerHTML ="Switch to old format";
+
+    }
+    else
+    {
+        report_format = "old";
+	var i;
+	var bo = document.querySelectorAll("body");
+        for (i = 0; i < bo.length; i++) 
+        {
+                bo[i].style.fontSize = "13px";
+        }
+	var hc1 = document.querySelectorAll("h1");
+        for (i = 0; i < hc1.length; i++) 
+        {
+                hc1[i].style.color = "blue";
+        }
+        var hc2 = document.querySelectorAll("h2");
+        for (i = 0; i < hc2.length; i++) 
+        {
+                hc2[i].style.color = "blue";
+        }
+	var hc3 = document.querySelectorAll("h3");
+        for (i = 0; i < hc3.length; i++) 
+        {
+                hc3[i].style.color = "blue";
+        }
+        var pf = document.querySelectorAll("p");
+        for (i = 0; i < pf.length; i++) 
+        {
+                pf[i].style.fontSize = "13px";
+        }
+	var tf = document.querySelectorAll("table");
+        for (i = 0; i < tf.length; i++) 
+        {
+                tf[i].style.fontSize = "12px";
+        }
+	var th = document.querySelectorAll("th");
+        for (i = 0; i < th.length; i++) 
+        {
+                th[i].style.background = "#D7EBF9";
+                th[i].style.border = "1px solid #AED0EA";
+                th[i].style.fontSize = "13px";
+        }
+	var td = document.querySelectorAll("td");
+        for (i = 0; i < td.length; i++) 
+        {
+                td[i].style.border = "1px solid #AED0EA";
+        }
+	var tdo = document.querySelectorAll(".td_output");
+        for (i = 0; i < tdo.length; i++) 
+        {
+                tdo[i].style.background = "#E0E0E0";
+                tdo[i].style.border = "1px solid #AED0EA";
+                tdo[i].style.fontSize = "13px";
+        }
+	var tdc = document.querySelectorAll(".td_column");
+        for (i = 0; i < tdc.length; i++) 
+        {
+                tdc[i].style.background = "#D7EBF9";
+                tdc[i].style.border = "1px solid #AED0EA";
+                tdc[i].style.fontSize = "13px";
+        }
+	var tdt = document.querySelectorAll(".td_title");
+        for (i = 0; i < tdt.length; i++) 
+        {
+                tdt[i].style.border = "0px solid #AED0EA";
+        }
+	var shs = document.querySelectorAll(".shs_bar");
+        for (i = 0; i < shs.length; i++) 
+        {
+                shs[i].style.background = "#656565";
+        }
+	var ml = document.querySelectorAll(".more_less_style");
+        for (i = 0; i < ml.length; i++) 
+        {
+                ml[i].style.color = "blue";
+        }
+	document.getElementById('results').innerHTML ="Switch to new format";
+    }
+}
+
+function ExpandContract(divId)
+{
+  if(document.getElementById(divId).className == 'scrollc')
+  {
+    document.getElementById(divId).setAttribute('class','scrolle');
+    document.getElementById(divId+'_mh').innerHTML = 'Click for less data';
+  }
+  else
+  {
+    document.getElementById(divId).setAttribute('class','scrollc')
+    document.getElementById(divId + '_mh').innerHTML = 'Click for more data';
+    window.location.hash = divId + '_a';
+  }
+}
+
+function ShowHide(divId)
+{
+  if(document.getElementById(divId).style.display == 'none')
+  {
+    document.getElementById(divId).style.display='block';
+    document.getElementById(divId+'_mh').innerHTML = 'Click for less data';
+  }
+   else
+  {
+    document.getElementById(divId).style.display = 'none';
+    document.getElementById(divId + '_mh').innerHTML = 'Click for more data';
+    window.location.hash = divId + '_a';
+  }
+}
+
+function ShowHideRegion(divId)
+{
+  if(document.getElementById(divId).style.display == 'none')
+  {
+    document.getElementById(divId).style.display='block';
+  }
+   else
+  {
+    document.getElementById(divId).style.display = 'none';
+  }
+}
+
+var showMode = 'table-cell';
+if (document.all) showMode='block';
+function toggleVis(btn , callid)
+{
+  cells = document.getElementsByName(btn);
+  if(cells[0].style.display == 'none')
+  {
+        mode=showMode;
+  }
+  else
+  {
+        mode='none';
+  }
+
+  for(j = 0; j < cells.length; j++) cells[j].style.display = mode;
+
+  if(callid == 'hide_check_link')
+  {
+        document.getElementById('hide_check_link').style.display='none';
+        document.getElementById('show_check_link').style.display="";
+  }
+  else
+  {
+        document.getElementById('show_check_link').style.display='none';
+        document.getElementById('hide_check_link').style.display="";
+  }
+}
+
+function getParam(name)
+{
+  var start=location.search.indexOf("?"+name+"=");
+  if (start<0) start=location.search.indexOf("&"+name+"=");
+  if (start<0) return 0;
+  return 1;
+}
+
+function deleteRow(t, r, s)
+{
+  var i=r.parentNode.parentNode.rowIndex;
+  document.getElementById(t).deleteRow(i);
+  if ( document.getElementById(s) != null )
+    document.getElementById(s).innerHTML="";
+}
+
+function createDeleteButton(k)
+{
+  var rc=document.getElementById('checkscnt').innerHTML;
+
+  if (k == 1)
+  {
+    for (i=0; i<=rc; i++)
+    {
+      var pn = 'deletebutton' +i;
+      if (document.getElementById(pn) != null )
+          document.getElementById(pn).style.display="";
+    }
+    document.getElementById("show_hide_link").style.display="";
+    document.getElementById("message_on_hide").style.display="";
+    document.getElementById("show_edit_link").style.display="none";
+  }
+   else
+  {
+    for (i=0; i<=rc; i++)
+    {
+      var pn = 'deletebutton' +i;
+      if (document.getElementById(pn) != null )
+          document.getElementById(pn).style.display="none";
+    }
+    document.getElementById("show_hide_link").style.display="none";
+    document.getElementById("message_on_hide").style.display="none";
+    document.getElementById("show_edit_link").style.display="";
+  }
+}
+</script>
+<title>Oracle RAC Assessment Report</title>
+<meta name="FILE ID" content=FILE_ID = 1091B36069484992E05312C0E50A2847>
+<meta name="FILE SIG" content=FILE_SIG = 46C40115700EFB00E0401490CACF67C6>
+<meta name="FILE DATE" content=FILE_DATE = 05-Mar-2015 12:49:14>
+</head><body>
+<!-- Adding below gif will add a dependency to html report. So removed
+<img border=0 src="rac_assurance_home.gif">
+-->
+<center><table border=0 width=100% summary="Oracle RAC Assessment Report Summary"><tr><td class="td_title" align="center">
+ <h1>Oracle RAC Assessment Report<br><br>
+<span style="color:black;">System Health Score is 100 out of 100 <a style="color:black;" href="javascript:ShowHideRegion('shs_help');" title="What is this">(detail)</a> </span></h1>
+<div id="shs_help" style="DISPLAY: none"><table border=0 summary="System Health Score formula"><tr><td align=left>System Health Score is derived using following formula.<ul>
+<li>Every check has 10 points</li>
+<li>Failure will deduct 10 points</li>
+<li>Warning will deduct 5 points</li>
+<li>Info will deduct 3 points</li>
+<li>Skip will deduct 3 points</li></ul>
+<table summary="PASS and FAIL statistics">
+<tr><td>Total checks</td><td align=center>7</td></tr>
+<tr><td>Passed checks</td><td align=center>7</td></tr>
+<tr><td>Failed(fail/warn/info/skip) checks</td><td align=center>0</td></tr>
+</table>
+<a href="javascript:ShowHideRegion('shs_help');"> ..Hide</a>
+</td></tr></table>
+</div>
+</td></tr></table></center>
+<H2>Cluster Summary</H2>
+<table border=1 summary="Cluster Summary" role="presentation">
+<tr><td class="td_column">Cluster Name</td><td>rac-cluster</td></tr>
+
+<tr><td class="td_column">OS/Kernel Version</td><td>LINUX X86-64 OELRHEL 6 3.8.13-44.1.1.el6uek.x86_64</td></tr>
+
+
+<tr><td class="td_column">CRS Home - Version</td><td>/u01/11.2.0.4/grid - 11.2.0.4.0</td></tr>
+<tr><td class="td_column">DB Home - Version - Names</td><td>/u01/app/oracle/product/11.2.0.4/db_1 - 11.2.0.4.0 - <a href="javascript:ShowHideRegion('dbn_summary2_0');">2</a><div id="dbn_summary2_0" style="DISPLAY: none"><br>&nbsp;&nbsp;racdb<br>&nbsp;&nbsp;mfsdb<a href="javascript:ShowHideRegion('dbn_summary2_0');"> ..Hide</a></div><br></td></tr>
+
+
+
+
+
+
+<tr><td class="td_column">Number of nodes</td><td>2</td></tr>
+<tr><td class="td_column">&nbsp;&nbsp;&nbsp;Database Servers</td><td><a href="javascript:ShowHideRegion('dbservers_summary');">2</a><div id="dbservers_summary" style="DISPLAY: none"><br>&nbsp;&nbsp;rac2<br>&nbsp;&nbsp;rac1<a href="javascript:ShowHideRegion('dbservers_summary');"> ..Hide</a></div></td></tr>
+
+
+
+
+
+
+
+
+
+
+<tr><td class="td_column">orachk Version</td><td>12.1.0.2.3_20150305</td></tr>
+<tr><td class="td_column">Collection</td><td>orachk_rac2_racdb_041715_050359.zip</td></tr>
+<tr><td class="td_column">Duration</td><td>2 mins, 27 seconds</td></tr>
+<tr><td class="td_column">Executed by</td><td>oracle</td></tr>
+<tr><td class="td_column">Collection Date</td><td>17-Apr-2015 05:06:29</td></tr>
+</table>
+<br/><b><p style="font-size:14px"><span style="color:green;font-size:14px">Note!</span> This version of orachk is considered valid for 77 days from today or until a new version is available</p></b>
+<H2>Table of Contents</H2>
+
+<ul>
+<li><a class="a_bgw" href="#failed_checks">Findings Needing Attention</a></li>
+<ul>
+<li>On Database Server - All Checks Passed</li>
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+<li><a href="#passed_checks">Findings Passed</a></li>
+<ul>
+<li><a class="a_bgw" href="#passed_checks_compute">On Database Server</a></li>
+
+
+
+
+<li><a class="a_bgw" href="#passed_checks_cluster">Cluster Wide</a></li>
+
+</ul>
+<li><a href="#patch_summary">GRID and RDBMS patch recommendation Summary report</a></li>
+<li><a href="#patch_detailed">GRID and RDBMS patch recommendation Detailed report</a></li>
+<li><a href="#top_consumers">Top 10 Time Consuming Checks</a></li>
+</ul>
+<br>
+<a href="javascript:toggleVis('checkid', 'show_check_link');" id="show_check_link">Show Check Ids</a>
+<a href="javascript:toggleVis('checkid', 'hide_check_link');" style="DISPLAY: none" id="hide_check_link">Hide Check Ids</a>
+<p>
+<a href="javascript:createDeleteButton(1);" id="show_edit_link">Remove finding from report</a>
+<a href="javascript:createDeleteButton(0);" id="show_hide_link" style="DISPLAY: none">Hide Remove Buttons</a> 
+<p id="message_on_hide" style="DISPLAY: none"><br><b><span style="color:red">Removing findings in page does not change the original html file. Please use browsers save page button (or press Ctrl+S) to save the report.</span></b></p>
+<hr>
+<a name="failed_checks"></a>
+<H2>Findings Needing Attention</h2>
+<p style="backrgound:white"><b>FAIL, WARNING, ERROR and INFO finding details should be reviewed in the
+context of your environment.</b></br>
+<br/><b>NOTE:</b> Any recommended change should be applied to and thoroughly tested (functionality and load) in one or more non-production environments before applying the change to a production environment.</p>
+<hr><a name="patch_summary"></a><a href="#"  class="a_bgw">Top</a>
+<h2>GRID and RDBMS patch recommendation Summary report</h2>
+    <a name="rac2_crssummary"></a>
+    <h3>Summary Report for "rac2"</h3>
+    <b>Clusterware patches</b>
+    <table border=1 summary="Clusterware patches">
+    <tr><th>Total patches</th>
+    <th scope="col">Applied on CRS</th>
+    <th scope="col">Applied on RDBMS</th>
+    <th scope="col">Applied on ASM</th>
+    <th scope="col">Details</th></tr>
+    <tr><td align="right" scope="row">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center"><a href="#rac2_crsdetailed">View</a></td>
+    </tr></table>
+      <br><b>RDBMS homes patches</b>
+      <table border=1 summary="RDBMS homes patches">
+      <tr><th scope="col">Total patches</th>
+      <th scope="col">Applied on RDBMS</th>
+      <th scope="col">Applied on ASM</th>
+      <th scope="col">ORACLE_HOME</th>
+      <th scope="col">Details</th></tr>
+      <tr><td align="right" scope="row"><a name="rac2_u01apporacleproduct11.2.0.4db_1_rdbmssummary"></a>1</td>
+      <td align="right">0</td>
+      <td align="right">0</td>
+      <td align="right">/u01/app/oracle/product/11.2.0.4/db_1</td>
+      <td align="center"><a href="#rac2_u01apporacleproduct11.2.0.4db_1_rdbmsdetailed">View</a></td></tr>
+</table>
+    <a name="rac1_crssummary"></a>
+    <h3>Summary Report for "rac1"</h3>
+    <b>Clusterware patches</b>
+    <table border=1 summary="Clusterware patches">
+    <tr><th>Total patches</th>
+    <th scope="col">Applied on CRS</th>
+    <th scope="col">Applied on RDBMS</th>
+    <th scope="col">Applied on ASM</th>
+    <th scope="col">Details</th></tr>
+    <tr><td align="right" scope="row">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center"><a href="#rac1_crsdetailed">View</a></td>
+    </tr></table>
+      <br><b>RDBMS homes patches</b>
+      <table border=1 summary="RDBMS homes patches">
+      <tr><th scope="col">Total patches</th>
+      <th scope="col">Applied on RDBMS</th>
+      <th scope="col">Applied on ASM</th>
+      <th scope="col">ORACLE_HOME</th>
+      <th scope="col">Details</th></tr>
+      <tr><td align="right" scope="row"><a name="rac1_u01apporacleproduct11.2.0.4db_1_rdbmssummary"></a>0</td>
+      <td align="right">0</td>
+      <td align="right">0</td>
+      <td align="right">/u01/app/oracle/product/11.2.0.4/db_1</td>
+      <td align="center"><a href="#rac1_u01apporacleproduct11.2.0.4db_1_rdbmsdetailed">View</a></td></tr>
+</table>
+<hr><a name="patch_detailed"></a><a href="#" class="a_bgw">Top</a>
+<h2>GRID and RDBMS patch recommendation Detailed report</h2>
+<h3>Detailed report for "rac2"</h3><hr>
+      <a name="rac2_crsdetailed"></a>
+      <br><br><b>0 Recommended CRS patches for 112040 from /u01/11.2.0.4/grid</b>
+<br>
+<a href="#rac2_crssummary" class="a_bgw">Top</a>
+      <a name="rac2_u01apporacleproduct11.2.0.4db_1_rdbmsdetailed"></a>
+      <br><br><b>1 Recommended RDBMS patches for 112040 from /u01/app/oracle/product/11.2.0.4/db_1</b>
+      <table border=1 summary="Detailed rdbms home patches">
+      <tr><th>Patch#</th>
+      <th scope="col">RDBMS</th>
+      <th scope="col">ASM</th>
+      <th scope="col">Type</th>
+      <th scope="col">Patch-Description</th></tr>
+<tr><td scope="row">19955028</td><td scope="row">not-applied</td><td scope="row">n/a</td><td scope="row">merge</td><td scope="row">GRID INFRASTRUCTURE PATCH SET UPDATE 11.2.0.4.5 (JAN2015)</td></tr>
+</table>
+<a href="#rac2_u01apporacleproduct11.2.0.4db_1_rdbmssummary" class="a_bgw">Top</a>
+<h3>Detailed report for "rac1"</h3><hr>
+      <a name="rac1_crsdetailed"></a>
+      <br><br><b>0 Recommended CRS patches for 112040 from /u01/11.2.0.4/grid</b>
+<br>
+<a href="#rac1_crssummary" class="a_bgw">Top</a>
+      <a name="rac1_u01apporacleproduct11.2.0.4db_1_rdbmsdetailed"></a>
+      <br><br><b>0 Recommended RDBMS patches for 112040 from /u01/app/oracle/product/11.2.0.4/db_1</b>
+<br>
+<a href="#rac1_u01apporacleproduct11.2.0.4db_1_rdbmssummary" class="a_bgw">Top</a>
+<hr>
+<a class="a_bgw" href="#">Top</a>
+<a name="passed_checks"></a>
+<H2>Findings Passed</h2>
+
+             <a name="passed_checks_compute"></a>
+             <H2>Database Server</h2>
+             <table border=1 id="passedtbl_compute" summary="Passed checks">
+             <tr><th scope="col" name='checkid' style="DISPLAY: none">Check Id</th>
+             <th scope="col">Status</th>
+             <th scope="col">Type</th>
+             <th scope="col">Message</th>
+             <th scope="col">Status On</th>
+             <th scope="col">Details</th></tr>
+<tr><td name='checkid' style='DISPLAY: none'>841E706550975C68E040E50A1EC05EFB</td><td><input  id="deletebutton1" type="button" value="X" onclick="deleteRow('passedtbl_compute', this,'841E706550975C68E040E50A1EC05EFB_contents')"><a name="841E706550975C68E040E50A1EC05EFB_summary"></a>PASS</td><td>OS Check</td><td scope="row">Shell limit hard nproc for DB is configured according to recommendation</td><td>All Database Servers</td><td><a href="#841E706550975C68E040E50A1EC05EFB_details">View</a></td></tr>
+<tr><td name='checkid' style='DISPLAY: none'>7EDE9EBEC9429FBAE040E50A1EC03AED</td><td><input  id="deletebutton2" type="button" value="X" onclick="deleteRow('passedtbl_compute', this,'7EDE9EBEC9429FBAE040E50A1EC03AED_contents')"><a name="7EDE9EBEC9429FBAE040E50A1EC03AED_summary"></a>PASS</td><td>OS Check</td><td scope="row">$ORACLE_HOME/bin/oradism ownership is root</td><td>All Database Servers</td><td><a href="#7EDE9EBEC9429FBAE040E50A1EC03AED_details">View</a></td></tr>
+<tr><td name='checkid' style='DISPLAY: none'>7EDDA570A1827FBAE040E50A1EC02EB1</td><td><input  id="deletebutton3" type="button" value="X" onclick="deleteRow('passedtbl_compute', this,'7EDDA570A1827FBAE040E50A1EC02EB1_contents')"><a name="7EDDA570A1827FBAE040E50A1EC02EB1_summary"></a>PASS</td><td>OS Check</td><td scope="row">$ORACLE_HOME/bin/oradism setuid bit is set</td><td>All Database Servers</td><td><a href="#7EDDA570A1827FBAE040E50A1EC02EB1_details">View</a></td></tr>
+</table>
+             <a name="passed_checks_cluster"></a>
+             <H2>Cluster Wide</h2>
+             <table border=1 id="passedtbl_cluster" summary="Passed checks">
+             <tr><th scope="col" name='checkid' style="DISPLAY: none">Check Id</th>
+             <th scope="col">Status</th>
+             <th scope="col">Type</th>
+             <th scope="col">Message</th>
+             <th scope="col">Status On</th>
+             <th scope="col">Details</th></tr>
+<tr><td name='checkid' style='DISPLAY: none'>7E3FAC1843F137ABE040E50A1EC0139B</td><td><input  id="deletebutton0" type="button" value="X" onclick="deleteRow('passedtbl_cluster', this,'7E3FAC1843F137ABE040E50A1EC0139B_contents')"><a name="7E3FAC1843F137ABE040E50A1EC0139B_summary"></a>PASS</td><td>Cluster Wide Check</td><td scope="row">RDBMS software owner UID matches across cluster</td><td>Cluster Wide</td><td><a href="#7E3FAC1843F137ABE040E50A1EC0139B_details">View</a></td></tr>
+</table>
+</table>
+<hr><a href="#" class="a_bgw">Top</a><h2>Best Practices and Other Recommendations</h2>
+<p>Best Practices and Other Recommendations are generally items documented in various sources which could be overlooked. orachk assesses them and calls attention to any findings.</p>
+<div id="7E3FAC1843F137ABE040E50A1EC0139B_contents">
+<hr>
+<a name="7E3FAC1843F137ABE040E50A1EC0139B_details"></a>
+<a href="#7E3FAC1843F137ABE040E50A1EC0139B_summary" class="a_bgw">Top</a><br>
+<h3>RDBMS software owner UID across cluster</h3>
+<table width=800 summary=Summary of audit check and SF role=presentation>
+<tr><td>Success Factor</td><td>ENSURE EACH ORACLE/ASM USER HAS A UNIQUE UID ACROSS THE CLUSTER</td></tr>
+<tr><td scope="row">Recommendation</td><td scope="row"><pre> 
+Benefit / Impact:
+
+Availability, stability
+
+
+
+Risk:
+
+Potential OCR logical corruptions and permission problems accessing OCR keys when multiple O/S users share the same UID which are difficult to diagnose.
+
+
+
+Action / Repair:
+
+For GI/CRS, ASM and RDBMS software owners ensure one unique user ID with a single name is in use across the cluster.
+ </pre></td></tr>
+<tr><td scope="row"><a name="7E3FAC1843F137ABE040E50A1EC0139B_machines"></a>Needs attention on</td><td scope="row">-</td></tr>
+<tr><td scope="row"></a>Passed on</td><td>Cluster Wide</td></tr>
+</table>
+<br>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on Cluster Wide</b>:<br/><span class="status_PASS">PASS</span> => RDBMS software owner UID matches across cluster</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="7E3FAC1843F137ABE040E50A1EC0139B_report_out_more_text14815_a"></a>
+DATA FROM RAC2 - RDBMS SOFTWARE OWNER UID ACROSS CLUSTER 
+
+
+
+uid=54321(oracle) gid=54321(oinstall) groups=54321(oinstall),54322(dba),54323(asmdba),54324(asmadmin),54325(asmoper),54326(oper)
+
+
+
+DATA FROM RAC1 - RDBMS SOFTWARE OWNER UID ACROSS CLUSTER 
+
+
+
+uid=54321(oracle) gid=54321(oinstall) groups=54321(oinstall),54322(dba),54323(asmdba),54324(asmadmin),54325(asmoper),54326(oper)
+
+
+
+</pre></td></tr>
+</table>
+<a href="#7E3FAC1843F137ABE040E50A1EC0139B_summary" class="a_bgw">Top</a><br>
+</div>
+<div id="841E706550975C68E040E50A1EC05EFB_contents">
+<hr>
+<a name="841E706550975C68E040E50A1EC05EFB_details"></a>
+<a href="#841E706550975C68E040E50A1EC05EFB_summary" class="a_bgw">Top</a><br>
+<h3>DB shell limits hard nproc</h3>
+<table width=800 summary=Summary of audit check and SF role=presentation>
+<tr><td scope="row">Recommendation</td><td scope="row"><pre> The hard nproc shell limit for the Oracle DB software install owner as defined in /etc/security/limits.conf should be &gt;= 16384.
+ </pre></td></tr>
+<tr><td scope="row">Links</td><td scope="row"><ul><li><a href="http://docs.oracle.com/cd/E11882_01/install.112/e41961/prelinux.htm#CWLIN249" target="_blank">Setting Resource Limits for the Oracle Software Installation Users </a></li></ul></td></tr>
+<tr><td scope="row"><a name="841E706550975C68E040E50A1EC05EFB_machines"></a>Needs attention on</td><td scope="row">-</td></tr>
+<tr><td scope="row"></a>Passed on</td><td>rac2, rac1</td></tr>
+</table>
+<br>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on rac2</b>:<br/><span class="status_PASS">PASS</span> => Shell limit hard nproc for DB is configured according to recommendation</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="841E706550975C68E040E50A1EC05EFB_rac2_report_out_more_text27713_a"></a>
+DATA FROM RAC2 - DB SHELL LIMITS HARD NPROC 
+
+
+
+oracle hard nproc 16384
+</pre></td></tr>
+</table>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on rac1</b>:<br/><span class="status_PASS">PASS</span> => Shell limit hard nproc for DB is configured according to recommendation</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="841E706550975C68E040E50A1EC05EFB_rac1_report_out_more_text31296_a"></a>
+DATA FROM RAC1 - DB SHELL LIMITS HARD NPROC 
+
+
+
+oracle hard nproc 16384
+</pre></td></tr>
+</table>
+<a href="#841E706550975C68E040E50A1EC05EFB_summary" class="a_bgw">Top</a><br>
+</div>
+<div id="7EDE9EBEC9429FBAE040E50A1EC03AED_contents">
+<hr>
+<a name="7EDE9EBEC9429FBAE040E50A1EC03AED_details"></a>
+<a href="#7EDE9EBEC9429FBAE040E50A1EC03AED_summary" class="a_bgw">Top</a><br>
+<h3>oradism executable ownership</h3>
+<table width=800 summary=Summary of audit check and SF role=presentation>
+<tr><td>Success Factor</td><td>VERIFY OWNERSHIP OF ORADISM EXECUTABLE IF LMS PROCESS NOT RUNNING IN REAL TIME</td></tr>
+<tr><td scope="row">Recommendation</td><td scope="row"><pre> 
+Benefit / Impact:
+
+The oradism executable is invoked after database startup to change the scheduling priority of LMS and other database background processes to the realtime scheduling class in order to maximize the ability of these key processes to be scheduled on the CPU in a timely way at times of high CPU utilization.
+
+
+
+Risk:
+
+The oradism executable should be owned by root and the owner s-bit should be set, e.g., -rwsr-x---, where the s is the setuid bit (s-bit) for root in this case.  If the LMS process is not running at the proper scheduling priority it can lead to instance evictions due to IPC send timeouts or ORA-29740 errors.  oradism must be owned by root and it's s-bit set in order to be able to change the scheduling priority.   If oradism ownership is not root and the owner s-bit is not set then something must have gone wrong in the installation process or the ownership or the permission was otherwise changed.  
+
+
+
+Action / Repair:
+
+Please check with Oracle Support to determine the best course to take for your platform to correct the problem.
+ </pre></td></tr>
+<tr><td scope="row"><a name="7EDE9EBEC9429FBAE040E50A1EC03AED_machines"></a>Needs attention on</td><td scope="row">-</td></tr>
+<tr><td scope="row"></a>Passed on</td><td>rac2, rac1</td></tr>
+</table>
+<br>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on rac2</b>:<br/><span class="status_PASS">PASS</span> => $ORACLE_HOME/bin/oradism ownership is root</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="7EDE9EBEC9429FBAE040E50A1EC03AED_rac2_report_out_more_text9434_a"></a>
+DATA FROM RAC2 - /U01/APP/ORACLE/PRODUCT/11.2.0.4/DB_1 DATABASE_HOME - ORADISM EXECUTABLE OWNERSHIP 
+
+
+
+-rwsr-x--- 1 root oinstall 71790 Apr 15 14:17 /u01/app/oracle/product/11.2.0.4/db_1/bin/oradism
+</pre></td></tr>
+</table>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on rac1</b>:<br/><span class="status_PASS">PASS</span> => $ORACLE_HOME/bin/oradism ownership is root</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="7EDE9EBEC9429FBAE040E50A1EC03AED_rac1_report_out_more_text12000_a"></a>
+DATA FROM RAC1 - /U01/APP/ORACLE/PRODUCT/11.2.0.4/DB_1 DATABASE_HOME - ORADISM EXECUTABLE OWNERSHIP 
+
+
+
+-rwsr-x--- 1 root oinstall 71790 Aug 24  2013 /u01/app/oracle/product/11.2.0.4/db_1/bin/oradism
+</pre></td></tr>
+</table>
+<a href="#7EDE9EBEC9429FBAE040E50A1EC03AED_summary" class="a_bgw">Top</a><br>
+</div>
+<div id="7EDDA570A1827FBAE040E50A1EC02EB1_contents">
+<hr>
+<a name="7EDDA570A1827FBAE040E50A1EC02EB1_details"></a>
+<a href="#7EDDA570A1827FBAE040E50A1EC02EB1_summary" class="a_bgw">Top</a><br>
+<h3>oradism executable permission</h3>
+<table width=800 summary=Summary of audit check and SF role=presentation>
+<tr><td>Success Factor</td><td>VERIFY OWNERSHIP OF ORADISM EXECUTABLE IF LMS PROCESS NOT RUNNING IN REAL TIME</td></tr>
+<tr><td scope="row">Recommendation</td><td scope="row"><pre> 
+Benefit / Impact:
+
+The oradism executable is invoked after database startup to change the scheduling priority of LMS and other database background processes to the realtime scheduling class in order to maximize the ability of these key processes to be scheduled on the CPU in a timely way at times of high CPU utilization.
+
+Risk:
+
+The oradism executable should be owned by root and the owner s-bit should be set, e.g., -rwsr-x---, where the s is the setuid bit (s-bit) for root in this case.  If the LMS process is not running at the proper scheduling priority it can lead to instance evictions due to IPC send timeouts or ORA-29740 errors.  oradism must be owned by root and it's s-bit set in order to be able to change the scheduling priority.   If oradism ownership is not root and the owner s-bit is not set then something must have gone wrong in the installation process or the ownership or the permission was otherwise changed.
+
+Action / Repair:
+
+Please check with Oracle Support to determine the best course to take for your platform to correct the problem.
+ </pre></td></tr>
+<tr><td scope="row"><a name="7EDDA570A1827FBAE040E50A1EC02EB1_machines"></a>Needs attention on</td><td scope="row">-</td></tr>
+<tr><td scope="row"></a>Passed on</td><td>rac2, rac1</td></tr>
+</table>
+<br>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on rac2</b>:<br/><span class="status_PASS">PASS</span> => $ORACLE_HOME/bin/oradism setuid bit is set</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="7EDDA570A1827FBAE040E50A1EC02EB1_rac2_report_out_more_text24394_a"></a>
+DATA FROM RAC2 - /U01/APP/ORACLE/PRODUCT/11.2.0.4/DB_1 DATABASE_HOME - ORADISM EXECUTABLE PERMISSION 
+
+
+
+-rwsr-x--- 1 root oinstall 71790 Apr 15 14:17 /u01/app/oracle/product/11.2.0.4/db_1/bin/oradism
+</pre></td></tr>
+</table>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on rac1</b>:<br/><span class="status_PASS">PASS</span> => $ORACLE_HOME/bin/oradism setuid bit is set</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="7EDDA570A1827FBAE040E50A1EC02EB1_rac1_report_out_more_text27473_a"></a>
+DATA FROM RAC1 - /U01/APP/ORACLE/PRODUCT/11.2.0.4/DB_1 DATABASE_HOME - ORADISM EXECUTABLE PERMISSION 
+
+
+
+-rwsr-x--- 1 root oinstall 71790 Aug 24  2013 /u01/app/oracle/product/11.2.0.4/db_1/bin/oradism
+</pre></td></tr>
+</table>
+<a href="#7EDDA570A1827FBAE040E50A1EC02EB1_summary" class="a_bgw">Top</a><br>
+</div>
+<hr>
+<a href="#" class="a_bgw">Top</a>
+<a name="top_consumers"></a>
+<h2>Top 10 Time Consuming Checks</h2>
+<p><b>NOTE:</b> This information is primarily used for helping Oracle optimize the run time of orachk.<br></br>These timings are not necessarily indicative of any problem and may vary widely from one system to another.</p>
+<table summary="Top Time Consuming Checks">
+<tr>
+<th scope="col">Name</th>
+<th scope="col">Type</th>
+<th scope="col">Target</th>
+<th scope="col">Execution Duration</th>
+</tr>
+<tr>
+<td scope="row">Patches for RDBMS Home</td>
+<td scope="row" align="center"> OS Collection </td>
+<td scope="row" align="center"> rac1 </td>
+<td scope="row" align="center">6 secs</td>
+</tr>
+<tr>
+<td scope="row">Active sessions load balance</td>
+<td scope="row" align="center"> SQL Collection </td>
+<td scope="row" align="center"> rac2:racdb2 </td>
+<td scope="row" align="center">6 secs</td>
+</tr>
+<tr>
+<td scope="row">Patches for RDBMS Home</td>
+<td scope="row" align="center"> OS Collection </td>
+<td scope="row" align="center"> rac2 </td>
+<td scope="row" align="center">6 secs</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#5DBA34B30892B010E0401490CACF2738_details">Asynch IO support in oracle binary</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac2:/u01/app/oracle/product/11.2.0.4/db_1 </td>
+<td scope="row" align="center">2 secs</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#5DBA34B30892B010E0401490CACF2738_details">Asynch IO support in oracle binary</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac1:/u01/app/oracle/product/11.2.0.4/db_1 </td>
+<td scope="row" align="center">2 secs</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#5DC9DADFC45FD615E0401490CACF5277_details">Asynch IO support in oracle binary</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac1:/u01/app/oracle/product/11.2.0.4/db_1 </td>
+<td scope="row" align="center">2 secs</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#5DC9DADFC45FD615E0401490CACF5277_details">Asynch IO support in oracle binary</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac2:/u01/app/oracle/product/11.2.0.4/db_1 </td>
+<td scope="row" align="center">2 secs</td>
+</tr>
+<tr>
+<td scope="row">Active sessions load balance</td>
+<td scope="row" align="center"> SQL Collection </td>
+<td scope="row" align="center"> rac2:mfsdb2 </td>
+<td scope="row" align="center">782 ms</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#E596FB09DE302047E04312C0E50AD481_details">Branch to execute consolidation checks</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac2 </td>
+<td scope="row" align="center">359 ms</td>
+</tr>
+<tr>
+<td scope="row"><a class="a_bgw" href="#C846692C524A7E24E0431EC0E50AF3F2_details">Is ASM running for ASM disk read write error</a></td>
+<td scope="row" align="center"> OS Check </td>
+<td scope="row" align="center"> rac2 </td>
+<td scope="row" align="center">352 ms</td>
+</tr>
+</table><div id="checkscnt" style="display: none">4</div>
+    <script>
+      var k=getParam('debug');
+      createDeleteButton(k);
+    </script>
+</body>
+<br><a href="#" onclick="javascript:processForm();"><div id="results">Switch to old format</div></a>
+</html>

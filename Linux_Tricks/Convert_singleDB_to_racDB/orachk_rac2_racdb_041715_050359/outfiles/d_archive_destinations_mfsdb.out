@@ -1,0 +1,39 @@
+
+mfsdb1.archive destination ID = 1                                               
+mfsdb1.archive destination = USE_DB_RECOVERY_FILE_DEST                          
+mfsdb1.archive destination status = VALID                                       
+mfsdb1.archive destination target = PRIMARY                                     
+mfsdb1.archive schedule = ACTIVE                                                
+mfsdb1.archive process = ARCH                                                   
+mfsdb1.archiev mount ID = 0                                                     
+mfsdb1.archiver = ARCH                                                          
+mfsdb1.archive transmit mode = SYNCHRONOUS                                      
+mfsdb1.archive affirm = NO                                                      
+mfsdb1.archive async Blocks = 0                                                 
+mfsdb1.archive net timeout = 0                                                  
+mfsdb1.archive delay mintues = 0                                                
+
+mfsdb1.Reopen Seconds = 0                                                       
+mfsdb1.Register = NO                                                            
+mfsdb1.Binding = MANDATORY                                                      
+mfsdb1.any error while archiving =                                              
+                                                                                
+mfsdb2.archive destination ID = 1                                               
+mfsdb2.archive destination = USE_DB_RECOVERY_FILE_DEST                          
+mfsdb2.archive destination status = VALID                                       
+mfsdb2.archive destination target = PRIMARY                                     
+mfsdb2.archive schedule = ACTIVE                                                
+mfsdb2.archive process = ARCH                                                   
+mfsdb2.archiev mount ID = 0                                                     
+mfsdb2.archiver = ARCH                                                          
+
+mfsdb2.archive transmit mode = SYNCHRONOUS                                      
+mfsdb2.archive affirm = NO                                                      
+mfsdb2.archive async Blocks = 0                                                 
+mfsdb2.archive net timeout = 0                                                  
+mfsdb2.archive delay mintues = 0                                                
+mfsdb2.Reopen Seconds = 0                                                       
+mfsdb2.Register = NO                                                            
+mfsdb2.Binding = MANDATORY                                                      
+mfsdb2.any error while archiving =                                              
+                                                                                

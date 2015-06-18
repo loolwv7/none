@@ -1,0 +1,2 @@
+rac2 38.0.0.0.0.0.0.0.0.0 ls -l $ORACLE_HOME/bin/oracle|awk '{print $3}' == 
+rac1 38.0.0.0.0.0.0.0.0.0 ls -l $ORACLE_HOME/bin/oracle|awk '{print $3}' == 

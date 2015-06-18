@@ -1,0 +1,17 @@
+
+controlfile = +DATA/mfsdb/controlfile/current.258.877206753                     
+controlfile = +FLASH/mfsdb/controlfile/current.277.877206753                    
+datafile (file#_name) = 1_+DATA/mfsdb/datafile/system.259.877206831             
+datafile (file#_name) = 2_+DATA/mfsdb/datafile/sysaux.261.877206827             
+datafile (file#_name) = 3_+DATA/mfsdb/datafile/undotbs1.270.877206835           
+datafile (file#_name) = 4_+DATA/mfsdb/datafile/users.257.877206849              
+datafile (file#_name) = 5_+DATA/mfsdb/datafile/zjtdr.267.877206837              
+datafile (file#_name) = 6_+DATA/mfsdb/datafile/tbs_rman.256.877206841           
+datafile (file#_name) = 7_+DATA/mfsdb/datafile/undotbs2.262.877206847           
+logfile (group_member) = 1_+FLASH/mfsdb/onlinelog/group_1.275.877206907         
+logfile (group_member) = 2_+FLASH/mfsdb/onlinelog/group_2.272.877206907         
+logfile (group_member) = 3_+FLASH/mfsdb/onlinelog/group_3.271.877206907         
+logfile (group_member) = 4_+FLASH/mfsdb/onlinelog/group_4.279.877206905         
+
+logfile (group_member) = 5_+FLASH/mfsdb/onlinelog/group_5.280.877206905         
+logfile (group_member) = 6_+FLASH/mfsdb/onlinelog/group_6.276.877206905         

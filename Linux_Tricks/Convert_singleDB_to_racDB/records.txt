@@ -1,0 +1,59 @@
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production
+With the Partitioning, Real Application Clusters, Automatic Storage Management, OLAP,
+Data Mining and Real Application Testing options
+
+set lines 200;
+column HOST format a7;
+SELECT     inst_id,
+           instance_number inst_no,
+           instance_name inst_name,
+           parallel,
+           status,
+           database_status db_status,
+           active_state state,
+           host_name host
+FROM       gv$instance
+ 10  ORDER BY   inst_id;
+
+   INST_ID    INST_NO INST_NAME 				       PARALLEL  STATUS 			      DB_STATUS 				  STATE
+---------- ---------- ------------------------------------------------ --------- ------------------------------------ --------------------------------------------------- ---------------------------
+HOST
+-------
+	 1	    1 racdb1					       YES	 OPEN				      ACTIVE					  NORMAL
+rac1
+
+	 2	    2 racdb2					       YES	 OPEN				      ACTIVE					  NORMAL
+rac2
+
+
+SQL> show parameter sga;
+
+NAME				     TYPE			       VALUE
+------------------------------------ --------------------------------- ------------------------------
+lock_sga			     boolean			       FALSE
+pre_page_sga			     boolean			       FALSE
+sga_max_size			     big integer		       18G
+sga_target			     big integer		       18G
+SQL> show parameter processes;
+
+NAME				     TYPE			       VALUE
+------------------------------------ --------------------------------- ------------------------------
+aq_tm_processes 		     integer			       1
+db_writer_processes		     integer			       6
+gcs_server_processes		     integer			       3
+global_txn_processes		     integer			       1
+job_queue_processes		     integer			       1000
+log_archive_max_processes	     integer			       4
+processes			     integer			       500
+SQL> show parameter sessions;
+
+NAME				     TYPE			       VALUE
+------------------------------------ --------------------------------- ------------------------------
+java_max_sessionspace_size	     integer			       0
+java_soft_sessionspace_limit	     integer			       0
+license_max_sessions		     integer			       0
+license_sessions_warning	     integer			       0
+sessions			     integer			       816
+shared_server_sessions		     integer
+

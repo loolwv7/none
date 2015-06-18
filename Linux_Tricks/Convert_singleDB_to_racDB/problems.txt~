@@ -1,0 +1,265 @@
+1)
+sql statement: alter system set  db_name =  ''MFSDB'' comment= ''Reset to original value by RMAN'' scope=spfile
+
+sql statement: alter system reset  db_unique_name scope=spfile
+
+Oracle instance shut down
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-03002: failure of Duplicate Db command at 04/16/2015 17:49:15
+RMAN-05501: aborting duplication of target database
+RMAN-03015: error occurred in stored script Memory Script
+RMAN-06136: ORACLE error from auxiliary database: ORA-01618: redo thread 2 is not enabled - cannot mount
+
+
+http://www.acehints.com/2011/12/fix-duplicate-database-failing-rman.html
+How to add log thread to Oracle 10g 11g RAC ASM database?
+
+#Run below mentioned query and find out which is CURRENT log group
+## in target single database!!!!
+col member format a70
+set linesize 300
+select a.group#,a.thread#, b.member, a.bytes/1024/1024,bytes/1024, a.status,b.status  
+from v$log a,v$logfile b where a.group#=b.group#;
+
+alter database add logfile thread 2 group 4 size 50M;
+alter database add logfile thread 2 group 5 size 50M;
+alter database add logfile thread 2 group 6 size 50M;
+
+alter database enable public thread 2;
+
+
+2)
+datafile 5 switched to datafile copy
+input datafile copy RECID=4 STAMP=877200419 file name=+DATA/mfsdb/datafile/zjtdr.259.877200341
+datafile 6 switched to datafile copy
+input datafile copy RECID=5 STAMP=877200419 file name=+DATA/mfsdb/datafile/tbs_rman.270.877200357
+
+contents of Memory Script:
+{
+     Alter clone database open resetlogs;
+}
+executing Memory Script
+
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-00601: fatal error in recovery manager
+RMAN-03004: fatal error during execution of command
+RMAN-10041: Could not re-create polling channel context following failure. 
+RMAN-10024: error setting up for rpc polling
+RMAN-10005: error opening cursor
+RMAN-10002: ORACLE error: ORA-03114: not connected to ORACLE
+RMAN-03002: failure of Duplicate Db command at 04/16/2015 18:47:04
+RMAN-05501: aborting duplication of target database
+RMAN-03015: error occurred in stored script Memory Script
+RMAN-06136: ORACLE error from auxiliary database: ORA-01092: ORACLE instance terminated. Disconnection forced
+ORA-30012: undo tablespace 'UNDOTBS2' does not exist or of wrong type
+Process ID: 4365
+Session ID: 205 Serial number: 7
+
+## in target single database!!!!
+col member format a70
+set linesize 300
+select a.group#,a.thread#, b.member, a.bytes/1024/1024,bytes/1024, a.status,b.status  
+from v$log a,v$logfile b where a.group#=b.group#;
+
+SQL> show parameter undo
+
+NAME                     TYPE    VALUE
+------------------------------------ ----------- ------------------------------
+undo_management              string  AUTO
+undo_retention               integer     900
+undo_tablespace              string  UNDOTBS1
+
+SQL> create undo tablespace UNDOTBS02 DATAFILE '+DATA' SIZE 20G;
+SQL> ALTER SYSTEM SET UNDO_TABLESPACE=UNDOTBS02;
+SQL> show parameter undo
+
+NAME                     TYPE    VALUE
+------------------------------------ ----------- ------------------------------
+undo_management              string  AUTO
+undo_retention               integer     900
+undo_tablespace              string  UNDOTBS2
+
+
+
+3)
+contents of Memory Script:
+{
+     sql clone "alter system set  db_name = 
+      ''MFSDB'' comment=
+       ''Reset to original value by RMAN'' scope=spfile";
+          sql clone "alter system reset  db_unique_name scope=spfile";
+             shutdown clone immediate;
+}
+executing Memory Script
+
+sql statement: alter system set  db_name =  ''MFSDB'' comment= ''Reset to original value by RMAN'' scope=spfile
+
+sql statement: alter system reset  db_unique_name scope=spfile
+
+
+
+
+Oracle instance shut down
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-03002: failure of Duplicate Db command at 04/16/2015 18:53:36
+RMAN-05501: aborting duplication of target database
+RMAN-03015: error occurred in stored script Memory Script
+RMAN-06094: datafile 7 must be restored
+
+Recovery Manager complete.
+
+## in target single database!!!!
+SQL> ALTER SYSTEM SET UNDO_TABLESPACE=UNDOTBS02;
+
+4)
+Dictionary check beginning
+Tablespace 'TEMP' #3 found in data dictionary,
+but not in the controlfile. Adding to controlfile.
+Dictionary check complete
+Verifying file header compatibility for 11g tablespace encryption..
+Verifying 11g file header compatibility for tablespace encryption completed
+SMON: enabling tx recovery
+*********************************************************************
+WARNING: The following temporary tablespaces contain no files.
+         This condition can occur when a backup controlfile has
+         been restored.  It may be necessary to add files to these
+         tablespaces.  That can be done using the SQL statement:
+ 
+         ALTER TABLESPACE <tablespace_name> ADD TEMPFILE
+ 
+         Alternatively, if these temporary tablespaces are no longer
+         needed, then they can be dropped.
+           Empty temporary tablespace: TEMP
+*********************************************************************
+Database Characterset is US7ASCII
+No Resource Manager plan active
+**********************************************************
+WARNING: Files may exists in db_recovery_file_dest
+that are not known to the database. Use the RMAN command
+CATALOG RECOVERY AREA to re-catalog any such files.
+If files cannot be cataloged, then manually delete them
+using OS command.
+One of the following events caused this:
+1. A backup controlfile was restored.
+2. A standby controlfile was restored.
+3. The controlfile was re-created.
+4. db_recovery_file_dest had previously been enabled and
+   then disabled.
+**********************************************************
+replication_dependency_tracking turned off (no async multimaster replication found)
+Starting background process QMNC
+Thu Apr 16 20:50:58 2015
+
+
+
+
+===> RMAN> CATALOG RECOVERY AREA;
+
+searching for all files in the recovery area
+
+List of Files Unknown to the Database
+=====================================
+File Name: +flash/RACDB/ARCHIVELOG/2015_04_17/thread_2_seq_2.263.877222449
+File Name: +flash/RACDB/ARCHIVELOG/2015_04_17/thread_1_seq_1828.264.877222451
+File Name: +flash/RACDB/ARCHIVELOG/2015_04_17/thread_1_seq_1827.265.877222453
+File Name: +flash/RACDB/CONTROLFILE/Current.262.877213289
+
+Do you really want to catalog the above files (enter YES or NO)? yes
+
+
+cataloging files...
+cataloging done
+
+List of Cataloged Files
+=======================
+File Name: +flash/RACDB/ARCHIVELOG/2015_04_17/thread_2_seq_2.263.877222449
+File Name: +flash/RACDB/ARCHIVELOG/2015_04_17/thread_1_seq_1828.264.877222451
+File Name: +flash/RACDB/ARCHIVELOG/2015_04_17/thread_1_seq_1827.265.877222453
+
+List of Files Which Where Not Cataloged
+=======================================
+File Name: +flash/RACDB/CONTROLFILE/Current.262.877213289
+  RMAN-07517: Reason: The file header is corrupted
+
+List of files in Recovery Area not managed by the database
+==========================================================
+File Name: +FLASH/racdb/onlinelog/group_1.295.877222555
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_2.294.877222555
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_5.293.877222555
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_6.292.877222559
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_7.291.877222561
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_8.284.877222563
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_9.259.877222541
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_10.258.877222541
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_11.257.877222543
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_12.298.877222545
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_13.297.877222545
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+File Name: +FLASH/racdb/onlinelog/group_14.296.877222547
+  RMAN-07527: Reason: File was not created using DB_RECOVERY_FILE_DEST initialization parameter
+
+number of files not managed by recovery area is 12, totaling 6.93GB
+
+
+
+5)
+
+[oracle@rac2 orachk]$ ./orachk -a
+
+CRS stack is running and CRS_HOME is not set. Do you want to set CRS_HOME to /u01/11.2.0.4/grid?[y/n][y]
+
+Checking ssh user equivalency settings on all nodes in cluster
+
+Node rac1 is configured for ssh user equivalency for oracle user
+ 
+
+Searching for running databases . . . . .
+
+. . . .
+List of running databases registered in OCR
+1. mfsdb
+2. racdb
+3. All of above
+4. None of above
+
+Select databases from list for checking best practices. For multiple databases, select 3 for All or comma separated number like 1,2 etc [1-4][3].
+
+Searching out ORACLE_HOME for selected databases.
+
+. . . . 
+
+
+Checking Status of Oracle Software Stack - Clusterware, ASM, RDBMS
+
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+-------------------------------------------------------------------------------------------------------
+                                                 Oracle Stack Status                            
+-------------------------------------------------------------------------------------------------------
+Host Name  CRS Installed  RDBMS Installed  CRS UP    ASM UP    RDBMS UP  DB Instance Name
+-------------------------------------------------------------------------------------------------------
+rac1        Yes             Yes             Yes        Yes      Yes                
+rac2        Yes             Yes             Yes        Yes      Yes                
+-------------------------------------------------------------------------------------------------------
+./orachk: line 16082: /u01/app/oracle/product/11.2.0/db_1/bin/sqlplus: No such file or directory
+./orachk: line 16115: /u01/app/oracle/product/11.2.0/db_1/bin/sqlplus: No such file or directory
+stty: standard input: Inappropriate ioctl for device
+stty: standard input: Inappropriate ioctl for device
+ orachk could not find database version from enviornment so set RAT_DB environment varaiable to database version like 11.2.0.1.0 and re-run it.
+[oracle@rac2 orachk]$ export RAT_DB=/u01/app/oracle/product/11.2.0/db_1
+

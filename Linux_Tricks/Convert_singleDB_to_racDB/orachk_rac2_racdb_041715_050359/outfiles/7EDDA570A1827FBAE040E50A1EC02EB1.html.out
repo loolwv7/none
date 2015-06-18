@@ -1,0 +1,43 @@
+<hr>
+<a name="7EDDA570A1827FBAE040E50A1EC02EB1_details"></a>
+<a href="#7EDDA570A1827FBAE040E50A1EC02EB1_summary" class="a_bgw">Top</a><br>
+<h3>oradism executable permission</h3>
+<table width=800 summary=Summary of audit check and SF role=presentation>
+<tr><td>Success Factor</td><td>VERIFY OWNERSHIP OF ORADISM EXECUTABLE IF LMS PROCESS NOT RUNNING IN REAL TIME</td></tr>
+<tr><td scope="row">Recommendation</td><td scope="row"><pre> 
+Benefit / Impact:
+
+The oradism executable is invoked after database startup to change the scheduling priority of LMS and other database background processes to the realtime scheduling class in order to maximize the ability of these key processes to be scheduled on the CPU in a timely way at times of high CPU utilization.
+
+Risk:
+
+The oradism executable should be owned by root and the owner s-bit should be set, e.g., -rwsr-x---, where the s is the setuid bit (s-bit) for root in this case.  If the LMS process is not running at the proper scheduling priority it can lead to instance evictions due to IPC send timeouts or ORA-29740 errors.  oradism must be owned by root and it's s-bit set in order to be able to change the scheduling priority.   If oradism ownership is not root and the owner s-bit is not set then something must have gone wrong in the installation process or the ownership or the permission was otherwise changed.
+
+Action / Repair:
+
+Please check with Oracle Support to determine the best course to take for your platform to correct the problem.
+ </pre></td></tr>
+<tr><td scope="row"><a name="7EDDA570A1827FBAE040E50A1EC02EB1_machines"></a>Needs attention on</td><td scope="row">PLACEHOLDER_TO_REPLACE_FAIL</td></tr>
+<tr><td scope="row"></a>Passed on</td><td>rac2, rac1</td></tr>
+</table>
+<br>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on rac2</b>:<br/><span class="status_PASS">PASS</span> => $ORACLE_HOME/bin/oradism setuid bit is set</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="7EDDA570A1827FBAE040E50A1EC02EB1_rac2_report_out_more_text24394_a"></a>
+DATA FROM RAC2 - /U01/APP/ORACLE/PRODUCT/11.2.0.4/DB_1 DATABASE_HOME - ORADISM EXECUTABLE PERMISSION 
+
+
+
+-rwsr-x--- 1 root oinstall 71790 Apr 15 14:17 /u01/app/oracle/product/11.2.0.4/db_1/bin/oradism
+</pre></td></tr>
+</table>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on rac1</b>:<br/><span class="status_PASS">PASS</span> => $ORACLE_HOME/bin/oradism setuid bit is set</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="7EDDA570A1827FBAE040E50A1EC02EB1_rac1_report_out_more_text27473_a"></a>
+DATA FROM RAC1 - /U01/APP/ORACLE/PRODUCT/11.2.0.4/DB_1 DATABASE_HOME - ORADISM EXECUTABLE PERMISSION 
+
+
+
+-rwsr-x--- 1 root oinstall 71790 Aug 24  2013 /u01/app/oracle/product/11.2.0.4/db_1/bin/oradism
+</pre></td></tr>
+</table>

@@ -1,0 +1,18 @@
+
+mfsdb2.archive destination ID = 1                                               
+mfsdb2.archive standby logfile active = 0                                       
+mfsdb2.archived Sequence Number = 0                                             
+mfsdb2.database Mode = OPEN                                                     
+mfsdb2.recovery Mode = IDLE                                                     
+mfsdb2.protection Mode = MAXIMUM PERFORMANCE                                    
+mfsdb2.standby Logfile Count =                                                  
+                                                                                
+mfsdb1.archive destination ID = 1                                               
+mfsdb1.archive standby logfile active = 0                                       
+mfsdb1.archived Sequence Number = 0                                             
+mfsdb1.database Mode = OPEN                                                     
+mfsdb1.recovery Mode = IDLE                                                     
+
+mfsdb1.protection Mode = MAXIMUM PERFORMANCE                                    
+mfsdb1.standby Logfile Count =                                                  
+                                                                                

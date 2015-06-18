@@ -1,0 +1,2193 @@
+
+RACcheck has been deprecated.  ORAchk provides the same functionality.  Please switch to using ORAchk from same directory.
+
+RACcheck will not be available after this (12.1.0.2.3) release.
+
+See MOS Note "RACcheck Configuration Audit Tool Statement of Direction - name change to ORAchk (Doc ID 1591208.1)".
+
+
+RAT_ORACLE_HOME = /u01/app/oracle/product/11.2.0/db_1
+---------------------------------------------------------------------------------
+RAT_DB = /u01/app/oracle/product/11.2.0/db_1
+---------------------------------------------------------------------------------
+RAT_DEBUG = 0
+---------------------------------------------------------------------------------
+RAT_INFOPASS = 1
+---------------------------------------------------------------------------------
+is_exadata_dom0_machine = 0 
+ is_ssc_localzone_machine = 0 
+ is_ssc_globalzone_machine = 0 
+ is_ssc_globalzone_dbmachine = 0
+RAT_TIMEOUT= watchdog_wakeup=90 watchdog_wakeup_root=450 watchdog_wakeup_sql=180
+
+Checking ssh user equivalency settings on all nodes in cluster
+
+
+ssh_setup_status=0 rsh_setup_status=
+rac1 is configured for ssh user equivalency for oracle user
+Space available on rac2 at /home/oracle/orachk is 68315528 KB \nSpace available on rac2 at /home/oracle is 68315528 KB
+ASM_HOME=
+Database pickedup for checking = racdb
+Value back from Database is  
+
+Value set to IS_SYSDBA for mfsdb = 1
+
+
+Value back from Database is  
+
+Value set to IS_SYSDBA for racdb = 1
+
+
+cell_ssh_status=0 and cell_ssh_user=
+CELL_PASSWORD_OPTION = 
+zfs_ssh_status=0 and zfs_ssh_user=
+ZFS_PASSWORD_OPTION = 
+db_machine_compute=0 dbm_status_v2= dbm_status_v1= dbm_v1=0 dbm_v2=0
+
+ssh user equivalence not found for root on rac1
+
+*** Checking Best Practice Recommendations ***\n
+CRS appears to be up.\n
+Running in parallel mode
+Start Time:1429218394
+=============================================================
+                    Node name - rac2                                
+=============================================================
+is_goldengate_installed =0 on rac2 and file is /home/oracle/orachk/orachk_041715_050359/ogg_homes_version.out
+
+SQL DATA COLLECTION 1.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = declare type t_sessions is varray(100) of integer; v_sessions t_sessions; v_session_cnt number:=1; v_session_pct number:=0; v_session_diff number:=0; cursor inst_session is select count(*) sessions ,instance_number from dba_hist_active_sess_history where user_id in (select user_id from dba_users where username in ('SYS','SYSTEM','SYSMAN','DBSNMP')) group by instance_number; begin v_sessions:=t_sessions(0,0); for rec in inst_session loop v_sessions(v_session_cnt):= rec.sessions; if v_session_cnt >1 then    if v_sessions(1) > v_sessions(2) then v_session_diff:=v_sessions(1)-v_sessions(2); v_session_pct:=v_session_diff/ v_sessions(1)*100;   else      v_session_diff:= v_sessions(2)-v_sessions(1); v_session_pct:= v_session_diff/ v_sessions(2)*100;   end if;     DBMS_OUTPUT.PUT_LINE('load_balance_percent_diff = '||floor(v_session_pct));     DBMS_OUTPUT.PUT_LINE('load_balance_actual_diff = '||v_session_diff); end if; v_session_cnt:=v_session_cnt+1; end loop; end;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 767881504B21A00BE040E50A1EC01174
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 1.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = declare type t_sessions is varray(100) of integer; v_sessions t_sessions; v_session_cnt number:=1; v_session_pct number:=0; v_session_diff number:=0; cursor inst_session is select count(*) sessions ,instance_number from dba_hist_active_sess_history where user_id in (select user_id from dba_users where username in ('SYS','SYSTEM','SYSMAN','DBSNMP')) group by instance_number; begin v_sessions:=t_sessions(0,0); for rec in inst_session loop v_sessions(v_session_cnt):= rec.sessions; if v_session_cnt >1 then    if v_sessions(1) > v_sessions(2) then v_session_diff:=v_sessions(1)-v_sessions(2); v_session_pct:=v_session_diff/ v_sessions(1)*100;   else      v_session_diff:= v_sessions(2)-v_sessions(1); v_session_pct:= v_session_diff/ v_sessions(2)*100;   end if;     DBMS_OUTPUT.PUT_LINE('load_balance_percent_diff = '||floor(v_session_pct));     DBMS_OUTPUT.PUT_LINE('load_balance_actual_diff = '||v_session_diff); end if; v_session_cnt:=v_session_cnt+1; end loop; end;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 767881504B21A00BE040E50A1EC01174
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 2.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.archive destination ID = '||dest_id||chr(10)||i.instance_name||'.archive standby logfile active = '||standby_logfile_active ||chr(10)||i.instance_name||'.archived Sequence Number = '||ARCHIVED_SEQ# ||chr(10)||i.instance_name||'.database Mode = '||database_mode||chr(10)||i.instance_name||'.recovery Mode = '||recovery_mode||chr(10)||i.instance_name||'.protection Mode = '||protection_mode||chr(10)||i.instance_name||'.standby Logfile Count ='standby_logfile_count from gv$archive_dest_status a,gv$instance i where a.inst_id=i.inst_id and a.destination is not null;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B4075A96FF21D3E0401490CACF3EC6
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 2.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.archive destination ID = '||dest_id||chr(10)||i.instance_name||'.archive standby logfile active = '||standby_logfile_active ||chr(10)||i.instance_name||'.archived Sequence Number = '||ARCHIVED_SEQ# ||chr(10)||i.instance_name||'.database Mode = '||database_mode||chr(10)||i.instance_name||'.recovery Mode = '||recovery_mode||chr(10)||i.instance_name||'.protection Mode = '||protection_mode||chr(10)||i.instance_name||'.standby Logfile Count ='standby_logfile_count from gv$archive_dest_status a,gv$instance i where a.inst_id=i.inst_id and a.destination is not null;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B4075A96FF21D3E0401490CACF3EC6
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 3.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select name_skgxpia||'_is_public_'||inst_id||' = '||pub_skgxpia||chr(10)||name_skgxpia||'_source_'||inst_id||' = '||picked_skgxpia||chr(10)||name_skgxpia||'_ip_address_'||inst_id||' = '||ip_skgxpia||chr(10) from x$skgxpia;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 5ADCECF64754E914E0401490CACF4BBD
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 3.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select name_skgxpia||'_is_public_'||inst_id||' = '||pub_skgxpia||chr(10)||name_skgxpia||'_source_'||inst_id||' = '||picked_skgxpia||chr(10)||name_skgxpia||'_ip_address_'||inst_id||' = '||ip_skgxpia||chr(10) from x$skgxpia;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 5ADCECF64754E914E0401490CACF4BBD
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 4.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.archive destination ID = '||dest_id||chr(10)||i.instance_name||'.archive destination = '||destination||chr(10)||i.instance_name||'.archive destination status = '||a.status||chr(10)||i.instance_name||'.archive destination target = '||target||chr(10)||i.instance_name||'.archive schedule = '||schedule||chr(10)||i.instance_name||'.archive process = '||process||chr(10)||i.instance_name||'.archiev mount ID = '||mountid ||chr(10)||i.instance_name||'.archiver = '||a.archiver||chr(10)||i.instance_name||'.archive transmit mode = '||transmit_mode||chr(10)||i.instance_name||'.archive affirm = '||affirm||chr(10)||i.instance_name||'.archive async Blocks = '||async_blocks||chr(10)||i.instance_name||'.archive net timeout = '||net_timeout||chr(10)||i.instance_name||'.archive delay mintues = '||delay_mins||chr(10)||i.instance_name||'.Reopen Seconds = '||reopen_secs||chr(10)||i.instance_name||'.Register = '||register||chr(10)||i.instance_name||'.Binding = '||binding||chr(10)||i.instance_name||'.any error while archiving = '||error from gv$archive_dest a,gv$instance i where i.inst_id=a.inst_id and destination is not null order by dest_id;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B23BAC4751B396E0401490CACF0B96
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 4.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.archive destination ID = '||dest_id||chr(10)||i.instance_name||'.archive destination = '||destination||chr(10)||i.instance_name||'.archive destination status = '||a.status||chr(10)||i.instance_name||'.archive destination target = '||target||chr(10)||i.instance_name||'.archive schedule = '||schedule||chr(10)||i.instance_name||'.archive process = '||process||chr(10)||i.instance_name||'.archiev mount ID = '||mountid ||chr(10)||i.instance_name||'.archiver = '||a.archiver||chr(10)||i.instance_name||'.archive transmit mode = '||transmit_mode||chr(10)||i.instance_name||'.archive affirm = '||affirm||chr(10)||i.instance_name||'.archive async Blocks = '||async_blocks||chr(10)||i.instance_name||'.archive net timeout = '||net_timeout||chr(10)||i.instance_name||'.archive delay mintues = '||delay_mins||chr(10)||i.instance_name||'.Reopen Seconds = '||reopen_secs||chr(10)||i.instance_name||'.Register = '||register||chr(10)||i.instance_name||'.Binding = '||binding||chr(10)||i.instance_name||'.any error while archiving = '||error from gv$archive_dest a,gv$instance i where i.inst_id=a.inst_id and destination is not null order by dest_id;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B23BAC4751B396E0401490CACF0B96
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 5.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'controlfile = '||name from v$controlfile union select 'datafile (file#_name) = '||file#||'_'||name from v$datafile union select 'logfile (group_member) = '||group#||'_'||member from v$logfile;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 666EE65D7ACEFAFCE040E50A1EC01191
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 5.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'controlfile = '||name from v$controlfile union select 'datafile (file#_name) = '||file#||'_'||name from v$datafile union select 'logfile (group_member) = '||group#||'_'||member from v$logfile;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 666EE65D7ACEFAFCE040E50A1EC01191
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 6.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select instance_name||'.instance_number = '||instance_number||chr(10)||instance_name||'.host_name = '||host_name||chr(10)||instance_name||'.audit_version = '||version||chr(10)||instance_name||'.startup_time = '||startup_time||chr(10)||instance_name||'.status = '||status||chr(10)||instance_name||'.parallel = '||parallel||chr(10)||instance_name||'.thread# = '||thread#||chr(10)||instance_name||'.archiver = '||archiver||chr(10)||instance_name||'.log_switch_wait = '||log_switch_wait||chr(10)||instance_name||'.logins = '||logins||chr(10)||instance_name||'.shutdown_pending = '||shutdown_pending||chr(10)||instance_name||'.database_status = '||database_status||chr(10)||instance_name||'.instance_role = '||instance_role||chr(10)||instance_name||'.active_state = '||active_state||chr(10)||instance_name||'.blocked = '||blocked from gv$instance;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 594E09A832BDC864E0401490CACF200D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 6.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select instance_name||'.instance_number = '||instance_number||chr(10)||instance_name||'.host_name = '||host_name||chr(10)||instance_name||'.audit_version = '||version||chr(10)||instance_name||'.startup_time = '||startup_time||chr(10)||instance_name||'.status = '||status||chr(10)||instance_name||'.parallel = '||parallel||chr(10)||instance_name||'.thread# = '||thread#||chr(10)||instance_name||'.archiver = '||archiver||chr(10)||instance_name||'.log_switch_wait = '||log_switch_wait||chr(10)||instance_name||'.logins = '||logins||chr(10)||instance_name||'.shutdown_pending = '||shutdown_pending||chr(10)||instance_name||'.database_status = '||database_status||chr(10)||instance_name||'.instance_role = '||instance_role||chr(10)||instance_name||'.active_state = '||active_state||chr(10)||instance_name||'.blocked = '||blocked from gv$instance;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 594E09A832BDC864E0401490CACF200D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 7.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.'||p.name || ' = ' || value from gv$parameter p,gv$instance i where p.inst_id = i.inst_id order by p.name,i.instance_name;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 594E09A832BCC864E0401490CACF200D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 7.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.'||p.name || ' = ' || value from gv$parameter p,gv$instance i where p.inst_id = i.inst_id order by p.name,i.instance_name;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 594E09A832BCC864E0401490CACF200D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 8.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.'||p.name || ' = ' || value from gv$parameter p,gv$instance i where p.inst_id = i.inst_id order by p.name,i.instance_name;
+AUDIT_CHECK_COMPONENTS = PREUPGR:POSTUPGR:PREUPGRX3-8:POSTUPGRX3-2:ODA_VM:X5-8:PREUPGRX5-8:POSTUPGRX5-8:ODA:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:SIDB:SIDBMAA:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:EIGHTHX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:MAA:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:PREUPGRX3-2:SUPERCLUSTER:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:SUPERCLUSTERX3-2:X4-2:PREUPGRX4-2:POSTUPGRX4-2:SUPERCLUSTERX4-2:PREUPGRSIDB:POSTUPGRSIDB
+AUDIT_CHECK_ID = 9AD94FEDF63F8296E040E50A1EC06A28
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 8.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.'||p.name || ' = ' || value from gv$parameter p,gv$instance i where p.inst_id = i.inst_id order by p.name,i.instance_name;
+AUDIT_CHECK_COMPONENTS = PREUPGR:POSTUPGR:PREUPGRX3-8:POSTUPGRX3-2:ODA_VM:X5-8:PREUPGRX5-8:POSTUPGRX5-8:ODA:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:SIDB:SIDBMAA:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:EIGHTHX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:MAA:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:PREUPGRX3-2:SUPERCLUSTER:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:SUPERCLUSTERX3-2:X4-2:PREUPGRX4-2:POSTUPGRX4-2:SUPERCLUSTERX4-2:PREUPGRSIDB:POSTUPGRSIDB
+AUDIT_CHECK_ID = 9AD94FEDF63F8296E040E50A1EC06A28
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 9.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Database Name = '||name||chr(10)||'Database Role = '||database_role||chr(10)||'Archive log mode = '||log_mode||chr(10)||'Protection mode = '||protection_mode||chr(10)||'Protection Level = '||protection_level||chr(10)||'Force Logging = '||force_logging||chr(10)||'Remove Archive = '||remote_archive||chr(10)||'Supplemental log data PK = '||supplemental_log_data_pk||chr(10)||'Supplemental log data UI = '||supplemental_log_data_ui||chr(10)||'Switchover Status = '||switchover_status||chr(10)||'Dataguard broker = '||dataguard_broker||chr(10)||'Flashback On = '||flashback_on from v$database;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B5BF59AEFF4C47E0401490CACF3CD6
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 9.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Database Name = '||name||chr(10)||'Database Role = '||database_role||chr(10)||'Archive log mode = '||log_mode||chr(10)||'Protection mode = '||protection_mode||chr(10)||'Protection Level = '||protection_level||chr(10)||'Force Logging = '||force_logging||chr(10)||'Remove Archive = '||remote_archive||chr(10)||'Supplemental log data PK = '||supplemental_log_data_pk||chr(10)||'Supplemental log data UI = '||supplemental_log_data_ui||chr(10)||'Switchover Status = '||switchover_status||chr(10)||'Dataguard broker = '||dataguard_broker||chr(10)||'Flashback On = '||flashback_on from v$database;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B5BF59AEFF4C47E0401490CACF3CD6
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 10.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select comp_name || ' version = '||d.version||chr(10)||comp_name || ' org_version = '||org_version||chr(10)||comp_name || ' prv_version = '||prv_version||chr(10)|| comp_name || ' modified date = '||d.modified||chr(10)|| comp_name || ' status = '||d.status from dba_registry d,registry$ r where r.cid=d.comp_id;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B1B17271D35182E0401490CACF4F46
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 10.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select comp_name || ' version = '||d.version||chr(10)||comp_name || ' org_version = '||org_version||chr(10)||comp_name || ' prv_version = '||prv_version||chr(10)|| comp_name || ' modified date = '||d.modified||chr(10)|| comp_name || ' status = '||d.status from dba_registry d,registry$ r where r.cid=d.comp_id;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B1B17271D35182E0401490CACF4F46
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 11.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select * from (select sequence_owner||'_'||sequence_name||'_INCREMENT_BY = '||increment_by||chr(10)||sequence_owner||'_'||sequence_name||'_ORDER_FLAG = '||order_flag||chr(10)||sequence_owner||'_'||sequence_name||'_CACHE_SIZE = '||cache_size||chr(10) from dba_sequences where sequence_owner not in ('SYS','CTXSYS','DBSNMP','DMSYS','EXFSYS','MDSYS','OLAPSYS','SYSTEM','WMSYS','XDB','SYSMAN') union select sequence_owner||'_'||sequence_name||'_INCREMENT_BY = '||increment_by||chr(10)||sequence_owner||'_'||sequence_name||'_ORDER_FLAG = '||order_flag||chr(10)||sequence_owner||'_'||sequence_name||'_CACHE_SIZE = '||cache_size||chr(10) from dba_sequences where sequence_name in ('AUDSES$','IDGEN1$'));
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 5ADD88EC8E0CFF2EE0401490CACF0C10
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 11.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select * from (select sequence_owner||'_'||sequence_name||'_INCREMENT_BY = '||increment_by||chr(10)||sequence_owner||'_'||sequence_name||'_ORDER_FLAG = '||order_flag||chr(10)||sequence_owner||'_'||sequence_name||'_CACHE_SIZE = '||cache_size||chr(10) from dba_sequences where sequence_owner not in ('SYS','CTXSYS','DBSNMP','DMSYS','EXFSYS','MDSYS','OLAPSYS','SYSTEM','WMSYS','XDB','SYSMAN') union select sequence_owner||'_'||sequence_name||'_INCREMENT_BY = '||increment_by||chr(10)||sequence_owner||'_'||sequence_name||'_ORDER_FLAG = '||order_flag||chr(10)||sequence_owner||'_'||sequence_name||'_CACHE_SIZE = '||cache_size||chr(10) from dba_sequences where sequence_name in ('AUDSES$','IDGEN1$'));
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 5ADD88EC8E0CFF2EE0401490CACF0C10
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 12.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select ksppinm || ' = ' || ksppstdvl from sys.x$ksppi n,sys.x$ksppsv v where n.indx = v.indx and instr(ksppinm,'_') = 1;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 6FB67DA9843581AAE040E50A1EC0057B
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 12.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select ksppinm || ' = ' || ksppstdvl from sys.x$ksppi n,sys.x$ksppsv v where n.indx = v.indx and instr(ksppinm,'_') = 1;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 6FB67DA9843581AAE040E50A1EC0057B
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 13.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select ksppinm || ' = ' || ksppstdvl from sys.x$ksppi n,sys.x$ksppsv v where n.indx = v.indx and instr(ksppinm,'_') = 1;
+AUDIT_CHECK_COMPONENTS = PREUPGR:POSTUPGR:PREUPGRX3-8:POSTUPGRX3-2:ODA_VM:X5-8:PREUPGRX5-8:POSTUPGRX5-8:ODA:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:SIDB:SIDBMAA:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:EIGHTHX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:MAA:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:PREUPGRX3-2:SUPERCLUSTER:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:SUPERCLUSTERX3-2:X4-2:PREUPGRX4-2:POSTUPGRX4-2:SUPERCLUSTERX4-2:PREUPGRSIDB:POSTUPGRSIDB
+AUDIT_CHECK_ID = 9AD8F72CFE1DC95BE040E50A1EC050D0
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 13.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select ksppinm || ' = ' || ksppstdvl from sys.x$ksppi n,sys.x$ksppsv v where n.indx = v.indx and instr(ksppinm,'_') = 1;
+AUDIT_CHECK_COMPONENTS = PREUPGR:POSTUPGR:PREUPGRX3-8:POSTUPGRX3-2:ODA_VM:X5-8:PREUPGRX5-8:POSTUPGRX5-8:ODA:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:SIDB:SIDBMAA:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:EIGHTHX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:MAA:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:PREUPGRX3-2:SUPERCLUSTER:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:SUPERCLUSTERX3-2:X4-2:PREUPGRX4-2:POSTUPGRX4-2:SUPERCLUSTERX4-2:PREUPGRSIDB:POSTUPGRSIDB
+AUDIT_CHECK_ID = 9AD8F72CFE1DC95BE040E50A1EC050D0
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 14.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'service_id'||service_id||'_name = '||name||chr(10)||'service_id'||service_id||'_network_name = '||network_name||chr(10)||'service_id'||service_id||'_failover_method = '||failover_method||chr(10)||'service_id'||service_id||'_failover_type = '||failover_type||chr(10)||'service_id'||service_id||'_failover_retries = '||failover_retries||chr(10)||'service_id'||service_id||'_failover_delay = '||failover_delay||chr(10)||'service_id'||service_id||'_goal = '||goal||chr(10)||'service_id'||service_id||'_dtp = '||dtp||chr(10)||'service_id'||service_id||'_enabled = '||enabled||chr(10)||'service_id'||service_id||'_aq_ha_notifications = '||aq_ha_notifications||chr(10)||'service_id'||service_id||'_clb_goal = '||clb_goal||chr(10) from dba_services;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 5ADCE5776C0CE6C0E0401490CACF5622
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 14.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'service_id'||service_id||'_name = '||name||chr(10)||'service_id'||service_id||'_network_name = '||network_name||chr(10)||'service_id'||service_id||'_failover_method = '||failover_method||chr(10)||'service_id'||service_id||'_failover_type = '||failover_type||chr(10)||'service_id'||service_id||'_failover_retries = '||failover_retries||chr(10)||'service_id'||service_id||'_failover_delay = '||failover_delay||chr(10)||'service_id'||service_id||'_goal = '||goal||chr(10)||'service_id'||service_id||'_dtp = '||dtp||chr(10)||'service_id'||service_id||'_enabled = '||enabled||chr(10)||'service_id'||service_id||'_aq_ha_notifications = '||aq_ha_notifications||chr(10)||'service_id'||service_id||'_clb_goal = '||clb_goal||chr(10) from dba_services;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 5ADCE5776C0CE6C0E0401490CACF5622
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 15.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Message = '||message||chr(10)||' Timestamp = '||timestamp    from v$dataguard_status    where severity in ('Error','Fatal')    order by timestamp;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B430519CC1F07CE0401490CACF4434
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 15.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Message = '||message||chr(10)||' Timestamp = '||timestamp    from v$dataguard_status    where severity in ('Error','Fatal')    order by timestamp;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B430519CC1F07CE0401490CACF4434
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 16.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'destination ID = '||ads.dest_id||chr(10)||i.instance_name||'.current archive sequence # = '||max(sequence#) ||chr(10)||i.instance_name||'.last archived = '||max(log_sequence) from gv$archived_log al, gv$archive_dest ad, gv$archive_dest_status ads,gv$instance i where ad.dest_id=al.dest_id and al.dest_id=ads.dest_id and ad.inst_id=i.inst_id group by ads.dest_id,i.instance_name;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B30441FF203E12E0401490CACF65A4
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 16.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'destination ID = '||ads.dest_id||chr(10)||i.instance_name||'.current archive sequence # = '||max(sequence#) ||chr(10)||i.instance_name||'.last archived = '||max(log_sequence) from gv$archived_log al, gv$archive_dest ad, gv$archive_dest_status ads,gv$instance i where ad.dest_id=al.dest_id and al.dest_id=ads.dest_id and ad.inst_id=i.inst_id group by ads.dest_id,i.instance_name;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B30441FF203E12E0401490CACF65A4
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 17.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Process = '||process||chr(10)||'Status = '||status||chr(10)||'Client Process = '||client_process||chr(10)||'Sequence Number = '||sequence# from v$managed_standby;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B42BAD015B0207E0401490CACF3F6D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 17.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Process = '||process||chr(10)||'Status = '||status||chr(10)||'Client Process = '||client_process||chr(10)||'Sequence Number = '||sequence# from v$managed_standby;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B42BAD015B0207E0401490CACF3F6D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 18.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Feature_Name = '||name||chr(10)||'Version = '|| version ||chr(10)||'Detected_Usages = '|| detected_usages ||chr(10)||'Currently_Used = '||currently_used ||chr(10)||'First_Usage_Date = '||first_usage_date ||chr(10)||'Last_Usage_Date = '|| last_usage_date   
+from dba_feature_usage_statistics   
+where currently_used = 'TRUE';
+AUDIT_CHECK_COMPONENTS = X5-8:ODA:X3-8:SIDB:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:RACCHECK:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2
+AUDIT_CHECK_ID = E60A5838BBE772AAE04312C0E50A297F
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 18.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Feature_Name = '||name||chr(10)||'Version = '|| version ||chr(10)||'Detected_Usages = '|| detected_usages ||chr(10)||'Currently_Used = '||currently_used ||chr(10)||'First_Usage_Date = '||first_usage_date ||chr(10)||'Last_Usage_Date = '|| last_usage_date   
+from dba_feature_usage_statistics   
+where currently_used = 'TRUE';
+AUDIT_CHECK_COMPONENTS = X5-8:ODA:X3-8:SIDB:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:RACCHECK:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2
+AUDIT_CHECK_ID = E60A5838BBE772AAE04312C0E50A297F
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 19.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Sequence# = '||l.sequence#||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_redo log file size(mb) = '||l.bytes/1024/1024||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Archived = '||l.archived||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Status = '||l.status from gv$log l,gv$instance i where i.inst_id=l.inst_id ;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B5E7CC20FE1711E0401490CACF6017
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 19.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Sequence# = '||l.sequence#||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_redo log file size(mb) = '||l.bytes/1024/1024||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Archived = '||l.archived||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Status = '||l.status from gv$log l,gv$instance i where i.inst_id=l.inst_id ;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B5E7CC20FE1711E0401490CACF6017
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 20.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Group # = '||group#||chr(10)||'Sequence # = '||sequence#||chr(10)||'Log file size in MB ='||bytes/1024/1024 from v$standby_log;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B42BAD015D0207E0401490CACF3F6D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+SQL DATA COLLECTION 20.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Group # = '||group#||chr(10)||'Sequence # = '||sequence#||chr(10)||'Log file size in MB ='||bytes/1024/1024 from v$standby_log;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B42BAD015D0207E0401490CACF3F6D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+OSCOLLECTCNT=1 OSCOLLECTSUM=  rootYesNoint=3 root_need_cell_ssh=0 REQUIRE_ROOT=
+
+OS DATA COLLECTION 22.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = RDBMS
+  COMMAND = opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main\n\nexachk_patchlist_for_version_matrix\n\n$opatch_output"
+AUDIT_CHECK_COMPONENTS = SIDB:RACCHECK
+AUDIT_CHECK_ID = B5191156EF114416E0431EC0E50AFBE0
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+Command executed on rac2 - opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main\n\nexachk_patchlist_for_version_matrix\n\n$opatch_output"
+
+OSCOLLECTCNT=2 OSCOLLECTSUM=  rootYesNoint=3 root_need_cell_ssh=0 REQUIRE_ROOT=
+Check component(PREUPGR:PREUPGRX3-8:POSTUPGRX3-2:ODA_VM:X5-8:PREUPGRX5-8:POSTUPGRX5-8:ODA:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:EIGHTHX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:PREUPGRX3-2:SUPERCLUSTER:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:SUPERCLUSTERX3-2:X4-2:PREUPGRX4-2:POSTUPGRX4-2:SUPERCLUSTERX4-2:PREUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =B7872B23C89B4B27E0431EC0E50ABEEB
+OSCOLLECTCNT=3 OSCOLLECTSUM=  rootYesNoint=3 root_need_cell_ssh=0 REQUIRE_ROOT=
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9CD26C8F17BCA103E040E50A1EC02A7F
+OSCOLLECTCNT=4 OSCOLLECTSUM=  rootYesNoint=3 root_need_cell_ssh=0 REQUIRE_ROOT=
+OSCOLLECTCNT=5 OSCOLLECTSUM=  rootYesNoint=3 root_need_cell_ssh=0 REQUIRE_ROOT=
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 27.0.0.0.0.0.0.0.0.0 (ASH flush status) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =02AAD24EB04D699CE05312C0E50AB4E9
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 29.0.0.0.0.0.0.0.0.0 (Database Statistics level) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 30.0.0.0.0.0.0.0.0.0 (Database timed statistics) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 31.0.0.0.0.0.0.0.0.0 (Monitoring Non-AWR space usage in SYSAUX) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 32.0.0.0.0.0.0.0.0.0 (Monitoring AWR space usage in SYSAUX) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 33.0.0.0.0.0.0.0.0.0 (Monitoring AWR settings) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 34.0.0.0.0.0.0.0.0.0 (Monitoring stale statistics) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 35.0.0.0.0.0.0.0.0.0 (Ensure db_unique_name is unique across the enterprise [standby]) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 36.0.0.0.0.0.0.0.0.0 (Ensure db_unique_name is unique across the enterprise [primary]) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =09F694665C896F97E05312C0E50A05DF
+
+  SF = ENSURE EACH ORACLE/ASM USER HAS A UNIQUE UID ACROSS THE CLUSTER
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 0
+  PARAMETER OR PATH = RDBMS
+  COMMAND = ls -l $ORACLE_HOME/bin/oracle|awk '{print $3}'
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 0D0D76415E6934C7E05312C0E50A8E33
+  COMMAND RESULT = 
+  OPERATOR = -eq
+  COMPARISON VALUE = 0
+
+skipping _use_platform_encryption_lib at 40.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping _use_platform_encryption_lib at 40.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping _use_hybrid_encryption_mode at 41.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping _use_hybrid_encryption_mode at 41.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+
+
+skipping SQL PARAMETER _use_hybrid_encryption_mode  =  FALSE at 42.0.0.0.0.0.0.0.0.0 (Database version) because either no database was running or user selected None from database select list
+
+
+skipping cluster_database_instances at 43.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping cluster_database_instances at 43.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+
+
+skipping SQL PARAMETER cluster_database_instances  -gt  1 at 44.0.0.0.0.0.0.0.0.0 (Archive log mode) because either no database was running or user selected None from database select list
+
+
+skipping active_instance_count at 45.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping active_instance_count at 45.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+
+HOST rac2 BRANCH 46.0.0.0.0.0.0.0.0.0
+  SF = LINUX DATA COLLECTIONS AND AUDIT CHECKS
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 1
+  PARAMETER OR PATH = RDBMS
+  COMMAND = nm $ORACLE_HOME/bin/oracle | grep  -i 'getevents@@LIBAIO'|wc -l
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 5DBA34B30892B010E0401490CACF2738
+  COMMAND RESULT = 1
+  OPERATOR = -ge
+  COMPARISON VALUE = 1
+
+ROW=46.0.0.0.0.0.0.0.0.0 command=nm $ORACLE_HOME/bin/oracle | grep  -i 'getevents@@LIBAIO'|wc -l actual value=1 opeartor=-ge required value =1 execute once=0 
+BRANCH CONDITION TRUE
+---------------------------------------------
+
+HOST rac2 BRANCH 47.0.0.0.0.0.0.0.0.0
+  SF = LINUX DATA COLLECTIONS AND AUDIT CHECKS
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 1
+  PARAMETER OR PATH = RDBMS
+  COMMAND = nm $ORACLE_HOME/bin/oracle | grep  -i 'getevents@@LIBAIO'|wc -l
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 5DC9DADFC45FD615E0401490CACF5277
+  COMMAND RESULT = 1
+  OPERATOR = -eq
+  COMPARISON VALUE = 0
+
+ROW=47.0.0.0.0.0.0.0.0.0 command=nm $ORACLE_HOME/bin/oracle | grep  -i 'getevents@@LIBAIO'|wc -l actual value=1 opeartor=-eq required value =0 execute once=0 
+BRANCH CONDITION FALSE
+skipping spfile at 48.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping spfile at 48.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+
+
+skipping SQL PARAMETER spfile  -n   at 49.0.0.0.0.0.0.0.0.0 (Invalid Java Object Check) because either no database was running or user selected None from database select list
+
+
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =64CA7343C4BADE8AE0401490CACF5450
+Check component(POSTUPGR:PREUPGRX3-8:POSTUPGRX3-2:X5-8:PREUPGRX5-8:POSTUPGRX5-8:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:EIGHTHX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:EIGHTHX4-2:PREUPGREIGHTHX4-2:PREUPGRX3-2:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:X4-2:PREUPGRX4-2:POSTUPGRX4-2:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =64D61B38C559FF09E0401490CACF071C
+Check component(PREUPGR:PREUPGRX3-8:PREUPGRX5-8:PREUPGRX2-8:PREUPGRDBM:PREUPGRX4-8:PREUPGRX5-2:PREUPGREDVM:PREUPGRX2-2:PREUPGRX3-2:PREUPGRSUPERCLUSTER:PREUPGREIGHTH:PREUPGRX4-2:PREUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =64D9F3A477F1A462E0401490CACF6ABB
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =6656FD746C9D9F25E040E50A1EC03B29
+
+
+skipping SQL PARAMETER spfile  -n   at 54.0.0.0.0.0.0.0.0.0 (Verify sys and system users default tablespace is system) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 61.0.0.0.0.0.0.0.0.0 (Tablespace allocation type) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 62.0.0.0.0.0.0.0.0.0 (Avg GC CR Block Receive Time) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 63.0.0.0.0.0.0.0.0.0 (Avg GC Current Block Receive Time) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 65.0.0.0.0.0.0.0.0.0 (Session Failover configuration) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 66.0.0.0.0.0.0.0.0.0 (GC block lost) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 67.0.0.0.0.0.0.0.0.0 (Avg message received queue time) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 68.0.0.0.0.0.0.0.0.0 (Avg message sent queue time (ms)) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 69.0.0.0.0.0.0.0.0.0 (Avg message sent queue time on ksxp) because either no database was running or user selected None from database select list
+
+
+
+  SF = ENSURE EACH ORACLE/ASM USER HAS A UNIQUE UID ACROSS THE CLUSTER
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 0
+  PARAMETER OR PATH = RDBMS
+  COMMAND = id -u `ls -l $ORACLE_HOME/bin/oracle|awk '{print $3}'`
+AUDIT_CHECK_COMPONENTS = ODA_VM:ODA:DBM:RACCHECK
+AUDIT_CHECK_ID = 7E3FAC1843F137ABE040E50A1EC0139B
+  COMMAND RESULT = 54321
+  OPERATOR = -eq
+  COMPARISON VALUE = 0
+
+
+HOST rac2 STEP 71.0.0.0.0.0.0.0.0.0
+  SF = VERIFY OWNERSHIP OF ORADISM EXECUTABLE IF LMS PROCESS NOT RUNNING IN REAL TIME
+  CATEGORY = ORACLE
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 0
+  PARAMETER OR PATH = RDBMS
+  COMMAND = PERMS=`ls -l $ORACLE_HOME/bin/oradism |awk '{print $1}'`;PERM=${PERMS:3:1};echo $PERM
+AUDIT_CHECK_COMPONENTS = ODA_VM:ODA:DBM:RACCHECK
+AUDIT_CHECK_ID = 7EDDA570A1827FBAE040E50A1EC02EB1
+  COMMAND RESULT = s
+  OPERATOR = =
+  COMPARISON VALUE = s
+
+ROW=71.0.0.0.0.0.0.0.0.0 command=PERMS=`ls -l $ORACLE_HOME/bin/oradism |awk '{print $1}'`;PERM=${PERMS:3:1};echo $PERM actual value=s opeartor== required value =s execute once=0 
+
+PASS =>  $ORACLE_HOME/bin/oradism setuid bit is set for /u01/app/oracle/product/11.2.0.4/db_1
+
+CHECK ID = 7EDDA570A1827FBAE040E50A1EC02EB1 
+AUDIT CHECK NAME = oradism executable permission
+
+---------------------------------------------
+
+HOST rac2 STEP 72.0.0.0.0.0.0.0.0.0
+  SF = VERIFY OWNERSHIP OF ORADISM EXECUTABLE IF LMS PROCESS NOT RUNNING IN REAL TIME
+  CATEGORY = ORACLE
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 0
+  PARAMETER OR PATH = RDBMS
+  COMMAND = ls -l $ORACLE_HOME/bin/oradism |awk '{print $3}'
+AUDIT_CHECK_COMPONENTS = ODA_VM:ODA:DBM:RACCHECK
+AUDIT_CHECK_ID = 7EDE9EBEC9429FBAE040E50A1EC03AED
+  COMMAND RESULT = root
+  OPERATOR = =
+  COMPARISON VALUE = root
+
+ROW=72.0.0.0.0.0.0.0.0.0 command=ls -l $ORACLE_HOME/bin/oradism |awk '{print $3}' actual value=root opeartor== required value =root execute once=0 
+
+PASS =>  $ORACLE_HOME/bin/oradism ownership is root for /u01/app/oracle/product/11.2.0.4/db_1
+
+CHECK ID = 7EDE9EBEC9429FBAE040E50A1EC03AED 
+AUDIT CHECK NAME = oradism executable ownership
+
+---------------------------------------------
+
+
+skipping ls -l $ORACLE_HOME/bin/oradism |awk '{print $3}' at 74.0.0.0.0.0.0.0.0.0 (Multiplexed controlfiles) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ls -l $ORACLE_HOME/bin/oradism |awk '{print $3}' at 75.0.0.0.0.0.0.0.0.0 (Non-multiplexed redo logs) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ls -l $ORACLE_HOME/bin/oradism |awk '{print $3}' at 76.0.0.0.0.0.0.0.0.0 (Non-autoextensible data and temp files) because either no database was running or user selected None from database select list
+
+
+
+HOST rac2 STEP 77.0.0.0.0.0.0.0.0.0
+  SF = LINUX DATA COLLECTIONS AND AUDIT CHECKS
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 0
+  PARAMETER OR PATH = RDBMS
+  COMMAND =  usrlimit=$(ulimit -Hu);if [ "$usrlimit" = "unlimited" ];then echo 1;elif [ $usrlimit -ge 16384 ];then echo 1;else echo 0;fi
+AUDIT_CHECK_COMPONENTS = PREUPGR:ODA_VM:ODA:SIDB:DBM:RACCHECK:PREUPGRSIDB:IDM:IDMPREINSTALL:IDMPOSTINSTALL
+AUDIT_CHECK_ID = 841E706550975C68E040E50A1EC05EFB
+  COMMAND RESULT = 1
+  OPERATOR = -ge
+  COMPARISON VALUE = 1
+
+ROW=77.0.0.0.0.0.0.0.0.0 command= usrlimit=$(ulimit -Hu);if [ "$usrlimit" = "unlimited" ];then echo 1;elif [ $usrlimit -ge 16384 ];then echo 1;else echo 0;fi actual value=1 opeartor=-ge required value =1 execute once=0 
+
+PASS =>  Shell limit hard nproc for DB is configured according to recommendation
+
+CHECK ID = 841E706550975C68E040E50A1EC05EFB 
+AUDIT CHECK NAME = DB shell limits hard nproc
+
+---------------------------------------------
+
+
+skipping  usrlimit=$(ulimit -Hu);if [ "$usrlimit" = "unlimited" ];then echo 1;elif [ $usrlimit -ge 16384 ];then echo 1;else echo 0;fi at 78.0.0.0.0.0.0.0.0.0 (Same size of redo log files) because either no database was running or user selected None from database select list
+
+
+
+HOST rac2 BRANCH 81.0.0.0.0.0.0.0.0.0
+  SF = LINUX DATA COLLECTIONS AND AUDIT CHECKS
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 1
+  PARAMETER OR PATH = UNSPECIFIED
+  COMMAND = vm_type=`grep VM_TYPE $TMPDIR/raccheck_env.out |awk '{print $3}'`;host_type=`grep HOST_TYPE $TMPDIR/raccheck_env.out |awk '{print $3}'`;host_role=`grep HOST_ROLE $TMPDIR/raccheck_env.out |awk '{print $3}'`;if [[ -z $host_type || $host_type = BAREMETAL ]]; then not_vm=1; else not_vm=0;fi;echo $not_vm;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 8C9F4EB61E303158E040E50A1EC057F1
+  COMMAND RESULT = 1
+  OPERATOR = -eq
+  COMPARISON VALUE = 1
+
+ROW=81.0.0.0.0.0.0.0.0.0 command=vm_type=`grep VM_TYPE $TMPDIR/raccheck_env.out |awk '{print $3}'`;host_type=`grep HOST_TYPE $TMPDIR/raccheck_env.out |awk '{print $3}'`;host_role=`grep HOST_ROLE $TMPDIR/raccheck_env.out |awk '{print $3}'`;if [[ -z $host_type || $host_type = BAREMETAL ]]; then not_vm=1; else not_vm=0;fi;echo $not_vm; actual value=1 opeartor=-eq required value =1 execute once=0 
+BRANCH CONDITION TRUE
+---------------------------------------------
+Check component(RACCHECK) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =5DB3665FA13252E1E0401490CACF640F
+skipping memory_target at 81.2.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping memory_target at 81.2.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+Check component(SIDB:RACCHECK) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CCF6F44765861F7AE0431EC0E50A72AD
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9AEAA18170BDAD67E040E50A1EC0194C
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9AEC773863DD7767E040E50A1EC07703
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9BB4F7BA332BCC94E040E50A1EC073E9
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9BB83C959994CEE5E040E50A1EC0094E
+Check component(ODA_VM:ODA:X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:EIGHTH:X4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EB84272626BFF6EE040E50A1EC02AF3
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC63D75E700717CE040E50A1EC04D03
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC6FFF48D2FAFF3E040E50A1EC0768E
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC6FFF48D30AFF3E040E50A1EC0768E
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC7304AE67CDC2DE040E50A1EC07772
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC835C8E11DDE5BE040E50A1EC01CA0
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC93390FB32FDD3E040E50A1EC04ADF
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC9FBCFEC52DF9DE040E50A1EC0633E
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9ECBA2152E92F6B1E040E50A1EC00DFB
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:EIGHTH:X4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =A98AD732FD50F308E040E50A1EC01B2C
+Check component(DBM) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =ADF2A31817AE61F1E040E50A1EC05214
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 108.0.0.0.0.0.0.0.0.0 (Standby recovery process status) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 109.0.0.0.0.0.0.0.0.0 (Managed recovery processes status) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 110.0.0.0.0.0.0.0.0.0 (Flashback database on primary) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 111.0.0.0.0.0.0.0.0.0 (Standby open mode) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 112.0.0.0.0.0.0.0.0.0 (Flashback database on standby) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =B166BC500DA37235E0431EC0E50A94E2
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 114.0.0.0.0.0.0.0.0.0 (Verify all "BIGFILE" tablespaces have non-default "MAXBYTES" values set) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 115.0.0.0.0.0.0.0.0.0 (Standby redo apply lag) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 116.0.0.0.0.0.0.0.0.0 (Primary redo transport lag) because either no database was running or user selected None from database select list
+
+
+skipping undo_retention at 117.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping undo_retention at 117.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping undo_retention at 118.0.0.0.0.0.0.0.0.0 for mfsdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+skipping undo_retention at 118.0.0.0.0.0.0.0.0.0 for racdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+skipping fast_start_mttr_target at 119.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping fast_start_mttr_target at 119.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+
+
+skipping SQL PARAMETER fast_start_mttr_target  -ge  300 at 120.0.0.0.0.0.0.0.0.0 (Standby redo logs status on standby) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER fast_start_mttr_target  -ge  300 at 121.0.0.0.0.0.0.0.0.0 (Standby redo apply lag) because either no database was running or user selected None from database select list
+
+
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =B78663EC9D44052CE0431EC0E50AC6C8
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =BA0F3FC9486B1CFFE0431EC0E50A5AA5
+Check component(POSTUPGR:PREUPGRX3-8:POSTUPGRX3-2:X5-8:PREUPGRX5-8:POSTUPGRX5-8:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:PREUPGREIGHTHX4-2:SUPERCLUSTERVM:PREUPGRX3-2:SUPERCLUSTER:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:SUPERCLUSTERX3-2:X4-2:PREUPGRX4-2:POSTUPGRX4-2:SUPERCLUSTERX4-2:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =BCE22AC1A8B1190DE0431EC0E50A453A
+
+
+skipping SQL PARAMETER fast_start_mttr_target  -ge  300 at 131.0.0.0.0.0.0.0.0.0 (Invalid Registry Component Check) because either no database was running or user selected None from database select list
+
+
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =BD6BDE182D35742CE0431EC0E50A5662
+
+
+skipping SQL PARAMETER fast_start_mttr_target  -ge  300 at 133.0.0.0.0.0.0.0.0.0 (Duplicate sys/system objects) because either no database was running or user selected None from database select list
+
+
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =BD7FD021E30F7F79E0431EC0E50A05E5
+skipping cluster_database at 136.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping cluster_database at 136.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping log_archive_config at 137.0.0.0.0.0.0.0.0.0 for mfsdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+skipping log_archive_config at 137.0.0.0.0.0.0.0.0.0 for racdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+skipping log_archive_config at 138.0.0.0.0.0.0.0.0.0 for mfsdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+skipping log_archive_config at 138.0.0.0.0.0.0.0.0.0 for racdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+
+
+skipping SQL PARAMETER log_archive_config  -z   at 139.0.0.0.0.0.0.0.0.0 (Block Corruptions) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X2-8) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =C756871EEA76047CE0431EC0E50AD59C
+
+HOST rac2 BRANCH 141.0.0.0.0.0.0.0.0.0
+  SF = SQL DATA COLLECTIONS AND CHECKS
+  CATEGORY = ORACLE
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 1
+  PARAMETER OR PATH = ASM
+  COMMAND = ps -ef |grep asm_pmon|grep -v grep|wc -l
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = C846692C524A7E24E0431EC0E50AF3F2
+  COMMAND RESULT = 1
+  OPERATOR = -gt
+  COMPARISON VALUE = 0
+
+ROW=141.0.0.0.0.0.0.0.0.0 command=ps -ef |grep asm_pmon|grep -v grep|wc -l actual value=1 opeartor=-gt required value =0 execute once=0 
+BRANCH CONDITION TRUE
+---------------------------------------------
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 141.1.0.0.0.0.0.0.0.0 (ASM disk read write error) because either no database was running or user selected None from database select list
+
+
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CB02802D637B344DE0431EC0E50AE8DE
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CB05CDFEFD436CDFE0431EC0E50A29C8
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CB05EC6DA5E3694BE0431EC0E50AA352
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 145.0.0.0.0.0.0.0.0.0 (Verify AUD$ and FGA_LOG$ tables use Automatic Segment Space Management) because either no database was running or user selected None from database select list
+
+
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CCAD8D7C01FE7A26E0431EC0E50A5019
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CCAD93D7379975A0E0431EC0E50AA4A4
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 148.0.0.0.0.0.0.0.0.0 (Archivelog Mode) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 149.0.0.0.0.0.0.0.0.0 (Default Temporary Tablespace) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 150.0.0.0.0.0.0.0.0.0 (Automatic segment storage management) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 151.0.0.0.0.0.0.0.0.0 (Locally managed tablespaces) because either no database was running or user selected None from database select list
+
+
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CCB0B7D1612744F5E0431EC0E50A23A7
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CCB2075D6EF92359E0431EC0E50AFC7A
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 154.0.0.0.0.0.0.0.0.0 (Is there a physical standby?) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 155.0.0.0.0.0.0.0.0.0 (Is there a physical standby for client failover?) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 156.0.0.0.0.0.0.0.0.0 (Primary database protection with Data Guard) because either no database was running or user selected None from database select list
+
+
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CD4DE47858E1691FE0431EC0E50ACE64
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CD4E6F96CB664187E0431EC0E50A30D4
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 160.0.0.0.0.0.0.0.0.0 (apps_user_br) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =D4287313E254198CE0431EC0E50AA1F1
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =D51702C08E6F2D15E0431EC0E50A68EF
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 171.0.0.0.0.0.0.0.0.0 (Data Corruption:- Is there a physical standby.True?) because either no database was running or user selected None from database select list
+
+
+Check component(PREUPGR:PREUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =DC44A348C1540E8EE04313C0E50AE337
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 173.0.0.0.0.0.0.0.0.0 (Verify data files are recoverable) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 174.0.0.0.0.0.0.0.0.0 (Data Corruption:- Is there a physical standby-False?) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =E0144C7260D0599AE04312C0E50A5C3D
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 178.0.0.0.0.0.0.0.0.0 (Is GoldenGate configured for 11204?) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 179.0.0.0.0.0.0.0.0.0 (Is GoldenGate configured for 11203?) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 180.0.0.0.0.0.0.0.0.0 (branch when control_file_record_keep_time is 0) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 182.0.0.0.0.0.0.0.0.0 (Verify rman controlfile autobackup is set to ON) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 183.0.0.0.0.0.0.0.0.0 (Branch when control_file_record_keep_time is not 0) because either no database was running or user selected None from database select list
+
+
+
+HOST rac2 BRANCH 184.0.0.0.0.0.0.0.0.0
+  SF = DATABASE CONSOLIDATION BEST PRACTICES
+  CATEGORY = ORACLE
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 1
+  PARAMETER OR PATH = UNSPECIFIED
+  COMMAND = ps -ef |grep ora_pmon|grep -v grep |wc -l
+AUDIT_CHECK_COMPONENTS = SIDBMAA:MAA
+AUDIT_CHECK_ID = E596FB09DE302047E04312C0E50AD481
+  COMMAND RESULT = 2
+  OPERATOR = -ge
+  COMPARISON VALUE = 5
+
+ROW=184.0.0.0.0.0.0.0.0.0 command=ps -ef |grep ora_pmon|grep -v grep |wc -l actual value=2 opeartor=-ge required value =5 execute once=0 
+BRANCH CONDITION FALSE
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 185.0.0.0.0.0.0.0.0.0 (Optimizer Parameters with Non-Default Settings (Check 1)) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 187.0.0.0.0.0.0.0.0.0 (Tablespace extent management Allocation Type for SecureFiles LOB storage) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 188.0.0.0.0.0.0.0.0.0 (generic_apps_user_br) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 189.0.0.0.0.0.0.0.0.0 (nls_sort parameter) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 190.0.0.0.0.0.0.0.0.0 (db_file_multiblock_read_count parameter) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 191.0.0.0.0.0.0.0.0.0 (optimizer_features_enable parameter) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 192.0.0.0.0.0.0.0.0.0 (Obsolete Database Parameters for 11.2) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 193.0.0.0.0.0.0.0.0.0 (Optimizer Parameters with Non-Default Settings (Check 3)) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 194.0.0.0.0.0.0.0.0.0 (Optimizer Parameters with Non-Default Settings (Check 2)) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 195.0.0.0.0.0.0.0.0.0 (apps_user_bp_br) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =ED600DFC38714E72E04313C0E50AF4D9
+Check component(X5-8:X3-8:SIDB:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =F0AA717BAFCC5AF0E04313C0E50A8F36
+Check component(SIDB:EIGHTHX5-2:DBM:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =F19A4624602101E7E04312C0E50A8C5A
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 199.0.0.0.0.0.0.0.0.0 (Monitoring changes to schema objects) because either no database was running or user selected None from database select list
+
+
+Check component(SIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =F723B279BA9B18A5E04313C0E50A1B01
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 201.0.0.0.0.0.0.0.0.0 (session_cached_cursors parameter) because either no database was running or user selected None from database select list
+
+
+Check component(SIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =F727CEE3C3A92E08E04312C0E50A7E8C
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 203.0.0.0.0.0.0.0.0.0 (Monitoring waiter sessions) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 204.0.0.0.0.0.0.0.0.0 (Monitoring SGA resize operations) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 205.0.0.0.0.0.0.0.0.0 (12c_EM Repository Presence) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 206.0.0.0.0.0.0.0.0.0 (AutoDOP_BR) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 207.0.0.0.0.0.0.0.0.0 (Is database SGA size greater than 300 GB?) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =FA8F200DB25E39DAE04313C0E50A0787
+Collecting patch inventory on  CRS HOME /u01/11.2.0.4/grid
+Opatch failed with error code 126 on rac2 for /u01/11.2.0.4/grid.\n\norachk will use /u01/11.2.0.4/grid/inventory/ContentsXML/comps.xml as alternate source for installed recommended patch analysis
+Collecting patch inventory on ORACLE_HOME /u01/app/oracle/product/11.2.0.4/db_1 
+---------------------------------------------------------------------------------
+0 Recommended CRS patches for 112040 from /u01/11.2.0.4/grid on rac2
+---------------------------------------------------------------------------------
+Patch#   CRS  ASM    RDBMS RDBMS_HOME                              Patch-Description                            
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+1 Recommended RDBMS patches for 112040 from /u01/app/oracle/product/11.2.0.4/db_1 on rac2
+---------------------------------------------------------------------------------
+Patch#   RDBMS    ASM     type                Patch-Description                       
+---------------------------------------------------------------------------------
+19955028 no       merge                       GRID INFRASTRUCTURE PATCH SET UPDATE 11.2.0.4.5 (JAN2015)
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+              Clusterware patches summary report
+---------------------------------------------------------------------------------
+Total patches  Applied on CRS Applied on RDBMS Applied on ASM 
+---------------------------------------------------------------------------------
+0              0              0                0              
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+              RDBMS homes patches summary report
+---------------------------------------------------------------------------------
+Total patches  Applied on RDBMS Applied on ASM ORACLE_HOME    
+---------------------------------------------------------------------------------
+ 1              0              0                /u01/app/oracle/product/11.2.0.4/db_1
+---------------------------------------------------------------------------------
+
+
+End Time:1429218541
+
+RACcheck has been deprecated.  ORAchk provides the same functionality.  Please switch to using ORAchk from same directory.
+
+RACcheck will not be available after this (12.1.0.2.3) release.
+
+See MOS Note "RACcheck Configuration Audit Tool Statement of Direction - name change to ORAchk (Doc ID 1591208.1)".
+
+
+RAT_ORACLE_HOME = /u01/app/oracle/product/11.2.0/db_1
+---------------------------------------------------------------------------------
+RAT_DB = /u01/app/oracle/product/11.2.0/db_1
+---------------------------------------------------------------------------------
+RAT_DEBUG = 0
+---------------------------------------------------------------------------------
+RAT_INFOPASS = 1
+---------------------------------------------------------------------------------
+is_exadata_dom0_machine = 0 
+ is_ssc_localzone_machine = 0 
+ is_ssc_globalzone_machine = 0 
+ is_ssc_globalzone_dbmachine = 0
+RAT_TIMEOUT= watchdog_wakeup=90 watchdog_wakeup_root=450 watchdog_wakeup_sql=180
+
+Checking ssh user equivalency settings on all nodes in cluster
+
+
+ssh_setup_status=0 rsh_setup_status=
+rac1 is configured for ssh user equivalency for oracle user
+Space available on rac2 at /home/oracle/orachk is 68315528 KB \nSpace available on rac2 at /home/oracle is 68315528 KB
+ASM_HOME=
+Database pickedup for checking = racdb
+Value back from Database is  
+
+Value set to IS_SYSDBA for mfsdb = 1
+
+
+Value back from Database is  
+
+Value set to IS_SYSDBA for racdb = 1
+
+
+cell_ssh_status=0 and cell_ssh_user=
+CELL_PASSWORD_OPTION = 
+zfs_ssh_status=0 and zfs_ssh_user=
+ZFS_PASSWORD_OPTION = 
+db_machine_compute=0 dbm_status_v2= dbm_status_v1= dbm_v1=0 dbm_v2=0
+
+ssh user equivalence not found for root on rac1
+
+*** Checking Best Practice Recommendations ***\n
+CRS appears to be up.\n
+Running in parallel mode
+RUNFILEID=1091B36069484992E05312C0E50A2847 FILEID=1091B36069484992E05312C0E50A2847 AND FILEID2=1091B36069484992E05312C0E50A2847
+
+RACcheck has been deprecated.  ORAchk provides the same functionality.  Please switch to using ORAchk from same directory.
+
+RACcheck will not be available after this (12.1.0.2.3) release.
+
+See MOS Note "RACcheck Configuration Audit Tool Statement of Direction - name change to ORAchk (Doc ID 1591208.1)".
+
+
+RAT_ORACLE_HOME = /u01/app/oracle/product/11.2.0/db_1
+---------------------------------------------------------------------------------
+RAT_DB = /u01/app/oracle/product/11.2.0/db_1
+---------------------------------------------------------------------------------
+RAT_DEBUG = 0
+---------------------------------------------------------------------------------
+RAT_INFOPASS = 1
+---------------------------------------------------------------------------------
+is_exadata_dom0_machine = 0 
+ is_ssc_localzone_machine = 0 
+ is_ssc_globalzone_machine = 0 
+ is_ssc_globalzone_dbmachine = 0
+RAT_TIMEOUT= watchdog_wakeup=90 watchdog_wakeup_root=450 watchdog_wakeup_sql=180
+Running in parallel mode
+Start Time:1429218397
+=============================================================
+                    Node name - rac1                                
+=============================================================
+db_machine_compute=0 dbm_status_v2= dbm_status_v1= dbm_v1=0 dbm_v2=0
+is_goldengate_installed =0 on rac1 and file is /home/oracle/.orachk/orachk_041715_050359/ogg_homes_version.out
+Skipping check(767881504B21A00BE040E50A1EC01174) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(767881504B21A00BE040E50A1EC01174) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 1.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = declare type t_sessions is varray(100) of integer; v_sessions t_sessions; v_session_cnt number:=1; v_session_pct number:=0; v_session_diff number:=0; cursor inst_session is select count(*) sessions ,instance_number from dba_hist_active_sess_history where user_id in (select user_id from dba_users where username in ('SYS','SYSTEM','SYSMAN','DBSNMP')) group by instance_number; begin v_sessions:=t_sessions(0,0); for rec in inst_session loop v_sessions(v_session_cnt):= rec.sessions; if v_session_cnt >1 then    if v_sessions(1) > v_sessions(2) then v_session_diff:=v_sessions(1)-v_sessions(2); v_session_pct:=v_session_diff/ v_sessions(1)*100;   else      v_session_diff:= v_sessions(2)-v_sessions(1); v_session_pct:= v_session_diff/ v_sessions(2)*100;   end if;     DBMS_OUTPUT.PUT_LINE('load_balance_percent_diff = '||floor(v_session_pct));     DBMS_OUTPUT.PUT_LINE('load_balance_actual_diff = '||v_session_diff); end if; v_session_cnt:=v_session_cnt+1; end loop; end;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 767881504B21A00BE040E50A1EC01174
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(64B4075A96FF21D3E0401490CACF3EC6) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(64B4075A96FF21D3E0401490CACF3EC6) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 2.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.archive destination ID = '||dest_id||chr(10)||i.instance_name||'.archive standby logfile active = '||standby_logfile_active ||chr(10)||i.instance_name||'.archived Sequence Number = '||ARCHIVED_SEQ# ||chr(10)||i.instance_name||'.database Mode = '||database_mode||chr(10)||i.instance_name||'.recovery Mode = '||recovery_mode||chr(10)||i.instance_name||'.protection Mode = '||protection_mode||chr(10)||i.instance_name||'.standby Logfile Count ='standby_logfile_count from gv$archive_dest_status a,gv$instance i where a.inst_id=i.inst_id and a.destination is not null;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B4075A96FF21D3E0401490CACF3EC6
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(5ADCECF64754E914E0401490CACF4BBD) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(5ADCECF64754E914E0401490CACF4BBD) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 3.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select name_skgxpia||'_is_public_'||inst_id||' = '||pub_skgxpia||chr(10)||name_skgxpia||'_source_'||inst_id||' = '||picked_skgxpia||chr(10)||name_skgxpia||'_ip_address_'||inst_id||' = '||ip_skgxpia||chr(10) from x$skgxpia;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 5ADCECF64754E914E0401490CACF4BBD
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(64B23BAC4751B396E0401490CACF0B96) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(64B23BAC4751B396E0401490CACF0B96) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 4.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.archive destination ID = '||dest_id||chr(10)||i.instance_name||'.archive destination = '||destination||chr(10)||i.instance_name||'.archive destination status = '||a.status||chr(10)||i.instance_name||'.archive destination target = '||target||chr(10)||i.instance_name||'.archive schedule = '||schedule||chr(10)||i.instance_name||'.archive process = '||process||chr(10)||i.instance_name||'.archiev mount ID = '||mountid ||chr(10)||i.instance_name||'.archiver = '||a.archiver||chr(10)||i.instance_name||'.archive transmit mode = '||transmit_mode||chr(10)||i.instance_name||'.archive affirm = '||affirm||chr(10)||i.instance_name||'.archive async Blocks = '||async_blocks||chr(10)||i.instance_name||'.archive net timeout = '||net_timeout||chr(10)||i.instance_name||'.archive delay mintues = '||delay_mins||chr(10)||i.instance_name||'.Reopen Seconds = '||reopen_secs||chr(10)||i.instance_name||'.Register = '||register||chr(10)||i.instance_name||'.Binding = '||binding||chr(10)||i.instance_name||'.any error while archiving = '||error from gv$archive_dest a,gv$instance i where i.inst_id=a.inst_id and destination is not null order by dest_id;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B23BAC4751B396E0401490CACF0B96
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(666EE65D7ACEFAFCE040E50A1EC01191) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(666EE65D7ACEFAFCE040E50A1EC01191) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 5.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'controlfile = '||name from v$controlfile union select 'datafile (file#_name) = '||file#||'_'||name from v$datafile union select 'logfile (group_member) = '||group#||'_'||member from v$logfile;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 666EE65D7ACEFAFCE040E50A1EC01191
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(594E09A832BDC864E0401490CACF200D) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(594E09A832BDC864E0401490CACF200D) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 6.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select instance_name||'.instance_number = '||instance_number||chr(10)||instance_name||'.host_name = '||host_name||chr(10)||instance_name||'.audit_version = '||version||chr(10)||instance_name||'.startup_time = '||startup_time||chr(10)||instance_name||'.status = '||status||chr(10)||instance_name||'.parallel = '||parallel||chr(10)||instance_name||'.thread# = '||thread#||chr(10)||instance_name||'.archiver = '||archiver||chr(10)||instance_name||'.log_switch_wait = '||log_switch_wait||chr(10)||instance_name||'.logins = '||logins||chr(10)||instance_name||'.shutdown_pending = '||shutdown_pending||chr(10)||instance_name||'.database_status = '||database_status||chr(10)||instance_name||'.instance_role = '||instance_role||chr(10)||instance_name||'.active_state = '||active_state||chr(10)||instance_name||'.blocked = '||blocked from gv$instance;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 594E09A832BDC864E0401490CACF200D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(594E09A832BCC864E0401490CACF200D) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(594E09A832BCC864E0401490CACF200D) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 7.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.'||p.name || ' = ' || value from gv$parameter p,gv$instance i where p.inst_id = i.inst_id order by p.name,i.instance_name;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 594E09A832BCC864E0401490CACF200D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(9AD94FEDF63F8296E040E50A1EC06A28) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(9AD94FEDF63F8296E040E50A1EC06A28) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 8.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.'||p.name || ' = ' || value from gv$parameter p,gv$instance i where p.inst_id = i.inst_id order by p.name,i.instance_name;
+AUDIT_CHECK_COMPONENTS = PREUPGR:POSTUPGR:PREUPGRX3-8:POSTUPGRX3-2:ODA_VM:X5-8:PREUPGRX5-8:POSTUPGRX5-8:ODA:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:SIDB:SIDBMAA:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:EIGHTHX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:MAA:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:PREUPGRX3-2:SUPERCLUSTER:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:SUPERCLUSTERX3-2:X4-2:PREUPGRX4-2:POSTUPGRX4-2:SUPERCLUSTERX4-2:PREUPGRSIDB:POSTUPGRSIDB
+AUDIT_CHECK_ID = 9AD94FEDF63F8296E040E50A1EC06A28
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(64B5BF59AEFF4C47E0401490CACF3CD6) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(64B5BF59AEFF4C47E0401490CACF3CD6) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 9.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Database Name = '||name||chr(10)||'Database Role = '||database_role||chr(10)||'Archive log mode = '||log_mode||chr(10)||'Protection mode = '||protection_mode||chr(10)||'Protection Level = '||protection_level||chr(10)||'Force Logging = '||force_logging||chr(10)||'Remove Archive = '||remote_archive||chr(10)||'Supplemental log data PK = '||supplemental_log_data_pk||chr(10)||'Supplemental log data UI = '||supplemental_log_data_ui||chr(10)||'Switchover Status = '||switchover_status||chr(10)||'Dataguard broker = '||dataguard_broker||chr(10)||'Flashback On = '||flashback_on from v$database;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B5BF59AEFF4C47E0401490CACF3CD6
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(64B1B17271D35182E0401490CACF4F46) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(64B1B17271D35182E0401490CACF4F46) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 10.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select comp_name || ' version = '||d.version||chr(10)||comp_name || ' org_version = '||org_version||chr(10)||comp_name || ' prv_version = '||prv_version||chr(10)|| comp_name || ' modified date = '||d.modified||chr(10)|| comp_name || ' status = '||d.status from dba_registry d,registry$ r where r.cid=d.comp_id;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B1B17271D35182E0401490CACF4F46
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(5ADD88EC8E0CFF2EE0401490CACF0C10) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(5ADD88EC8E0CFF2EE0401490CACF0C10) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 11.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select * from (select sequence_owner||'_'||sequence_name||'_INCREMENT_BY = '||increment_by||chr(10)||sequence_owner||'_'||sequence_name||'_ORDER_FLAG = '||order_flag||chr(10)||sequence_owner||'_'||sequence_name||'_CACHE_SIZE = '||cache_size||chr(10) from dba_sequences where sequence_owner not in ('SYS','CTXSYS','DBSNMP','DMSYS','EXFSYS','MDSYS','OLAPSYS','SYSTEM','WMSYS','XDB','SYSMAN') union select sequence_owner||'_'||sequence_name||'_INCREMENT_BY = '||increment_by||chr(10)||sequence_owner||'_'||sequence_name||'_ORDER_FLAG = '||order_flag||chr(10)||sequence_owner||'_'||sequence_name||'_CACHE_SIZE = '||cache_size||chr(10) from dba_sequences where sequence_name in ('AUDSES$','IDGEN1$'));
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 5ADD88EC8E0CFF2EE0401490CACF0C10
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(6FB67DA9843581AAE040E50A1EC0057B) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(6FB67DA9843581AAE040E50A1EC0057B) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 12.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select ksppinm || ' = ' || ksppstdvl from sys.x$ksppi n,sys.x$ksppsv v where n.indx = v.indx and instr(ksppinm,'_') = 1;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 6FB67DA9843581AAE040E50A1EC0057B
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(9AD8F72CFE1DC95BE040E50A1EC050D0) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(9AD8F72CFE1DC95BE040E50A1EC050D0) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 13.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select ksppinm || ' = ' || ksppstdvl from sys.x$ksppi n,sys.x$ksppsv v where n.indx = v.indx and instr(ksppinm,'_') = 1;
+AUDIT_CHECK_COMPONENTS = PREUPGR:POSTUPGR:PREUPGRX3-8:POSTUPGRX3-2:ODA_VM:X5-8:PREUPGRX5-8:POSTUPGRX5-8:ODA:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:SIDB:SIDBMAA:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:EIGHTHX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:MAA:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:PREUPGRX3-2:SUPERCLUSTER:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:SUPERCLUSTERX3-2:X4-2:PREUPGRX4-2:POSTUPGRX4-2:SUPERCLUSTERX4-2:PREUPGRSIDB:POSTUPGRSIDB
+AUDIT_CHECK_ID = 9AD8F72CFE1DC95BE040E50A1EC050D0
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(5ADCE5776C0CE6C0E0401490CACF5622) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(5ADCE5776C0CE6C0E0401490CACF5622) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 14.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'service_id'||service_id||'_name = '||name||chr(10)||'service_id'||service_id||'_network_name = '||network_name||chr(10)||'service_id'||service_id||'_failover_method = '||failover_method||chr(10)||'service_id'||service_id||'_failover_type = '||failover_type||chr(10)||'service_id'||service_id||'_failover_retries = '||failover_retries||chr(10)||'service_id'||service_id||'_failover_delay = '||failover_delay||chr(10)||'service_id'||service_id||'_goal = '||goal||chr(10)||'service_id'||service_id||'_dtp = '||dtp||chr(10)||'service_id'||service_id||'_enabled = '||enabled||chr(10)||'service_id'||service_id||'_aq_ha_notifications = '||aq_ha_notifications||chr(10)||'service_id'||service_id||'_clb_goal = '||clb_goal||chr(10) from dba_services;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 5ADCE5776C0CE6C0E0401490CACF5622
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(64B430519CC1F07CE0401490CACF4434) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(64B430519CC1F07CE0401490CACF4434) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 15.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Message = '||message||chr(10)||' Timestamp = '||timestamp    from v$dataguard_status    where severity in ('Error','Fatal')    order by timestamp;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B430519CC1F07CE0401490CACF4434
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(64B30441FF203E12E0401490CACF65A4) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(64B30441FF203E12E0401490CACF65A4) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 16.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'destination ID = '||ads.dest_id||chr(10)||i.instance_name||'.current archive sequence # = '||max(sequence#) ||chr(10)||i.instance_name||'.last archived = '||max(log_sequence) from gv$archived_log al, gv$archive_dest ad, gv$archive_dest_status ads,gv$instance i where ad.dest_id=al.dest_id and al.dest_id=ads.dest_id and ad.inst_id=i.inst_id group by ads.dest_id,i.instance_name;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B30441FF203E12E0401490CACF65A4
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(64B42BAD015B0207E0401490CACF3F6D) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(64B42BAD015B0207E0401490CACF3F6D) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 17.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Process = '||process||chr(10)||'Status = '||status||chr(10)||'Client Process = '||client_process||chr(10)||'Sequence Number = '||sequence# from v$managed_standby;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B42BAD015B0207E0401490CACF3F6D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(E60A5838BBE772AAE04312C0E50A297F) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(E60A5838BBE772AAE04312C0E50A297F) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 18.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Feature_Name = '||name||chr(10)||'Version = '|| version ||chr(10)||'Detected_Usages = '|| detected_usages ||chr(10)||'Currently_Used = '||currently_used ||chr(10)||'First_Usage_Date = '||first_usage_date ||chr(10)||'Last_Usage_Date = '|| last_usage_date   
+from dba_feature_usage_statistics   
+where currently_used = 'TRUE';
+AUDIT_CHECK_COMPONENTS = X5-8:ODA:X3-8:SIDB:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:RACCHECK:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2
+AUDIT_CHECK_ID = E60A5838BBE772AAE04312C0E50A297F
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(64B5E7CC20FE1711E0401490CACF6017) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(64B5E7CC20FE1711E0401490CACF6017) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 19.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Sequence# = '||l.sequence#||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_redo log file size(mb) = '||l.bytes/1024/1024||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Archived = '||l.archived||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Status = '||l.status from gv$log l,gv$instance i where i.inst_id=l.inst_id ;
+AUDIT_CHECK_COMPONENTS = DBM:RACCHECK
+AUDIT_CHECK_ID = 64B5E7CC20FE1711E0401490CACF6017
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+Skipping check(64B42BAD015D0207E0401490CACF3F6D) on version 5 db_version=112040 versions_to_run=112040
+Skipping check(64B42BAD015D0207E0401490CACF3F6D) on version 5 db_version=112040 versions_to_run=112040
+
+SQL DATA COLLECTION 20.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = 
+  COMMAND = select 'Group # = '||group#||chr(10)||'Sequence # = '||sequence#||chr(10)||'Log file size in MB ='||bytes/1024/1024 from v$standby_log;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 64B42BAD015D0207E0401490CACF3F6D
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+OSCOLLECTCNT=1 OSCOLLECTSUM=  rootYesNoint=3 root_need_cell_ssh=0 REQUIRE_ROOT=
+
+OS DATA COLLECTION 22.0.0.0.0.0.0.0.0.0
+  PARAMETER OR PATH = RDBMS
+  COMMAND = opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main\n\nexachk_patchlist_for_version_matrix\n\n$opatch_output"
+AUDIT_CHECK_COMPONENTS = SIDB:RACCHECK
+AUDIT_CHECK_ID = B5191156EF114416E0431EC0E50AFBE0
+  OPERATOR = 
+  COMPARISON VALUE = 
+
+
+Command executed on rac1 - opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main\n\nexachk_patchlist_for_version_matrix\n\n$opatch_output"
+
+OSCOLLECTCNT=2 OSCOLLECTSUM=  rootYesNoint=3 root_need_cell_ssh=0 REQUIRE_ROOT=
+Check component(PREUPGR:PREUPGRX3-8:POSTUPGRX3-2:ODA_VM:X5-8:PREUPGRX5-8:POSTUPGRX5-8:ODA:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:EIGHTHX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:PREUPGRX3-2:SUPERCLUSTER:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:SUPERCLUSTERX3-2:X4-2:PREUPGRX4-2:POSTUPGRX4-2:SUPERCLUSTERX4-2:PREUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =B7872B23C89B4B27E0431EC0E50ABEEB
+OSCOLLECTCNT=3 OSCOLLECTSUM=  rootYesNoint=3 root_need_cell_ssh=0 REQUIRE_ROOT=
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9CD26C8F17BCA103E040E50A1EC02A7F
+OSCOLLECTCNT=4 OSCOLLECTSUM=  rootYesNoint=3 root_need_cell_ssh=0 REQUIRE_ROOT=
+OSCOLLECTCNT=5 OSCOLLECTSUM=  rootYesNoint=3 root_need_cell_ssh=0 REQUIRE_ROOT=
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 27.0.0.0.0.0.0.0.0.0 (ASH flush status) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =02AAD24EB04D699CE05312C0E50AB4E9
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 29.0.0.0.0.0.0.0.0.0 (Database Statistics level) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 30.0.0.0.0.0.0.0.0.0 (Database timed statistics) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 31.0.0.0.0.0.0.0.0.0 (Monitoring Non-AWR space usage in SYSAUX) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 32.0.0.0.0.0.0.0.0.0 (Monitoring AWR space usage in SYSAUX) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 33.0.0.0.0.0.0.0.0.0 (Monitoring AWR settings) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 34.0.0.0.0.0.0.0.0.0 (Monitoring stale statistics) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 35.0.0.0.0.0.0.0.0.0 (Ensure db_unique_name is unique across the enterprise [standby]) because either no database was running or user selected None from database select list
+
+
+
+
+skipping opatch_return_code=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local >/dev/null 2>&1;echo $?);if [ $opatch_return_code -eq 0 ]; then opatch_output=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local -bugs_fixed);opatch_output_main=$($ORACLE_HOME/OPatch/opatch lsinventory -oh $ORACLE_HOME -local|grep -wi "patch description");else opatch_output=$(cat $ORACLE_HOME/inventory/ContentsXML/comps.xml);fi;   
+echo -e "$opatch_output_main
+
+exachk_patchlist_for_version_matrix
+
+$opatch_output" at 36.0.0.0.0.0.0.0.0.0 (Ensure db_unique_name is unique across the enterprise [primary]) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =09F694665C896F97E05312C0E50A05DF
+
+  SF = ENSURE EACH ORACLE/ASM USER HAS A UNIQUE UID ACROSS THE CLUSTER
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 0
+  PARAMETER OR PATH = RDBMS
+  COMMAND = ls -l $ORACLE_HOME/bin/oracle|awk '{print $3}'
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 0D0D76415E6934C7E05312C0E50A8E33
+  COMMAND RESULT = 
+  OPERATOR = -eq
+  COMPARISON VALUE = 0
+
+skipping _use_platform_encryption_lib at 40.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping _use_platform_encryption_lib at 40.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping _use_hybrid_encryption_mode at 41.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping _use_hybrid_encryption_mode at 41.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+
+
+skipping SQL PARAMETER _use_hybrid_encryption_mode  =  FALSE at 42.0.0.0.0.0.0.0.0.0 (Database version) because either no database was running or user selected None from database select list
+
+
+skipping cluster_database_instances at 43.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping cluster_database_instances at 43.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+
+
+skipping SQL PARAMETER cluster_database_instances  -gt  1 at 44.0.0.0.0.0.0.0.0.0 (Archive log mode) because either no database was running or user selected None from database select list
+
+
+skipping active_instance_count at 45.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping active_instance_count at 45.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+
+HOST rac1 BRANCH 46.0.0.0.0.0.0.0.0.0
+  SF = LINUX DATA COLLECTIONS AND AUDIT CHECKS
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 1
+  PARAMETER OR PATH = RDBMS
+  COMMAND = nm $ORACLE_HOME/bin/oracle | grep  -i 'getevents@@LIBAIO'|wc -l
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 5DBA34B30892B010E0401490CACF2738
+  COMMAND RESULT = 1
+  OPERATOR = -ge
+  COMPARISON VALUE = 1
+
+ROW=46.0.0.0.0.0.0.0.0.0 command=nm $ORACLE_HOME/bin/oracle | grep  -i 'getevents@@LIBAIO'|wc -l actual value=1 opeartor=-ge required value =1 execute once=0 
+BRANCH CONDITION TRUE
+---------------------------------------------
+
+HOST rac1 BRANCH 47.0.0.0.0.0.0.0.0.0
+  SF = LINUX DATA COLLECTIONS AND AUDIT CHECKS
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 1
+  PARAMETER OR PATH = RDBMS
+  COMMAND = nm $ORACLE_HOME/bin/oracle | grep  -i 'getevents@@LIBAIO'|wc -l
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 5DC9DADFC45FD615E0401490CACF5277
+  COMMAND RESULT = 1
+  OPERATOR = -eq
+  COMPARISON VALUE = 0
+
+ROW=47.0.0.0.0.0.0.0.0.0 command=nm $ORACLE_HOME/bin/oracle | grep  -i 'getevents@@LIBAIO'|wc -l actual value=1 opeartor=-eq required value =0 execute once=0 
+BRANCH CONDITION FALSE
+skipping spfile at 48.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping spfile at 48.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+
+
+skipping SQL PARAMETER spfile  -n   at 49.0.0.0.0.0.0.0.0.0 (Invalid Java Object Check) because either no database was running or user selected None from database select list
+
+
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =64CA7343C4BADE8AE0401490CACF5450
+Check component(POSTUPGR:PREUPGRX3-8:POSTUPGRX3-2:X5-8:PREUPGRX5-8:POSTUPGRX5-8:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:EIGHTHX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:EIGHTHX4-2:PREUPGREIGHTHX4-2:PREUPGRX3-2:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:X4-2:PREUPGRX4-2:POSTUPGRX4-2:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =64D61B38C559FF09E0401490CACF071C
+Check component(PREUPGR:PREUPGRX3-8:PREUPGRX5-8:PREUPGRX2-8:PREUPGRDBM:PREUPGRX4-8:PREUPGRX5-2:PREUPGREDVM:PREUPGRX2-2:PREUPGRX3-2:PREUPGRSUPERCLUSTER:PREUPGREIGHTH:PREUPGRX4-2:PREUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =64D9F3A477F1A462E0401490CACF6ABB
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =6656FD746C9D9F25E040E50A1EC03B29
+
+
+skipping SQL PARAMETER spfile  -n   at 54.0.0.0.0.0.0.0.0.0 (Verify sys and system users default tablespace is system) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 61.0.0.0.0.0.0.0.0.0 (Tablespace allocation type) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 62.0.0.0.0.0.0.0.0.0 (Avg GC CR Block Receive Time) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 63.0.0.0.0.0.0.0.0.0 (Avg GC Current Block Receive Time) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 65.0.0.0.0.0.0.0.0.0 (Session Failover configuration) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 66.0.0.0.0.0.0.0.0.0 (GC block lost) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 67.0.0.0.0.0.0.0.0.0 (Avg message received queue time) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 68.0.0.0.0.0.0.0.0.0 (Avg message sent queue time (ms)) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER spfile  -n   at 69.0.0.0.0.0.0.0.0.0 (Avg message sent queue time on ksxp) because either no database was running or user selected None from database select list
+
+
+
+  SF = ENSURE EACH ORACLE/ASM USER HAS A UNIQUE UID ACROSS THE CLUSTER
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 0
+  PARAMETER OR PATH = RDBMS
+  COMMAND = id -u `ls -l $ORACLE_HOME/bin/oracle|awk '{print $3}'`
+AUDIT_CHECK_COMPONENTS = ODA_VM:ODA:DBM:RACCHECK
+AUDIT_CHECK_ID = 7E3FAC1843F137ABE040E50A1EC0139B
+  COMMAND RESULT = 54321
+  OPERATOR = -eq
+  COMPARISON VALUE = 0
+
+
+HOST rac1 STEP 71.0.0.0.0.0.0.0.0.0
+  SF = VERIFY OWNERSHIP OF ORADISM EXECUTABLE IF LMS PROCESS NOT RUNNING IN REAL TIME
+  CATEGORY = ORACLE
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 0
+  PARAMETER OR PATH = RDBMS
+  COMMAND = PERMS=`ls -l $ORACLE_HOME/bin/oradism |awk '{print $1}'`;PERM=${PERMS:3:1};echo $PERM
+AUDIT_CHECK_COMPONENTS = ODA_VM:ODA:DBM:RACCHECK
+AUDIT_CHECK_ID = 7EDDA570A1827FBAE040E50A1EC02EB1
+  COMMAND RESULT = s
+  OPERATOR = =
+  COMPARISON VALUE = s
+
+ROW=71.0.0.0.0.0.0.0.0.0 command=PERMS=`ls -l $ORACLE_HOME/bin/oradism |awk '{print $1}'`;PERM=${PERMS:3:1};echo $PERM actual value=s opeartor== required value =s execute once=0 
+
+PASS =>  $ORACLE_HOME/bin/oradism setuid bit is set for /u01/app/oracle/product/11.2.0.4/db_1
+
+CHECK ID = 7EDDA570A1827FBAE040E50A1EC02EB1 
+AUDIT CHECK NAME = oradism executable permission
+
+---------------------------------------------
+
+HOST rac1 STEP 72.0.0.0.0.0.0.0.0.0
+  SF = VERIFY OWNERSHIP OF ORADISM EXECUTABLE IF LMS PROCESS NOT RUNNING IN REAL TIME
+  CATEGORY = ORACLE
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 0
+  PARAMETER OR PATH = RDBMS
+  COMMAND = ls -l $ORACLE_HOME/bin/oradism |awk '{print $3}'
+AUDIT_CHECK_COMPONENTS = ODA_VM:ODA:DBM:RACCHECK
+AUDIT_CHECK_ID = 7EDE9EBEC9429FBAE040E50A1EC03AED
+  COMMAND RESULT = root
+  OPERATOR = =
+  COMPARISON VALUE = root
+
+ROW=72.0.0.0.0.0.0.0.0.0 command=ls -l $ORACLE_HOME/bin/oradism |awk '{print $3}' actual value=root opeartor== required value =root execute once=0 
+
+PASS =>  $ORACLE_HOME/bin/oradism ownership is root for /u01/app/oracle/product/11.2.0.4/db_1
+
+CHECK ID = 7EDE9EBEC9429FBAE040E50A1EC03AED 
+AUDIT CHECK NAME = oradism executable ownership
+
+---------------------------------------------
+
+
+skipping ls -l $ORACLE_HOME/bin/oradism |awk '{print $3}' at 74.0.0.0.0.0.0.0.0.0 (Multiplexed controlfiles) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ls -l $ORACLE_HOME/bin/oradism |awk '{print $3}' at 75.0.0.0.0.0.0.0.0.0 (Non-multiplexed redo logs) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ls -l $ORACLE_HOME/bin/oradism |awk '{print $3}' at 76.0.0.0.0.0.0.0.0.0 (Non-autoextensible data and temp files) because either no database was running or user selected None from database select list
+
+
+
+HOST rac1 STEP 77.0.0.0.0.0.0.0.0.0
+  SF = LINUX DATA COLLECTIONS AND AUDIT CHECKS
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 0
+  PARAMETER OR PATH = RDBMS
+  COMMAND =  usrlimit=$(ulimit -Hu);if [ "$usrlimit" = "unlimited" ];then echo 1;elif [ $usrlimit -ge 16384 ];then echo 1;else echo 0;fi
+AUDIT_CHECK_COMPONENTS = PREUPGR:ODA_VM:ODA:SIDB:DBM:RACCHECK:PREUPGRSIDB:IDM:IDMPREINSTALL:IDMPOSTINSTALL
+AUDIT_CHECK_ID = 841E706550975C68E040E50A1EC05EFB
+  COMMAND RESULT = 1
+  OPERATOR = -ge
+  COMPARISON VALUE = 1
+
+ROW=77.0.0.0.0.0.0.0.0.0 command= usrlimit=$(ulimit -Hu);if [ "$usrlimit" = "unlimited" ];then echo 1;elif [ $usrlimit -ge 16384 ];then echo 1;else echo 0;fi actual value=1 opeartor=-ge required value =1 execute once=0 
+
+PASS =>  Shell limit hard nproc for DB is configured according to recommendation
+
+CHECK ID = 841E706550975C68E040E50A1EC05EFB 
+AUDIT CHECK NAME = DB shell limits hard nproc
+
+---------------------------------------------
+
+
+skipping  usrlimit=$(ulimit -Hu);if [ "$usrlimit" = "unlimited" ];then echo 1;elif [ $usrlimit -ge 16384 ];then echo 1;else echo 0;fi at 78.0.0.0.0.0.0.0.0.0 (Same size of redo log files) because either no database was running or user selected None from database select list
+
+
+
+HOST rac1 BRANCH 81.0.0.0.0.0.0.0.0.0
+  SF = LINUX DATA COLLECTIONS AND AUDIT CHECKS
+  CATEGORY = OPERATING SYSTEM
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 1
+  PARAMETER OR PATH = UNSPECIFIED
+  COMMAND = vm_type=`grep VM_TYPE $TMPDIR/raccheck_env.out |awk '{print $3}'`;host_type=`grep HOST_TYPE $TMPDIR/raccheck_env.out |awk '{print $3}'`;host_role=`grep HOST_ROLE $TMPDIR/raccheck_env.out |awk '{print $3}'`;if [[ -z $host_type || $host_type = BAREMETAL ]]; then not_vm=1; else not_vm=0;fi;echo $not_vm;
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 8C9F4EB61E303158E040E50A1EC057F1
+  COMMAND RESULT = 1
+  OPERATOR = -eq
+  COMPARISON VALUE = 1
+
+ROW=81.0.0.0.0.0.0.0.0.0 command=vm_type=`grep VM_TYPE $TMPDIR/raccheck_env.out |awk '{print $3}'`;host_type=`grep HOST_TYPE $TMPDIR/raccheck_env.out |awk '{print $3}'`;host_role=`grep HOST_ROLE $TMPDIR/raccheck_env.out |awk '{print $3}'`;if [[ -z $host_type || $host_type = BAREMETAL ]]; then not_vm=1; else not_vm=0;fi;echo $not_vm; actual value=1 opeartor=-eq required value =1 execute once=0 
+BRANCH CONDITION TRUE
+---------------------------------------------
+Check component(RACCHECK) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =5DB3665FA13252E1E0401490CACF640F
+skipping memory_target at 81.2.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping memory_target at 81.2.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+Check component(SIDB:RACCHECK) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CCF6F44765861F7AE0431EC0E50A72AD
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9AEAA18170BDAD67E040E50A1EC0194C
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9AEC773863DD7767E040E50A1EC07703
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9BB4F7BA332BCC94E040E50A1EC073E9
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9BB83C959994CEE5E040E50A1EC0094E
+Check component(ODA_VM:ODA:X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:EIGHTH:X4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EB84272626BFF6EE040E50A1EC02AF3
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC63D75E700717CE040E50A1EC04D03
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC6FFF48D2FAFF3E040E50A1EC0768E
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC6FFF48D30AFF3E040E50A1EC0768E
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC7304AE67CDC2DE040E50A1EC07772
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC835C8E11DDE5BE040E50A1EC01CA0
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC93390FB32FDD3E040E50A1EC04ADF
+Check component(X5-2:EIGHTHX5-2:EDVM:X2-2:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9EC9FBCFEC52DF9DE040E50A1EC0633E
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =9ECBA2152E92F6B1E040E50A1EC00DFB
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:EIGHTH:X4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =A98AD732FD50F308E040E50A1EC01B2C
+Check component(DBM) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =ADF2A31817AE61F1E040E50A1EC05214
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 108.0.0.0.0.0.0.0.0.0 (Standby recovery process status) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 109.0.0.0.0.0.0.0.0.0 (Managed recovery processes status) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 110.0.0.0.0.0.0.0.0.0 (Flashback database on primary) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 111.0.0.0.0.0.0.0.0.0 (Standby open mode) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 112.0.0.0.0.0.0.0.0.0 (Flashback database on standby) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =B166BC500DA37235E0431EC0E50A94E2
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 114.0.0.0.0.0.0.0.0.0 (Verify all "BIGFILE" tablespaces have non-default "MAXBYTES" values set) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 115.0.0.0.0.0.0.0.0.0 (Standby redo apply lag) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER memory_target  -eq  0 at 116.0.0.0.0.0.0.0.0.0 (Primary redo transport lag) because either no database was running or user selected None from database select list
+
+
+skipping undo_retention at 117.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping undo_retention at 117.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping undo_retention at 118.0.0.0.0.0.0.0.0.0 for mfsdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+skipping undo_retention at 118.0.0.0.0.0.0.0.0.0 for racdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+skipping fast_start_mttr_target at 119.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping fast_start_mttr_target at 119.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+
+
+skipping SQL PARAMETER fast_start_mttr_target  -ge  300 at 120.0.0.0.0.0.0.0.0.0 (Standby redo logs status on standby) because either no database was running or user selected None from database select list
+
+
+
+
+skipping SQL PARAMETER fast_start_mttr_target  -ge  300 at 121.0.0.0.0.0.0.0.0.0 (Standby redo apply lag) because either no database was running or user selected None from database select list
+
+
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =B78663EC9D44052CE0431EC0E50AC6C8
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =BA0F3FC9486B1CFFE0431EC0E50A5AA5
+Check component(POSTUPGR:PREUPGRX3-8:POSTUPGRX3-2:X5-8:PREUPGRX5-8:POSTUPGRX5-8:PREUPGRX2-8:PREUPGRDBM:POSTUPGRX2-2:POSTUPGRX2-8:POSTUPGRDBM:X3-8:X4-8:PREUPGRX4-8:POSTUPGRX4-8:X5-2:PREUPGRX5-2:POSTUPGRX5-2:PREUPGREDVM:EDVM:POSTUPGREDVM:DBM:X2-2:X2-8:PREUPGRX2-2:POSTUPGRX3-8:X3-2:AVM:PREUPGREIGHTHX4-2:SUPERCLUSTERVM:PREUPGRX3-2:SUPERCLUSTER:PREUPGRSUPERCLUSTER:POSTUPGRSUPERCLUSTER:EIGHTH:PREUPGREIGHTH:POSTUPGREIGHTH:SUPERCLUSTERX3-2:X4-2:PREUPGRX4-2:POSTUPGRX4-2:SUPERCLUSTERX4-2:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =BCE22AC1A8B1190DE0431EC0E50A453A
+Skipping Post-upgrade timings script (CHECK ID BD05A68427C411FFE0431EC0E50AEAF0) because execute_once is true
+Skipping Post-upgrade create editable init.ora file (CHECK ID BD066B2D5AD83132E0431EC0E50A824F) because execute_once is true
+
+
+skipping SQL PARAMETER fast_start_mttr_target  -ge  300 at 131.0.0.0.0.0.0.0.0.0 (Invalid Registry Component Check) because either no database was running or user selected None from database select list
+
+
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =BD6BDE182D35742CE0431EC0E50A5662
+
+
+skipping SQL PARAMETER fast_start_mttr_target  -ge  300 at 133.0.0.0.0.0.0.0.0.0 (Duplicate sys/system objects) because either no database was running or user selected None from database select list
+
+
+Check component(POSTUPGR:POSTUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =BD7FD021E30F7F79E0431EC0E50A05E5
+skipping cluster_database at 136.0.0.0.0.0.0.0.0.0 for mfsdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping cluster_database at 136.0.0.0.0.0.0.0.0.0 for racdb because inst_mode=0 and source_file_exists=0                                     and instance_exists=
+skipping log_archive_config at 137.0.0.0.0.0.0.0.0.0 for mfsdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+skipping log_archive_config at 137.0.0.0.0.0.0.0.0.0 for racdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+skipping log_archive_config at 138.0.0.0.0.0.0.0.0.0 for mfsdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+skipping log_archive_config at 138.0.0.0.0.0.0.0.0.0 for racdb because database role (PRIMARY) does not match to check role (PHYSICAL_STANDBY) or database type(NORMAL) does not match to NORMAL:CDB
+
+
+skipping SQL PARAMETER log_archive_config  -z   at 139.0.0.0.0.0.0.0.0.0 (Block Corruptions) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X2-8) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =C756871EEA76047CE0431EC0E50AD59C
+
+HOST rac1 BRANCH 141.0.0.0.0.0.0.0.0.0
+  SF = SQL DATA COLLECTIONS AND CHECKS
+  CATEGORY = ORACLE
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 1
+  PARAMETER OR PATH = ASM
+  COMMAND = ps -ef |grep asm_pmon|grep -v grep|wc -l
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = C846692C524A7E24E0431EC0E50AF3F2
+  COMMAND RESULT = 1
+  OPERATOR = -gt
+  COMPARISON VALUE = 0
+
+ROW=141.0.0.0.0.0.0.0.0.0 command=ps -ef |grep asm_pmon|grep -v grep|wc -l actual value=1 opeartor=-gt required value =0 execute once=0 
+BRANCH CONDITION TRUE
+---------------------------------------------
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 141.1.0.0.0.0.0.0.0.0 (ASM disk read write error) because either no database was running or user selected None from database select list
+
+
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CB02802D637B344DE0431EC0E50AE8DE
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CB05CDFEFD436CDFE0431EC0E50A29C8
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CB05EC6DA5E3694BE0431EC0E50AA352
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 145.0.0.0.0.0.0.0.0.0 (Verify AUD$ and FGA_LOG$ tables use Automatic Segment Space Management) because either no database was running or user selected None from database select list
+
+
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CCAD8D7C01FE7A26E0431EC0E50A5019
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CCAD93D7379975A0E0431EC0E50AA4A4
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 148.0.0.0.0.0.0.0.0.0 (Archivelog Mode) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 149.0.0.0.0.0.0.0.0.0 (Default Temporary Tablespace) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 150.0.0.0.0.0.0.0.0.0 (Automatic segment storage management) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 151.0.0.0.0.0.0.0.0.0 (Locally managed tablespaces) because either no database was running or user selected None from database select list
+
+
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CCB0B7D1612744F5E0431EC0E50A23A7
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CCB2075D6EF92359E0431EC0E50AFC7A
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 154.0.0.0.0.0.0.0.0.0 (Is there a physical standby?) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 155.0.0.0.0.0.0.0.0.0 (Is there a physical standby for client failover?) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 156.0.0.0.0.0.0.0.0.0 (Primary database protection with Data Guard) because either no database was running or user selected None from database select list
+
+
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CD4DE47858E1691FE0431EC0E50ACE64
+Check component(SIDBMAA) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =CD4E6F96CB664187E0431EC0E50A30D4
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 160.0.0.0.0.0.0.0.0.0 (apps_user_br) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =D4287313E254198CE0431EC0E50AA1F1
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =D51702C08E6F2D15E0431EC0E50A68EF
+Skipping Parallel Execution Health-Checks and Diagnostics Reports (CHECK ID DC3D819F5D2A50FEE04312C0E50AFF9F) because execute_once is true
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 171.0.0.0.0.0.0.0.0.0 (Data Corruption:- Is there a physical standby.True?) because either no database was running or user selected None from database select list
+
+
+Check component(PREUPGR:PREUPGRSIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =DC44A348C1540E8EE04313C0E50AE337
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 173.0.0.0.0.0.0.0.0.0 (Verify data files are recoverable) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 174.0.0.0.0.0.0.0.0.0 (Data Corruption:- Is there a physical standby-False?) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =E0144C7260D0599AE04312C0E50A5C3D
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 178.0.0.0.0.0.0.0.0.0 (Is GoldenGate configured for 11204?) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 179.0.0.0.0.0.0.0.0.0 (Is GoldenGate configured for 11203?) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 180.0.0.0.0.0.0.0.0.0 (branch when control_file_record_keep_time is 0) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 182.0.0.0.0.0.0.0.0.0 (Verify rman controlfile autobackup is set to ON) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep asm_pmon|grep -v grep|wc -l at 183.0.0.0.0.0.0.0.0.0 (Branch when control_file_record_keep_time is not 0) because either no database was running or user selected None from database select list
+
+
+
+HOST rac1 BRANCH 184.0.0.0.0.0.0.0.0.0
+  SF = DATABASE CONSOLIDATION BEST PRACTICES
+  CATEGORY = ORACLE
+  SUBCATEGORY = CONFIGURATION
+  IS_BRANCH = 1
+  PARAMETER OR PATH = UNSPECIFIED
+  COMMAND = ps -ef |grep ora_pmon|grep -v grep |wc -l
+AUDIT_CHECK_COMPONENTS = SIDBMAA:MAA
+AUDIT_CHECK_ID = E596FB09DE302047E04312C0E50AD481
+  COMMAND RESULT = 2
+  OPERATOR = -ge
+  COMPARISON VALUE = 5
+
+ROW=184.0.0.0.0.0.0.0.0.0 command=ps -ef |grep ora_pmon|grep -v grep |wc -l actual value=2 opeartor=-ge required value =5 execute once=0 
+BRANCH CONDITION FALSE
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 185.0.0.0.0.0.0.0.0.0 (Optimizer Parameters with Non-Default Settings (Check 1)) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 187.0.0.0.0.0.0.0.0.0 (Tablespace extent management Allocation Type for SecureFiles LOB storage) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 188.0.0.0.0.0.0.0.0.0 (generic_apps_user_br) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 189.0.0.0.0.0.0.0.0.0 (nls_sort parameter) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 190.0.0.0.0.0.0.0.0.0 (db_file_multiblock_read_count parameter) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 191.0.0.0.0.0.0.0.0.0 (optimizer_features_enable parameter) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 192.0.0.0.0.0.0.0.0.0 (Obsolete Database Parameters for 11.2) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 193.0.0.0.0.0.0.0.0.0 (Optimizer Parameters with Non-Default Settings (Check 3)) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 194.0.0.0.0.0.0.0.0.0 (Optimizer Parameters with Non-Default Settings (Check 2)) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 195.0.0.0.0.0.0.0.0.0 (apps_user_bp_br) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =ED600DFC38714E72E04313C0E50AF4D9
+Check component(X5-8:X3-8:SIDB:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =F0AA717BAFCC5AF0E04313C0E50A8F36
+Check component(SIDB:EIGHTHX5-2:DBM:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =F19A4624602101E7E04312C0E50A8C5A
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 199.0.0.0.0.0.0.0.0.0 (Monitoring changes to schema objects) because either no database was running or user selected None from database select list
+
+
+Check component(SIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =F723B279BA9B18A5E04313C0E50A1B01
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 201.0.0.0.0.0.0.0.0.0 (session_cached_cursors parameter) because either no database was running or user selected None from database select list
+
+
+Check component(SIDB) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =F727CEE3C3A92E08E04312C0E50A7E8C
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 203.0.0.0.0.0.0.0.0.0 (Monitoring waiter sessions) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 204.0.0.0.0.0.0.0.0.0 (Monitoring SGA resize operations) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 205.0.0.0.0.0.0.0.0.0 (12c_EM Repository Presence) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 206.0.0.0.0.0.0.0.0.0 (AutoDOP_BR) because either no database was running or user selected None from database select list
+
+
+
+
+skipping ps -ef |grep ora_pmon|grep -v grep |wc -l at 207.0.0.0.0.0.0.0.0.0 (Is database SGA size greater than 300 GB?) because either no database was running or user selected None from database select list
+
+
+Check component(X5-8:X3-8:X4-8:X5-2:EIGHTHX5-2:EDVM:DBM:X2-2:X2-8:X3-2:AVM:EIGHTHX4-2:SUPERCLUSTERVM:SUPERCLUSTER:EIGHTH:SUPERCLUSTERX3-2:X4-2:SUPERCLUSTERX4-2) and system component(NONE:RACCHECK:MAA) dont match(0) for check_id =FA8F200DB25E39DAE04313C0E50A0787
+Collecting patch inventory on  CRS HOME /u01/11.2.0.4/grid
+Opatch failed with error code 126 on rac1 for /u01/11.2.0.4/grid.\n\norachk will use /u01/11.2.0.4/grid/inventory/ContentsXML/comps.xml as alternate source for installed recommended patch analysis
+Collecting patch inventory on ORACLE_HOME /u01/app/oracle/product/11.2.0.4/db_1 
+---------------------------------------------------------------------------------
+0 Recommended CRS patches for 112040 from /u01/11.2.0.4/grid on rac1
+---------------------------------------------------------------------------------
+Patch#   CRS  ASM    RDBMS RDBMS_HOME                              Patch-Description                            
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+0 Recommended RDBMS patches for 112040 from /u01/app/oracle/product/11.2.0.4/db_1 on rac1
+---------------------------------------------------------------------------------
+Patch#   RDBMS    ASM     type                Patch-Description                       
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+              Clusterware patches summary report
+---------------------------------------------------------------------------------
+Total patches  Applied on CRS Applied on RDBMS Applied on ASM 
+---------------------------------------------------------------------------------
+0              0              0                0              
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+              RDBMS homes patches summary report
+---------------------------------------------------------------------------------
+Total patches  Applied on RDBMS Applied on ASM ORACLE_HOME    
+---------------------------------------------------------------------------------
+ 0              0              0                /u01/app/oracle/product/11.2.0.4/db_1
+---------------------------------------------------------------------------------
+
+
+End Time:1429218522
+
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+  PARAMETER OR PATH = RDBMS
+  COMMAND =  usrlimit=$(ulimit -Hu);if [ "$usrlimit" = "unlimited" ];then echo 1;elif [ $usrlimit -ge 16384 ];then echo 1;else echo 0;fi
+AUDIT_CHECK_COMPONENTS = RACCHECK
+AUDIT_CHECK_ID = 841E706550975C68E040E50A1EC05EFB
+  COMMAND RESULT = 2
+  OPERATOR = -eq
+  COMPARISON VALUE = 1
+
+
+  PARAMETER OR PATH = RDBMS
+  COMMAND =  usrlimit=$(ulimit -Hu);if [ "$usrlimit" = "unlimited" ];then echo 1;elif [ $usrlimit -ge 16384 ];then echo 1;else echo 0;fi
+AUDIT_CHECK_COMPONENTS = ODA_VM:ODA:DBM:RACCHECK
+AUDIT_CHECK_ID = 841E706550975C68E040E50A1EC05EFB
+  COMMAND RESULT = 2
+  OPERATOR = -eq
+  COMPARISON VALUE = 1
+
+
+PASS =>  RDBMS software owner UID matches across cluster
+
+CHECK ID = 7E3FAC1843F137ABE040E50A1EC0139B 
+AUDIT CHECK NAME = RDBMS software owner UID across cluster
+
+---------------------------------------------
+---------------------------------------------------------------------------------
+required environment variables are not set to upload zip file to database

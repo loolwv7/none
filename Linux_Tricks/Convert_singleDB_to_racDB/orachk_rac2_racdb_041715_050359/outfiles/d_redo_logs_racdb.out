@@ -1,0 +1,130 @@
+
+racdb2.Group14_Thread2_Sequence# = 0                                            
+racdb2.Group14_Thread2_redo log file size(mb) = 500                             
+racdb2.Group14_Thread2_Archived = YES                                           
+racdb2.Group14_Thread2_Status = UNUSED                                          
+                                                                                
+racdb2.Group13_Thread2_Sequence# = 0                                            
+racdb2.Group13_Thread2_redo log file size(mb) = 500                             
+racdb2.Group13_Thread2_Archived = YES                                           
+racdb2.Group13_Thread2_Status = UNUSED                                          
+                                                                                
+racdb2.Group12_Thread2_Sequence# = 4                                            
+racdb2.Group12_Thread2_redo log file size(mb) = 500                             
+racdb2.Group12_Thread2_Archived = NO                                            
+
+racdb2.Group12_Thread2_Status = CURRENT                                         
+                                                                                
+racdb2.Group11_Thread2_Sequence# = 3                                            
+racdb2.Group11_Thread2_redo log file size(mb) = 500                             
+racdb2.Group11_Thread2_Archived = YES                                           
+racdb2.Group11_Thread2_Status = INACTIVE                                        
+                                                                                
+racdb2.Group10_Thread2_Sequence# = 2                                            
+racdb2.Group10_Thread2_redo log file size(mb) = 500                             
+racdb2.Group10_Thread2_Archived = YES                                           
+racdb2.Group10_Thread2_Status = INACTIVE                                        
+                                                                                
+racdb2.Group9_Thread2_Sequence# = 1                                             
+
+racdb2.Group9_Thread2_redo log file size(mb) = 500                              
+racdb2.Group9_Thread2_Archived = YES                                            
+racdb2.Group9_Thread2_Status = INACTIVE                                         
+                                                                                
+racdb2.Group8_Thread1_Sequence# = 6                                             
+racdb2.Group8_Thread1_redo log file size(mb) = 1000                             
+racdb2.Group8_Thread1_Archived = NO                                             
+racdb2.Group8_Thread1_Status = CURRENT                                          
+                                                                                
+racdb2.Group7_Thread1_Sequence# = 5                                             
+racdb2.Group7_Thread1_redo log file size(mb) = 1000                             
+racdb2.Group7_Thread1_Archived = YES                                            
+racdb2.Group7_Thread1_Status = INACTIVE                                         
+
+                                                                                
+racdb2.Group6_Thread1_Sequence# = 4                                             
+racdb2.Group6_Thread1_redo log file size(mb) = 1000                             
+racdb2.Group6_Thread1_Archived = YES                                            
+racdb2.Group6_Thread1_Status = INACTIVE                                         
+                                                                                
+racdb2.Group5_Thread1_Sequence# = 3                                             
+racdb2.Group5_Thread1_redo log file size(mb) = 1000                             
+racdb2.Group5_Thread1_Archived = YES                                            
+racdb2.Group5_Thread1_Status = INACTIVE                                         
+                                                                                
+racdb2.Group2_Thread1_Sequence# = 2                                             
+racdb2.Group2_Thread1_redo log file size(mb) = 50                               
+
+racdb2.Group2_Thread1_Archived = YES                                            
+racdb2.Group2_Thread1_Status = INACTIVE                                         
+                                                                                
+racdb2.Group1_Thread1_Sequence# = 1                                             
+racdb2.Group1_Thread1_redo log file size(mb) = 50                               
+racdb2.Group1_Thread1_Archived = YES                                            
+racdb2.Group1_Thread1_Status = INACTIVE                                         
+                                                                                
+racdb1.Group14_Thread2_Sequence# = 0                                            
+racdb1.Group14_Thread2_redo log file size(mb) = 500                             
+racdb1.Group14_Thread2_Archived = YES                                           
+racdb1.Group14_Thread2_Status = UNUSED                                          
+                                                                                
+
+racdb1.Group13_Thread2_Sequence# = 0                                            
+racdb1.Group13_Thread2_redo log file size(mb) = 500                             
+racdb1.Group13_Thread2_Archived = YES                                           
+racdb1.Group13_Thread2_Status = UNUSED                                          
+                                                                                
+racdb1.Group12_Thread2_Sequence# = 4                                            
+racdb1.Group12_Thread2_redo log file size(mb) = 500                             
+racdb1.Group12_Thread2_Archived = NO                                            
+racdb1.Group12_Thread2_Status = CURRENT                                         
+                                                                                
+racdb1.Group11_Thread2_Sequence# = 3                                            
+racdb1.Group11_Thread2_redo log file size(mb) = 500                             
+racdb1.Group11_Thread2_Archived = YES                                           
+
+racdb1.Group11_Thread2_Status = INACTIVE                                        
+                                                                                
+racdb1.Group10_Thread2_Sequence# = 2                                            
+racdb1.Group10_Thread2_redo log file size(mb) = 500                             
+racdb1.Group10_Thread2_Archived = YES                                           
+racdb1.Group10_Thread2_Status = INACTIVE                                        
+                                                                                
+racdb1.Group9_Thread2_Sequence# = 1                                             
+racdb1.Group9_Thread2_redo log file size(mb) = 500                              
+racdb1.Group9_Thread2_Archived = YES                                            
+racdb1.Group9_Thread2_Status = INACTIVE                                         
+                                                                                
+racdb1.Group8_Thread1_Sequence# = 6                                             
+
+racdb1.Group8_Thread1_redo log file size(mb) = 1000                             
+racdb1.Group8_Thread1_Archived = NO                                             
+racdb1.Group8_Thread1_Status = CURRENT                                          
+                                                                                
+racdb1.Group7_Thread1_Sequence# = 5                                             
+racdb1.Group7_Thread1_redo log file size(mb) = 1000                             
+racdb1.Group7_Thread1_Archived = YES                                            
+racdb1.Group7_Thread1_Status = INACTIVE                                         
+                                                                                
+racdb1.Group6_Thread1_Sequence# = 4                                             
+racdb1.Group6_Thread1_redo log file size(mb) = 1000                             
+racdb1.Group6_Thread1_Archived = YES                                            
+racdb1.Group6_Thread1_Status = INACTIVE                                         
+
+                                                                                
+racdb1.Group5_Thread1_Sequence# = 3                                             
+racdb1.Group5_Thread1_redo log file size(mb) = 1000                             
+racdb1.Group5_Thread1_Archived = YES                                            
+racdb1.Group5_Thread1_Status = INACTIVE                                         
+                                                                                
+racdb1.Group2_Thread1_Sequence# = 2                                             
+racdb1.Group2_Thread1_redo log file size(mb) = 50                               
+racdb1.Group2_Thread1_Archived = YES                                            
+racdb1.Group2_Thread1_Status = INACTIVE                                         
+                                                                                
+racdb1.Group1_Thread1_Sequence# = 1                                             
+racdb1.Group1_Thread1_redo log file size(mb) = 50                               
+
+racdb1.Group1_Thread1_Archived = YES                                            
+racdb1.Group1_Thread1_Status = INACTIVE                                         
+                                                                                

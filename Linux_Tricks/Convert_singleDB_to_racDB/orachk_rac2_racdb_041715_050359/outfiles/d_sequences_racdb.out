@@ -1,0 +1,246 @@
+
+APEX_030200_WWV_FLOW_SESSION_SEQ_INCREMENT_BY = 1                               
+APEX_030200_WWV_FLOW_SESSION_SEQ_ORDER_FLAG = N                                 
+APEX_030200_WWV_FLOW_SESSION_SEQ_CACHE_SIZE = 20                                
+                                                                                
+APEX_030200_WWV_FLOW_VERSION_SEQ_INCREMENT_BY = 1                               
+APEX_030200_WWV_FLOW_VERSION_SEQ_ORDER_FLAG = N                                 
+APEX_030200_WWV_FLOW_VERSION_SEQ_CACHE_SIZE = 20                                
+                                                                                
+APEX_030200_WWV_FLOW_WORKSHEET_SEQ_INCREMENT_BY = 1                             
+APEX_030200_WWV_FLOW_WORKSHEET_SEQ_ORDER_FLAG = N                               
+APEX_030200_WWV_FLOW_WORKSHEET_SEQ_CACHE_SIZE = 20                              
+                                                                                
+APEX_030200_WWV_SEQ_INCREMENT_BY = 1                                            
+
+APEX_030200_WWV_SEQ_ORDER_FLAG = N                                              
+APEX_030200_WWV_SEQ_CACHE_SIZE = 20                                             
+                                                                                
+ORDDATA_ORDDCM_ANON_ATTRS_SEQ_INCREMENT_BY = 1                                  
+ORDDATA_ORDDCM_ANON_ATTRS_SEQ_ORDER_FLAG = Y                                    
+ORDDATA_ORDDCM_ANON_ATTRS_SEQ_CACHE_SIZE = 0                                    
+                                                                                
+ORDDATA_ORDDCM_CT_PRED_SEQ_INCREMENT_BY = 1                                     
+ORDDATA_ORDDCM_CT_PRED_SEQ_ORDER_FLAG = Y                                       
+ORDDATA_ORDDCM_CT_PRED_SEQ_CACHE_SIZE = 0                                       
+                                                                                
+ORDDATA_ORDDCM_CT_PRED_SET_SEQ_INCREMENT_BY = 1                                 
+ORDDATA_ORDDCM_CT_PRED_SET_SEQ_ORDER_FLAG = Y                                   
+
+ORDDATA_ORDDCM_CT_PRED_SET_SEQ_CACHE_SIZE = 0                                   
+                                                                                
+ORDDATA_ORDDCM_DATA_MODEL_SEQ_INCREMENT_BY = 1                                  
+ORDDATA_ORDDCM_DATA_MODEL_SEQ_ORDER_FLAG = Y                                    
+ORDDATA_ORDDCM_DATA_MODEL_SEQ_CACHE_SIZE = 0                                    
+                                                                                
+ORDDATA_ORDDCM_DICT_A_DA_ID_SEQ_INCREMENT_BY = 1                                
+ORDDATA_ORDDCM_DICT_A_DA_ID_SEQ_ORDER_FLAG = Y                                  
+ORDDATA_ORDDCM_DICT_A_DA_ID_SEQ_CACHE_SIZE = 0                                  
+                                                                                
+ORDDATA_ORDDCM_DOCS_ID_SEQ_INCREMENT_BY = 1                                     
+ORDDATA_ORDDCM_DOCS_ID_SEQ_ORDER_FLAG = Y                                       
+ORDDATA_ORDDCM_DOCS_ID_SEQ_CACHE_SIZE = 0                                       
+
+                                                                                
+ORDDATA_ORDDCM_MPD_P_MPID_SEQ_INCREMENT_BY = 1                                  
+ORDDATA_ORDDCM_MPD_P_MPID_SEQ_ORDER_FLAG = Y                                    
+ORDDATA_ORDDCM_MPD_P_MPID_SEQ_CACHE_SIZE = 0                                    
+                                                                                
+ORDDATA_ORDDCM_PRV_A_PA_ID_SEQ_INCREMENT_BY = 1                                 
+ORDDATA_ORDDCM_PRV_A_PA_ID_SEQ_ORDER_FLAG = Y                                   
+ORDDATA_ORDDCM_PRV_A_PA_ID_SEQ_CACHE_SIZE = 0                                   
+                                                                                
+ORDDATA_ORDDCM_RT_PREF_P_PPID_SEQ_INCREMENT_BY = 1                              
+ORDDATA_ORDDCM_RT_PREF_P_PPID_SEQ_ORDER_FLAG = Y                                
+ORDDATA_ORDDCM_RT_PREF_P_PPID_SEQ_CACHE_SIZE = 0                                
+                                                                                
+
+ORDDATA_ORDDCM_STD_A_SA_ID_SEQ_INCREMENT_BY = 1                                 
+ORDDATA_ORDDCM_STD_A_SA_ID_SEQ_ORDER_FLAG = Y                                   
+ORDDATA_ORDDCM_STD_A_SA_ID_SEQ_CACHE_SIZE = 0                                   
+                                                                                
+ORDDATA_ORDDCM_STOREDTAGS_STID_SEQ_INCREMENT_BY = 1                             
+ORDDATA_ORDDCM_STOREDTAGS_STID_SEQ_ORDER_FLAG = Y                               
+ORDDATA_ORDDCM_STOREDTAGS_STID_SEQ_CACHE_SIZE = 0                               
+                                                                                
+ORDDATA_ORDDCM_UID_DEFS_UDID_SEQ_INCREMENT_BY = 1                               
+ORDDATA_ORDDCM_UID_DEFS_UDID_SEQ_ORDER_FLAG = Y                                 
+ORDDATA_ORDDCM_UID_DEFS_UDID_SEQ_CACHE_SIZE = 0                                 
+                                                                                
+SYS_AUDSES$_INCREMENT_BY = 1                                                    
+
+SYS_AUDSES$_ORDER_FLAG = N                                                      
+SYS_AUDSES$_CACHE_SIZE = 10000                                                  
+                                                                                
+SYS_IDGEN1$_INCREMENT_BY = 50                                                   
+SYS_IDGEN1$_ORDER_FLAG = N                                                      
+SYS_IDGEN1$_CACHE_SIZE = 1000                                                   
+                                                                                
+VMS_S_ALARM_MSG_LOG_INCREMENT_BY = 1                                            
+VMS_S_ALARM_MSG_LOG_ORDER_FLAG = N                                              
+VMS_S_ALARM_MSG_LOG_CACHE_SIZE = 20                                             
+                                                                                
+VMS_S_ALARM_REGION_INCREMENT_BY = 1                                             
+VMS_S_ALARM_REGION_ORDER_FLAG = N                                               
+
+VMS_S_ALARM_REGION_CACHE_SIZE = 20                                              
+                                                                                
+VMS_S_AUTH_TYPE_INCREMENT_BY = 1                                                
+VMS_S_AUTH_TYPE_ORDER_FLAG = N                                                  
+VMS_S_AUTH_TYPE_CACHE_SIZE = 20                                                 
+                                                                                
+VMS_S_BUG_LOG_INCREMENT_BY = 1                                                  
+VMS_S_BUG_LOG_ORDER_FLAG = N                                                    
+VMS_S_BUG_LOG_CACHE_SIZE = 20                                                   
+                                                                                
+VMS_S_COMMAND_HIS_ID_INCREMENT_BY = 1                                           
+VMS_S_COMMAND_HIS_ID_ORDER_FLAG = N                                             
+VMS_S_COMMAND_HIS_ID_CACHE_SIZE = 20                                            
+
+                                                                                
+VMS_S_COMPANY_INCREMENT_BY = 1                                                  
+VMS_S_COMPANY_ORDER_FLAG = N                                                    
+VMS_S_COMPANY_CACHE_SIZE = 20                                                   
+                                                                                
+VMS_S_FISHERINFODETAIL_INCREMENT_BY = 1                                         
+VMS_S_FISHERINFODETAIL_ORDER_FLAG = N                                           
+VMS_S_FISHERINFODETAIL_CACHE_SIZE = 20                                          
+                                                                                
+VMS_S_FORECAST_INCREMENT_BY = 1                                                 
+VMS_S_FORECAST_ORDER_FLAG = N                                                   
+VMS_S_FORECAST_CACHE_SIZE = 20                                                  
+                                                                                
+
+VMS_S_MESSAGEID_INCREMENT_BY = 1                                                
+VMS_S_MESSAGEID_ORDER_FLAG = N                                                  
+VMS_S_MESSAGEID_CACHE_SIZE = 20                                                 
+                                                                                
+VMS_S_MOBILEDETAIL_INCREMENT_BY = 1                                             
+VMS_S_MOBILEDETAIL_ORDER_FLAG = N                                               
+VMS_S_MOBILEDETAIL_CACHE_SIZE = 20                                              
+                                                                                
+VMS_S_MOBILE_GROUP_ASSIGN_INCREMENT_BY = 1                                      
+VMS_S_MOBILE_GROUP_ASSIGN_ORDER_FLAG = N                                        
+VMS_S_MOBILE_GROUP_ASSIGN_CACHE_SIZE = 20                                       
+                                                                                
+VMS_S_MOBILE_GROUP_INCREMENT_BY = 1                                             
+
+VMS_S_MOBILE_GROUP_ORDER_FLAG = N                                               
+VMS_S_MOBILE_GROUP_CACHE_SIZE = 20                                              
+                                                                                
+VMS_S_MOBILE_INCREMENT_BY = 1                                                   
+VMS_S_MOBILE_ORDER_FLAG = N                                                     
+VMS_S_MOBILE_CACHE_SIZE = 20                                                    
+                                                                                
+VMS_S_MOBILE_REGION_INCREMENT_BY = 1                                            
+VMS_S_MOBILE_REGION_ORDER_FLAG = N                                              
+VMS_S_MOBILE_REGION_CACHE_SIZE = 20                                             
+                                                                                
+VMS_S_MOBILE_TERMINAL_ASSIGN_INCREMENT_BY = 1                                   
+VMS_S_MOBILE_TERMINAL_ASSIGN_ORDER_FLAG = N                                     
+
+VMS_S_MOBILE_TERMINAL_ASSIGN_CACHE_SIZE = 20                                    
+                                                                                
+VMS_S_NEW_TYPHOON1_INCREMENT_BY = 1                                             
+VMS_S_NEW_TYPHOON1_ORDER_FLAG = N                                               
+VMS_S_NEW_TYPHOON1_CACHE_SIZE = 20                                              
+                                                                                
+VMS_S_NINGBODETAIL_INCREMENT_BY = 1                                             
+VMS_S_NINGBODETAIL_ORDER_FLAG = N                                               
+VMS_S_NINGBODETAIL_CACHE_SIZE = 20                                              
+                                                                                
+VMS_S_OCEANPOLYGON_INCREMENT_BY = 1                                             
+VMS_S_OCEANPOLYGON_ORDER_FLAG = N                                               
+VMS_S_OCEANPOLYGON_CACHE_SIZE = 20                                              
+
+                                                                                
+VMS_S_OCEANWAVE_INCREMENT_BY = 1                                                
+VMS_S_OCEANWAVE_ORDER_FLAG = N                                                  
+VMS_S_OCEANWAVE_CACHE_SIZE = 20                                                 
+                                                                                
+VMS_S_OPERATOR_CHANGE_LOG_INCREMENT_BY = 1                                      
+VMS_S_OPERATOR_CHANGE_LOG_ORDER_FLAG = N                                        
+VMS_S_OPERATOR_CHANGE_LOG_CACHE_SIZE = 20                                       
+                                                                                
+VMS_S_OPERATOR_GROUP_AUTH_INCREMENT_BY = 1                                      
+VMS_S_OPERATOR_GROUP_AUTH_ORDER_FLAG = N                                        
+VMS_S_OPERATOR_GROUP_AUTH_CACHE_SIZE = 20                                       
+                                                                                
+
+VMS_S_OPERATOR_INCREMENT_BY = 1                                                 
+VMS_S_OPERATOR_ORDER_FLAG = N                                                   
+VMS_S_OPERATOR_CACHE_SIZE = 0                                                   
+                                                                                
+VMS_S_OPERATOR_REGION_ASSIGN_INCREMENT_BY = 1                                   
+VMS_S_OPERATOR_REGION_ASSIGN_ORDER_FLAG = N                                     
+VMS_S_OPERATOR_REGION_ASSIGN_CACHE_SIZE = 20                                    
+                                                                                
+VMS_S_REGION_ALARM_MESSAGE_INCREMENT_BY = 1                                     
+VMS_S_REGION_ALARM_MESSAGE_ORDER_FLAG = N                                       
+VMS_S_REGION_ALARM_MESSAGE_CACHE_SIZE = 20                                      
+                                                                                
+VMS_S_REGION_INCREMENT_BY = 1                                                   
+
+VMS_S_REGION_ORDER_FLAG = N                                                     
+VMS_S_REGION_CACHE_SIZE = 20                                                    
+                                                                                
+VMS_S_REPORT_INCREMENT_BY = 1                                                   
+VMS_S_REPORT_ORDER_FLAG = N                                                     
+VMS_S_REPORT_CACHE_SIZE = 20                                                    
+                                                                                
+VMS_S_REQUEST_TYPET_INCREMENT_BY = 1                                            
+VMS_S_REQUEST_TYPET_ORDER_FLAG = N                                              
+VMS_S_REQUEST_TYPET_CACHE_SIZE = 20                                             
+                                                                                
+VMS_S_RESPONSECOMMAND_INCREMENT_BY = 1                                          
+VMS_S_RESPONSECOMMAND_ORDER_FLAG = N                                            
+
+VMS_S_RESPONSECOMMAND_CACHE_SIZE = 20                                           
+                                                                                
+VMS_S_SEQUENCE_RECORD_INCREMENT_BY = 1                                          
+VMS_S_SEQUENCE_RECORD_ORDER_FLAG = N                                            
+VMS_S_SEQUENCE_RECORD_CACHE_SIZE = 20                                           
+                                                                                
+VMS_S_SHIP_ARRIVE_TIME_INCREMENT_BY = 1                                         
+VMS_S_SHIP_ARRIVE_TIME_ORDER_FLAG = N                                           
+VMS_S_SHIP_ARRIVE_TIME_CACHE_SIZE = 20                                          
+                                                                                
+VMS_S_SOA_LOG_INCREMENT_BY = 1                                                  
+VMS_S_SOA_LOG_ORDER_FLAG = N                                                    
+VMS_S_SOA_LOG_CACHE_SIZE = 20                                                   
+
+                                                                                
+VMS_S_SYSM_OPERATE_LOG_INCREMENT_BY = 1                                         
+VMS_S_SYSM_OPERATE_LOG_ORDER_FLAG = N                                           
+VMS_S_SYSM_OPERATE_LOG_CACHE_SIZE = 20                                          
+                                                                                
+VMS_S_SYSM_USER_INCREMENT_BY = 1                                                
+VMS_S_SYSM_USER_ORDER_FLAG = N                                                  
+VMS_S_SYSM_USER_CACHE_SIZE = 20                                                 
+                                                                                
+VMS_S_TERMINALTYPE_INCREMENT_BY = 1                                             
+VMS_S_TERMINALTYPE_ORDER_FLAG = N                                               
+VMS_S_TERMINALTYPE_CACHE_SIZE = 20                                              
+                                                                                
+
+VMS_S_TERMINAL_INCREMENT_BY = 1                                                 
+VMS_S_TERMINAL_ORDER_FLAG = N                                                   
+VMS_S_TERMINAL_CACHE_SIZE = 20                                                  
+                                                                                
+VMS_S_TOWNUPSEND_INCREMENT_BY = 1                                               
+VMS_S_TOWNUPSEND_ORDER_FLAG = N                                                 
+VMS_S_TOWNUPSEND_CACHE_SIZE = 20                                                
+                                                                                
+VMS_S_TRACKID_INCREMENT_BY = 1                                                  
+VMS_S_TRACKID_ORDER_FLAG = N                                                    
+VMS_S_TRACKID_CACHE_SIZE = 20                                                   
+                                                                                
+VMS_S_TYPHOON_FORECASE_INCREMENT_BY = 1                                         
+
+VMS_S_TYPHOON_FORECASE_ORDER_FLAG = N                                           
+VMS_S_TYPHOON_FORECASE_CACHE_SIZE = 20                                          
+                                                                                
+VMS_S_VILLAGEUPSEND_INCREMENT_BY = 1                                            
+VMS_S_VILLAGEUPSEND_ORDER_FLAG = N                                              
+VMS_S_VILLAGEUPSEND_CACHE_SIZE = 20                                             
+                                                                                

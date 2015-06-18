@@ -1,0 +1,8 @@
+TO REVIEW COLLECTED DATA FROM RAC2 - RDBMS SOFTWARE OWNER UID ACROSS CLUSTER 
+
+
+
+uid=54321(oracle) gid=54321(oinstall) groups=54321(oinstall),54322(dba),54323(asmdba),54324(asmadmin),54325(asmoper),54326(oper)
+
+
+

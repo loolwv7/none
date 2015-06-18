@@ -1,0 +1,24 @@
+一、刑科所
+1, 存储中一块硬盘亮红灯，经确认于7月份便已出错，热备盘已顶上，需要更换。
+目前已经更换上去, 存储运行正常。
+
+2,EMC存储中一块硬盘亮红灯，经确认于7月份便已出错，热备盘已顶上，需要更换。
+目前已经更换上去(10月9号), 存储运行正常。
+
+二、瓯海区府
+1, N3400中的一个LUN已经満了，无法激活，通过以下方式解决。
+NAS3400-A> vol size vol1 +200G
+vol size: Flexible volume 'vol1' size set to 2093g.
+
+NAS3400-A> lun resize /vol/vol1/lunesx +4G
+lun resize: resized to:  620.1g (665805914112)
+
+NAS3400-A> Mon Oct 27 10:30:00 CST [NAS3400-A: monitor.globalStatus.ok:info]:
+The system's global status is normal. 
+
+NAS3400-A> lun online /vol/vol1/lunesx
+NAS3400-A> lun show
+  /vol/vol1/lunesx           620.1g (665805914112)  (r/w, online, mapped)
+
+2, DS3400存储无法登录，经确认B控已经出现故障，无法管理。
+通过A控登录并确认了相关信息。

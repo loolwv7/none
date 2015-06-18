@@ -1,0 +1,452 @@
+
+Recovery Manager: Release 11.2.0.4.0 - Production on Thu Apr 16 19:07:37 2015
+
+Copyright (c) 1982, 2011, Oracle and/or its affiliates.  All rights reserved.
+
+RMAN> connect target *
+2> connect auxiliary *
+3> run{
+4> duplicate target database to mfsdb from active database;
+5> }
+6> exit;
+connected to target database: MFSDB (DBID=4084311304)
+
+connected to auxiliary database: MFSDB (not mounted)
+
+Starting Duplicate Db at 2015/04/16 19:07:39
+using target database control file instead of recovery catalog
+allocated channel: ORA_AUX_DISK_1
+channel ORA_AUX_DISK_1: SID=217 device type=DISK
+
+contents of Memory Script:
+{
+   sql clone "alter system set  control_files = 
+  ''+DATA/mfsdb/controlfile/current.265.877193177'', ''+FLASH/mfsdb/controlfile/current.268.877193177'' comment=
+ ''Set by RMAN'' scope=spfile";
+   sql clone "alter system set  db_name = 
+ ''MFSDB'' comment=
+ ''Modified by RMAN duplicate'' scope=spfile";
+   sql clone "alter system set  db_unique_name = 
+ ''MFSDB'' comment=
+ ''Modified by RMAN duplicate'' scope=spfile";
+   shutdown clone immediate;
+   startup clone force nomount
+   backup as copy current controlfile auxiliary format  '+DATA/mfsdb/controlfile/current.265.877193177';
+   restore clone controlfile to  '+FLASH/mfsdb/controlfile/current.268.877193177' from 
+ '+DATA/mfsdb/controlfile/current.265.877193177';
+   sql clone "alter system set  control_files = 
+  ''+DATA/mfsdb/controlfile/current.265.877193177'', ''+FLASH/mfsdb/controlfile/current.268.877193177'' comment=
+ ''Set by RMAN'' scope=spfile";
+   shutdown clone immediate;
+   startup clone nomount;
+   alter clone database mount;
+}
+executing Memory Script
+
+sql statement: alter system set  control_files =   ''+DATA/mfsdb/controlfile/current.265.877193177'', ''+FLASH/mfsdb/controlfile/current.268.877193177'' comment= ''Set by RMAN'' scope=spfile
+
+sql statement: alter system set  db_name =  ''MFSDB'' comment= ''Modified by RMAN duplicate'' scope=spfile
+
+sql statement: alter system set  db_unique_name =  ''MFSDB'' comment= ''Modified by RMAN duplicate'' scope=spfile
+
+Oracle instance shut down
+
+Oracle instance started
+
+Total System Global Area    1603411968 bytes
+
+Fixed Size                     2253664 bytes
+Variable Size                469765280 bytes
+Database Buffers            1107296256 bytes
+Redo Buffers                  24096768 bytes
+
+Starting backup at 2015/04/16 19:08:03
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=132 device type=DISK
+channel ORA_DISK_1: starting datafile copy
+copying current control file
+output file name=/u01/app/oracle/product/11.2.0/db1104/dbs/snapcf_mfsdb.f tag=TAG20150416T190801 RECID=6 STAMP=877201685
+channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:07
+Finished backup at 2015/04/16 19:08:11
+
+Starting restore at 2015/04/16 19:08:12
+allocated channel: ORA_AUX_DISK_1
+channel ORA_AUX_DISK_1: SID=211 device type=DISK
+
+channel ORA_AUX_DISK_1: copied control file copy
+Finished restore at 2015/04/16 19:08:13
+
+sql statement: alter system set  control_files =   ''+DATA/mfsdb/controlfile/current.265.877193177'', ''+FLASH/mfsdb/controlfile/current.268.877193177'' comment= ''Set by RMAN'' scope=spfile
+
+Oracle instance shut down
+
+connected to auxiliary database (not started)
+Oracle instance started
+
+Total System Global Area    1603411968 bytes
+
+Fixed Size                     2253664 bytes
+Variable Size                469765280 bytes
+Database Buffers            1107296256 bytes
+Redo Buffers                  24096768 bytes
+
+database mounted
+Using previous duplicated file +DATA/mfsdb/datafile/system.275.877200763 for datafile 1 with checkpoint SCN of 7647919
+Using previous duplicated file +DATA/mfsdb/datafile/sysaux.274.877200755 for datafile 2 with checkpoint SCN of 7647916
+Using previous duplicated file +DATA/mfsdb/datafile/undotbs1.276.877200771 for datafile 3 with checkpoint SCN of 7647922
+Using previous duplicated file +DATA/mfsdb/datafile/users.279.877200781 for datafile 4 with checkpoint SCN of 7647932
+Using previous duplicated file +DATA/mfsdb/datafile/zjtdr.277.877200773 for datafile 5 with checkpoint SCN of 7647928
+Using previous duplicated file +DATA/mfsdb/datafile/tbs_rman.278.877200777 for datafile 6 with checkpoint SCN of 7647930
+
+contents of Memory Script:
+{
+   set newname for datafile  1 to 
+ "+DATA/mfsdb/datafile/system.275.877200763";
+   set newname for datafile  2 to 
+ "+DATA/mfsdb/datafile/sysaux.274.877200755";
+   set newname for datafile  3 to 
+ "+DATA/mfsdb/datafile/undotbs1.276.877200771";
+   set newname for datafile  4 to 
+ "+DATA/mfsdb/datafile/users.279.877200781";
+   set newname for datafile  5 to 
+ "+DATA/mfsdb/datafile/zjtdr.277.877200773";
+   set newname for datafile  6 to 
+ "+DATA/mfsdb/datafile/tbs_rman.278.877200777";
+   set newname for clone datafile  7 to new;
+   backup as copy reuse
+   datafile  7 auxiliary format new
+   ;
+   sql 'alter system archive log current';
+}
+executing Memory Script
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+Starting backup at 2015/04/16 19:08:45
+using channel ORA_DISK_1
+channel ORA_DISK_1: starting datafile copy
+input datafile file number=00007 name=/u01/app/oracle/oradata/mfsdb/undotbs02.dbf
+output file name=+DATA/mfsdb/datafile/undotbs2.280.877201727 tag=TAG20150416T190843
+channel ORA_DISK_1: datafile copy complete, elapsed time: 00:00:03
+Finished backup at 2015/04/16 19:08:48
+
+sql statement: alter system archive log current
+
+contents of Memory Script:
+{
+   backup as copy reuse
+   archivelog like  "/u01/app/oracle/flash_recovery_area/mfsdb/MFSDB/archivelog/2015_04_16/o1_mf_1_195_blz54dn8_.arc" auxiliary format 
+ "+FLASH"   archivelog like 
+ "/u01/app/oracle/flash_recovery_area/mfsdb/MFSDB/archivelog/2015_04_16/o1_mf_1_196_blz62181_.arc" auxiliary format 
+ "+FLASH"   ;
+   catalog clone start with  "+FLASH";
+   catalog clone datafilecopy  "+DATA/mfsdb/datafile/system.275.877200763", 
+ "+DATA/mfsdb/datafile/sysaux.274.877200755", 
+ "+DATA/mfsdb/datafile/undotbs1.276.877200771", 
+ "+DATA/mfsdb/datafile/users.279.877200781", 
+ "+DATA/mfsdb/datafile/zjtdr.277.877200773", 
+ "+DATA/mfsdb/datafile/tbs_rman.278.877200777";
+   switch clone datafile  1 to datafilecopy 
+ "+DATA/mfsdb/datafile/system.275.877200763";
+   switch clone datafile  2 to datafilecopy 
+ "+DATA/mfsdb/datafile/sysaux.274.877200755";
+   switch clone datafile  3 to datafilecopy 
+ "+DATA/mfsdb/datafile/undotbs1.276.877200771";
+   switch clone datafile  4 to datafilecopy 
+ "+DATA/mfsdb/datafile/users.279.877200781";
+   switch clone datafile  5 to datafilecopy 
+ "+DATA/mfsdb/datafile/zjtdr.277.877200773";
+   switch clone datafile  6 to datafilecopy 
+ "+DATA/mfsdb/datafile/tbs_rman.278.877200777";
+   switch clone datafile all;
+}
+executing Memory Script
+
+Starting backup at 2015/04/16 19:08:53
+using channel ORA_DISK_1
+channel ORA_DISK_1: starting archived log copy
+input archived log thread=1 sequence=195 RECID=78 STAMP=877200780
+output file name=+FLASH/mfsdb/archivelog/2015_04_16/thread_1_seq_195.283.877201733 RECID=0 STAMP=0
+channel ORA_DISK_1: archived log copy complete, elapsed time: 00:00:01
+channel ORA_DISK_1: starting archived log copy
+input archived log thread=1 sequence=196 RECID=79 STAMP=877201729
+output file name=+FLASH/mfsdb/archivelog/2015_04_16/thread_1_seq_196.284.877201735 RECID=0 STAMP=0
+channel ORA_DISK_1: archived log copy complete, elapsed time: 00:00:01
+Finished backup at 2015/04/16 19:08:55
+
+searching for all files that match the pattern +FLASH
+
+List of Files Unknown to the Database
+=====================================
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_193.261.877186459
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_194.273.877200369
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_2_seq_1.274.877200371
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_1.281.877200421
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_195.282.877200785
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_195.283.877201733
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_196.284.877201735
+File Name: +flash/MFSDB/ONLINELOG/group_1.257.877182031
+File Name: +flash/MFSDB/ONLINELOG/group_2.258.877182031
+File Name: +flash/MFSDB/ONLINELOG/group_3.259.877182151
+File Name: +flash/MFSDB/ONLINELOG/group_4.260.877182151
+File Name: +flash/MFSDB/ONLINELOG/group_1.262.877186525
+File Name: +flash/MFSDB/ONLINELOG/group_2.263.877186527
+File Name: +flash/MFSDB/ONLINELOG/group_3.264.877186527
+File Name: +flash/MFSDB/ONLINELOG/group_4.265.877187425
+File Name: +flash/MFSDB/ONLINELOG/group_5.266.877187441
+File Name: +flash/MFSDB/ONLINELOG/group_6.267.877187475
+File Name: +flash/MFSDB/ONLINELOG/group_1.269.877193177
+File Name: +flash/MFSDB/ONLINELOG/group_2.270.877193177
+File Name: +flash/MFSDB/ONLINELOG/group_3.271.877195629
+File Name: +flash/MFSDB/ONLINELOG/group_4.272.877195629
+File Name: +flash/MFSDB/ONLINELOG/group_4.275.877200419
+File Name: +flash/MFSDB/ONLINELOG/group_5.276.877200419
+File Name: +flash/MFSDB/ONLINELOG/group_6.277.877200419
+File Name: +flash/MFSDB/ONLINELOG/group_1.278.877200421
+File Name: +flash/MFSDB/ONLINELOG/group_2.279.877200421
+File Name: +flash/MFSDB/ONLINELOG/group_3.280.877200421
+File Name: +flash/MFSDB/CONTROLFILE/Current.256.877182027
+cataloging files...
+cataloging done
+
+List of Cataloged Files
+=======================
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_193.261.877186459
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_194.273.877200369
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_2_seq_1.274.877200371
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_195.282.877200785
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_195.283.877201733
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_196.284.877201735
+
+List of Files Which Where Not Cataloged
+=======================================
+File Name: +flash/MFSDB/ARCHIVELOG/2015_04_16/thread_1_seq_1.281.877200421
+  RMAN-07518: Reason: Foreign database file DBID: 4087169185  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_1.257.877182031
+  RMAN-07518: Reason: Foreign database file DBID: 4087150795  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_2.258.877182031
+  RMAN-07518: Reason: Foreign database file DBID: 4087150795  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_3.259.877182151
+  RMAN-07518: Reason: Foreign database file DBID: 4087150795  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_4.260.877182151
+  RMAN-07518: Reason: Foreign database file DBID: 4087150795  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_1.262.877186525
+  RMAN-07518: Reason: Foreign database file DBID: 4087155291  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_2.263.877186527
+  RMAN-07518: Reason: Foreign database file DBID: 4087155291  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_3.264.877186527
+  RMAN-07518: Reason: Foreign database file DBID: 4087155291  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_4.265.877187425
+  RMAN-07518: Reason: Foreign database file DBID: 4087155291  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_5.266.877187441
+  RMAN-07518: Reason: Foreign database file DBID: 4087155291  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_6.267.877187475
+  RMAN-07518: Reason: Foreign database file DBID: 4087155291  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_1.269.877193177
+  RMAN-07518: Reason: Foreign database file DBID: 4087161941  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_2.270.877193177
+  RMAN-07518: Reason: Foreign database file DBID: 4087161941  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_3.271.877195629
+  RMAN-07518: Reason: Foreign database file DBID: 4087161941  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_4.272.877195629
+  RMAN-07518: Reason: Foreign database file DBID: 4087161941  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_4.275.877200419
+  RMAN-07518: Reason: Foreign database file DBID: 4087169185  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_5.276.877200419
+  RMAN-07518: Reason: Foreign database file DBID: 4087169185  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_6.277.877200419
+  RMAN-07518: Reason: Foreign database file DBID: 4087169185  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_1.278.877200421
+  RMAN-07518: Reason: Foreign database file DBID: 4087169185  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_2.279.877200421
+  RMAN-07518: Reason: Foreign database file DBID: 4087169185  Database Name: MFSDB
+File Name: +flash/MFSDB/ONLINELOG/group_3.280.877200421
+  RMAN-07518: Reason: Foreign database file DBID: 4087169185  Database Name: MFSDB
+File Name: +flash/MFSDB/CONTROLFILE/Current.256.877182027
+  RMAN-07518: Reason: Foreign database file DBID: 4087155291  Database Name: MFSDB
+
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/system.275.877200763 RECID=6 STAMP=877201737
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/sysaux.274.877200755 RECID=7 STAMP=877201737
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/undotbs1.276.877200771 RECID=8 STAMP=877201737
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/users.279.877200781 RECID=9 STAMP=877201737
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/zjtdr.277.877200773 RECID=10 STAMP=877201737
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/tbs_rman.278.877200777 RECID=11 STAMP=877201737
+
+datafile 1 switched to datafile copy
+input datafile copy RECID=6 STAMP=877201737 file name=+DATA/mfsdb/datafile/system.275.877200763
+
+datafile 2 switched to datafile copy
+input datafile copy RECID=7 STAMP=877201737 file name=+DATA/mfsdb/datafile/sysaux.274.877200755
+
+datafile 3 switched to datafile copy
+input datafile copy RECID=8 STAMP=877201737 file name=+DATA/mfsdb/datafile/undotbs1.276.877200771
+
+datafile 4 switched to datafile copy
+input datafile copy RECID=9 STAMP=877201737 file name=+DATA/mfsdb/datafile/users.279.877200781
+
+datafile 5 switched to datafile copy
+input datafile copy RECID=10 STAMP=877201737 file name=+DATA/mfsdb/datafile/zjtdr.277.877200773
+
+datafile 6 switched to datafile copy
+input datafile copy RECID=11 STAMP=877201737 file name=+DATA/mfsdb/datafile/tbs_rman.278.877200777
+
+datafile 7 switched to datafile copy
+input datafile copy RECID=12 STAMP=877201738 file name=+DATA/mfsdb/datafile/undotbs2.280.877201727
+
+contents of Memory Script:
+{
+   set until scn  7650537;
+   recover
+   clone database
+    delete archivelog
+   ;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+Starting recover at 2015/04/16 19:08:59
+allocated channel: ORA_AUX_DISK_1
+channel ORA_AUX_DISK_1: SID=223 device type=DISK
+
+starting media recovery
+
+archived log for thread 1 with sequence 195 is already on disk as file +FLASH/mfsdb/archivelog/2015_04_16/thread_1_seq_195.282.877200785
+archived log for thread 1 with sequence 196 is already on disk as file +FLASH/mfsdb/archivelog/2015_04_16/thread_1_seq_196.284.877201735
+archived log file name=+FLASH/mfsdb/archivelog/2015_04_16/thread_1_seq_195.282.877200785 thread=1 sequence=195
+archived log file name=+FLASH/mfsdb/archivelog/2015_04_16/thread_1_seq_196.284.877201735 thread=1 sequence=196
+media recovery complete, elapsed time: 00:00:01
+Finished recover at 2015/04/16 19:09:04
+Oracle instance started
+
+Total System Global Area    1603411968 bytes
+
+Fixed Size                     2253664 bytes
+Variable Size                469765280 bytes
+Database Buffers            1107296256 bytes
+Redo Buffers                  24096768 bytes
+
+contents of Memory Script:
+{
+   sql clone "alter system set  db_name = 
+ ''MFSDB'' comment=
+ ''Reset to original value by RMAN'' scope=spfile";
+   sql clone "alter system reset  db_unique_name scope=spfile";
+   shutdown clone immediate;
+   startup clone nomount;
+}
+executing Memory Script
+
+sql statement: alter system set  db_name =  ''MFSDB'' comment= ''Reset to original value by RMAN'' scope=spfile
+
+sql statement: alter system reset  db_unique_name scope=spfile
+
+Oracle instance shut down
+
+connected to auxiliary database (not started)
+Oracle instance started
+
+Total System Global Area    1603411968 bytes
+
+Fixed Size                     2253664 bytes
+Variable Size                469765280 bytes
+Database Buffers            1107296256 bytes
+Redo Buffers                  24096768 bytes
+sql statement: CREATE CONTROLFILE REUSE SET DATABASE "MFSDB" RESETLOGS ARCHIVELOG 
+  MAXLOGFILES     16
+  MAXLOGMEMBERS      3
+  MAXDATAFILES      100
+  MAXINSTANCES     8
+  MAXLOGHISTORY      292
+ LOGFILE
+  GROUP   1  SIZE 50 M ,
+  GROUP   2  SIZE 50 M ,
+  GROUP   3  SIZE 50 M 
+ DATAFILE
+  '+DATA/mfsdb/datafile/system.275.877200763'
+ CHARACTER SET ZHS16GBK
+
+sql statement: ALTER DATABASE ADD LOGFILE 
+  
+  
+  INSTANCE 'i2' 
+  GROUP   4  SIZE 50 M ,
+  GROUP   5  SIZE 50 M ,
+  GROUP   6  SIZE 50 M 
+
+contents of Memory Script:
+{
+   set newname for clone tempfile  1 to new;
+   set newname for clone tempfile  2 to new;
+   switch clone tempfile all;
+   catalog clone datafilecopy  "+DATA/mfsdb/datafile/sysaux.274.877200755", 
+ "+DATA/mfsdb/datafile/undotbs1.276.877200771", 
+ "+DATA/mfsdb/datafile/users.279.877200781", 
+ "+DATA/mfsdb/datafile/zjtdr.277.877200773", 
+ "+DATA/mfsdb/datafile/tbs_rman.278.877200777", 
+ "+DATA/mfsdb/datafile/undotbs2.280.877201727";
+   switch clone datafile all;
+}
+executing Memory Script
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+renamed tempfile 1 to +data in control file
+renamed tempfile 2 to +data in control file
+
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/sysaux.274.877200755 RECID=1 STAMP=877201784
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/undotbs1.276.877200771 RECID=2 STAMP=877201784
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/users.279.877200781 RECID=3 STAMP=877201784
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/zjtdr.277.877200773 RECID=4 STAMP=877201784
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/tbs_rman.278.877200777 RECID=5 STAMP=877201784
+cataloged datafile copy
+datafile copy file name=+DATA/mfsdb/datafile/undotbs2.280.877201727 RECID=6 STAMP=877201784
+
+datafile 7 switched to datafile copy
+input datafile copy RECID=6 STAMP=877201784 file name=+DATA/mfsdb/datafile/undotbs2.280.877201727
+datafile 2 switched to datafile copy
+input datafile copy RECID=7 STAMP=877201784 file name=+DATA/mfsdb/datafile/sysaux.274.877200755
+datafile 3 switched to datafile copy
+input datafile copy RECID=8 STAMP=877201784 file name=+DATA/mfsdb/datafile/undotbs1.276.877200771
+datafile 4 switched to datafile copy
+input datafile copy RECID=9 STAMP=877201785 file name=+DATA/mfsdb/datafile/users.279.877200781
+datafile 5 switched to datafile copy
+input datafile copy RECID=10 STAMP=877201785 file name=+DATA/mfsdb/datafile/zjtdr.277.877200773
+datafile 6 switched to datafile copy
+input datafile copy RECID=11 STAMP=877201785 file name=+DATA/mfsdb/datafile/tbs_rman.278.877200777
+
+contents of Memory Script:
+{
+   Alter clone database open resetlogs;
+}
+executing Memory Script
+
+database opened
+Finished Duplicate Db at 2015/04/16 19:09:52
+
+Recovery Manager complete.

@@ -1,0 +1,36 @@
+一、永嘉县组织部
+故障描述：DELL R210II服务器系统无法启动，数据很重要。
+1，从UEFI模式启动WINDOWS系统进行修复模式，无法修复。
+2，通过第三方系统引导检查RAID磁盘，无法查看。
+3，确认RAID配制，正常。
+4，通过硬盘修复工具发现分区表丢失，首先用GHOST把数据都备份出来，再修复分区表。
+5，修复后仍然无法启动系统，建议重新安装系统。
+
+二、海洋渔业局
+1, EMC存储WEB无法管理
+经排查可能是由于其中一个控制器无法访问所致，已报修。
+
+2, VM-GPRS虚拟机宕机
+无法管理和打开虚拟机,只能迁移到另一个LUN来解决。
+但原来的VM文件删除不了。
+报错如下：
+ >>> Error writing log, 103 bytes discarded. Disk full?
+ 2014-10-28T01:53:41.910Z| vcpu-0| I120: [msg.fileio.generic] Error
+ 2014-10-28T01:53:41.910Z| vcpu-0| I120: [msg.nvram.write] NVRAM: write failed.
+ 2014-10-28T01:53:41.910Z| vcpu-0| I120: ----------------------------------------
+ 2014-10-28T01:53:41.914Z| vcpu-0| I120: NVRAMMGR: Could not write to nvram file win2003-gprs.nvram. Setting nvram to non-persistent.
+ 2014-10-28T01:53:41.914Z| vmx| I120: Tools: Tools heartbeat timeout.
+ 2014-10-28T04:50:02.609Z| vmx| I120: GuestRpcSendTimedOut: message to toolbox timed out.
+ 2014-10-28T04:50:17.611Z| vmx| I120: GuestRpcSendTimedOut: message to toolbox timed out.
+ 2014-10-28T04:50:17.611Z| vmx| I120: GuestRpc: app toolbox's second ping timeout; assuming app is down
+ 2014-10-28T04:50:17.617Z| vmx| I120: GuestRpc: Reinitializing Channel 1(toolbox)
+ 2014-10-28T04:50:17.617Z| vmx| I120: GuestMsg: Channel 1, Cannot unpost because the previous post is already completed
+ 
+Max retries (10) exceeded for caller Fil3_FileIO (status 'IO was aborted by VMFS via a virt-reset on the device')
+  2014-10-29T04:23:4
+  
+awaiting fast path state update for failover with I/O blocked. No prior reservation exists on the device
+
+三、刑科所
+故障描述： 一台DS4700中的6号槽位硬盘报错，16号热备盘已经顶上。
+硬盘需要更换。

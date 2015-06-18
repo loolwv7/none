@@ -1,0 +1,100 @@
+
+APEX_030200_WWV_FLOW_SESSION_SEQ_INCREMENT_BY = 1                               
+APEX_030200_WWV_FLOW_SESSION_SEQ_ORDER_FLAG = N                                 
+APEX_030200_WWV_FLOW_SESSION_SEQ_CACHE_SIZE = 20                                
+                                                                                
+APEX_030200_WWV_FLOW_VERSION_SEQ_INCREMENT_BY = 1                               
+APEX_030200_WWV_FLOW_VERSION_SEQ_ORDER_FLAG = N                                 
+APEX_030200_WWV_FLOW_VERSION_SEQ_CACHE_SIZE = 20                                
+                                                                                
+APEX_030200_WWV_FLOW_WORKSHEET_SEQ_INCREMENT_BY = 1                             
+APEX_030200_WWV_FLOW_WORKSHEET_SEQ_ORDER_FLAG = N                               
+APEX_030200_WWV_FLOW_WORKSHEET_SEQ_CACHE_SIZE = 20                              
+                                                                                
+APEX_030200_WWV_SEQ_INCREMENT_BY = 1                                            
+
+APEX_030200_WWV_SEQ_ORDER_FLAG = N                                              
+APEX_030200_WWV_SEQ_CACHE_SIZE = 20                                             
+                                                                                
+ORDDATA_ORDDCM_ANON_ATTRS_SEQ_INCREMENT_BY = 1                                  
+ORDDATA_ORDDCM_ANON_ATTRS_SEQ_ORDER_FLAG = Y                                    
+ORDDATA_ORDDCM_ANON_ATTRS_SEQ_CACHE_SIZE = 0                                    
+                                                                                
+ORDDATA_ORDDCM_CT_PRED_SEQ_INCREMENT_BY = 1                                     
+ORDDATA_ORDDCM_CT_PRED_SEQ_ORDER_FLAG = Y                                       
+ORDDATA_ORDDCM_CT_PRED_SEQ_CACHE_SIZE = 0                                       
+                                                                                
+ORDDATA_ORDDCM_CT_PRED_SET_SEQ_INCREMENT_BY = 1                                 
+ORDDATA_ORDDCM_CT_PRED_SET_SEQ_ORDER_FLAG = Y                                   
+
+ORDDATA_ORDDCM_CT_PRED_SET_SEQ_CACHE_SIZE = 0                                   
+                                                                                
+ORDDATA_ORDDCM_DATA_MODEL_SEQ_INCREMENT_BY = 1                                  
+ORDDATA_ORDDCM_DATA_MODEL_SEQ_ORDER_FLAG = Y                                    
+ORDDATA_ORDDCM_DATA_MODEL_SEQ_CACHE_SIZE = 0                                    
+                                                                                
+ORDDATA_ORDDCM_DICT_A_DA_ID_SEQ_INCREMENT_BY = 1                                
+ORDDATA_ORDDCM_DICT_A_DA_ID_SEQ_ORDER_FLAG = Y                                  
+ORDDATA_ORDDCM_DICT_A_DA_ID_SEQ_CACHE_SIZE = 0                                  
+                                                                                
+ORDDATA_ORDDCM_DOCS_ID_SEQ_INCREMENT_BY = 1                                     
+ORDDATA_ORDDCM_DOCS_ID_SEQ_ORDER_FLAG = Y                                       
+ORDDATA_ORDDCM_DOCS_ID_SEQ_CACHE_SIZE = 0                                       
+
+                                                                                
+ORDDATA_ORDDCM_MPD_P_MPID_SEQ_INCREMENT_BY = 1                                  
+ORDDATA_ORDDCM_MPD_P_MPID_SEQ_ORDER_FLAG = Y                                    
+ORDDATA_ORDDCM_MPD_P_MPID_SEQ_CACHE_SIZE = 0                                    
+                                                                                
+ORDDATA_ORDDCM_PRV_A_PA_ID_SEQ_INCREMENT_BY = 1                                 
+ORDDATA_ORDDCM_PRV_A_PA_ID_SEQ_ORDER_FLAG = Y                                   
+ORDDATA_ORDDCM_PRV_A_PA_ID_SEQ_CACHE_SIZE = 0                                   
+                                                                                
+ORDDATA_ORDDCM_RT_PREF_P_PPID_SEQ_INCREMENT_BY = 1                              
+ORDDATA_ORDDCM_RT_PREF_P_PPID_SEQ_ORDER_FLAG = Y                                
+ORDDATA_ORDDCM_RT_PREF_P_PPID_SEQ_CACHE_SIZE = 0                                
+                                                                                
+
+ORDDATA_ORDDCM_STD_A_SA_ID_SEQ_INCREMENT_BY = 1                                 
+ORDDATA_ORDDCM_STD_A_SA_ID_SEQ_ORDER_FLAG = Y                                   
+ORDDATA_ORDDCM_STD_A_SA_ID_SEQ_CACHE_SIZE = 0                                   
+                                                                                
+ORDDATA_ORDDCM_STOREDTAGS_STID_SEQ_INCREMENT_BY = 1                             
+ORDDATA_ORDDCM_STOREDTAGS_STID_SEQ_ORDER_FLAG = Y                               
+ORDDATA_ORDDCM_STOREDTAGS_STID_SEQ_CACHE_SIZE = 0                               
+                                                                                
+ORDDATA_ORDDCM_UID_DEFS_UDID_SEQ_INCREMENT_BY = 1                               
+ORDDATA_ORDDCM_UID_DEFS_UDID_SEQ_ORDER_FLAG = Y                                 
+ORDDATA_ORDDCM_UID_DEFS_UDID_SEQ_CACHE_SIZE = 0                                 
+                                                                                
+RMAN_RMAN_SEQ_INCREMENT_BY = 1                                                  
+
+RMAN_RMAN_SEQ_ORDER_FLAG = N                                                    
+RMAN_RMAN_SEQ_CACHE_SIZE = 20                                                   
+                                                                                
+SYS_AUDSES$_INCREMENT_BY = 1                                                    
+SYS_AUDSES$_ORDER_FLAG = N                                                      
+SYS_AUDSES$_CACHE_SIZE = 10000                                                  
+                                                                                
+SYS_IDGEN1$_INCREMENT_BY = 50                                                   
+SYS_IDGEN1$_ORDER_FLAG = N                                                      
+SYS_IDGEN1$_CACHE_SIZE = 1000                                                   
+                                                                                
+ZJTDR_DEVINFO_ID_INCREMENT_BY = 1                                               
+ZJTDR_DEVINFO_ID_ORDER_FLAG = N                                                 
+
+ZJTDR_DEVINFO_ID_CACHE_SIZE = 10                                                
+                                                                                
+ZJTDR_S_ALARM_INCREMENT_BY = 1                                                  
+ZJTDR_S_ALARM_ORDER_FLAG = N                                                    
+ZJTDR_S_ALARM_CACHE_SIZE = 0                                                    
+                                                                                
+ZJTDR_S_LOCATION_INCREMENT_BY = 1                                               
+ZJTDR_S_LOCATION_ORDER_FLAG = N                                                 
+ZJTDR_S_LOCATION_CACHE_SIZE = 0                                                 
+                                                                                
+ZJTDR_S_STATUS_INCREMENT_BY = 1                                                 
+ZJTDR_S_STATUS_ORDER_FLAG = N                                                   
+ZJTDR_S_STATUS_CACHE_SIZE = 0                                                   
+
+                                                                                

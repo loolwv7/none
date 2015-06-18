@@ -1,0 +1,35 @@
+
+racdb2.instance_number = 2                                                      
+racdb2.host_name = rac2                                                         
+racdb2.audit_version = 11.2.0.4.0                                               
+racdb2.startup_time = 17-APR-15                                                 
+racdb2.status = OPEN                                                            
+racdb2.parallel = YES                                                           
+racdb2.thread# = 2                                                              
+racdb2.archiver = STARTED                                                       
+racdb2.log_switch_wait =                                                        
+racdb2.logins = ALLOWED                                                         
+racdb2.shutdown_pending = NO                                                    
+racdb2.database_status = ACTIVE                                                 
+racdb2.instance_role = PRIMARY_INSTANCE                                         
+
+racdb2.active_state = NORMAL                                                    
+racdb2.blocked = NO                                                             
+                                                                                
+racdb1.instance_number = 1                                                      
+racdb1.host_name = rac1                                                         
+racdb1.audit_version = 11.2.0.4.0                                               
+racdb1.startup_time = 17-APR-15                                                 
+racdb1.status = OPEN                                                            
+racdb1.parallel = YES                                                           
+racdb1.thread# = 1                                                              
+racdb1.archiver = STARTED                                                       
+racdb1.log_switch_wait =                                                        
+racdb1.logins = ALLOWED                                                         
+
+racdb1.shutdown_pending = NO                                                    
+racdb1.database_status = ACTIVE                                                 
+racdb1.instance_role = PRIMARY_INSTANCE                                         
+racdb1.active_state = NORMAL                                                    
+racdb1.blocked = NO                                                             
+                                                                                

@@ -1,0 +1,39 @@
+一、海洋渔业局
+1, 新增了两个ESXi节点，由于这两个节点没有HBA卡，因此只给他们分配了iSCSI存储。
+2, 为其配制了相应的分布式交换机，并且相应的网络端口做了聚合组。
+1)新增了4个端口聚合组，15-18。
+interface Bridge-Aggregation15
+ description to-Dell01 PUBLIC-port
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface Bridge-Aggregation16
+ description to-DELL02 PUBLIC-port
+ port link-type trunk
+ port trunk permit vlan all
+#
+interface Bridge-Aggregation17
+ description to-DELL01 iSCSI
+ port access vlan 131
+#
+interface Bridge-Aggregation18
+ description to-DELL02 iSCSI
+ port access vlan 131
+#
+
+2) 为两台服务器的8个网卡做了相应配制。
+# 管理网口配制。
+interface GigabitEthernet1/0/5
+ port link-mode bridge
+ port link-type trunk
+ port trunk permit vlan all
+ port link-aggregation group 15
+ 
+# iSCSI网口配制。
+interface GigabitEthernet1/0/46
+port link-mode bridge
+port access vlan 131
+port link-aggregation group 18
+#
+
+3, 为vCenter增加了额外的节点。

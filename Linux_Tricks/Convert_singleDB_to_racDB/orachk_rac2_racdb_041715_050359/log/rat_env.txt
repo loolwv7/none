@@ -1,0 +1,5 @@
+RAT_DB=/u01/app/oracle/product/11.2.0/db_1
+RAT_DB_PARALLEL=1
+RAT_DAEMON_DEBUG=0
+RAT_SCRIPT_DEBUG=
+RAT_ORACLE_HOME=/u01/app/oracle/product/11.2.0/db_1

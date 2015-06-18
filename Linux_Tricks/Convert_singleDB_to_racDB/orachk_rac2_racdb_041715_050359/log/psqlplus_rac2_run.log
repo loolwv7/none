@@ -1,0 +1,660 @@
+[ Fri Apr 17 05:06:35 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:35 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:35 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:35 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:35 2015 ] CHECKID=767881504B21A00BE040E50A1EC01174
+[ Fri Apr 17 05:06:35 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:35 2015 ] COM_START=declare type t_sessions is varray(100) of integer; v_sessions t_sessions; v_session_cnt number:=1; v_session_pct number:=0; v_session_diff number:=0; cursor inst_session is select count(*) sessions ,instance_number from dba_hist_active_sess_history where user_id in (select user_id from dba_users where username in ('SYS','SYSTEM','SYSMAN','DBSNMP')) group by instance_number; begin v_sessions:=t_sessions(0,0); for rec in inst_session loop v_sessions(v_session_cnt):= rec.sessions; if v_session_cnt >1 then    if v_sessions(1) > v_sessions(2) then v_session_diff:=v_sessions(1)-v_sessions(2); v_session_pct:=v_session_diff/ v_sessions(1)*100;   else      v_session_diff:= v_sessions(2)-v_sessions(1); v_session_pct:= v_session_diff/ v_sessions(2)*100;   end if;     DBMS_OUTPUT.PUT_LINE('load_balance_percent_diff = '||floor(v_session_pct));     DBMS_OUTPUT.PUT_LINE('load_balance_actual_diff = '||v_session_diff); end if; v_session_cnt:=v_session_cnt+1; end loop; end;
+[ Fri Apr 17 05:06:35 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:35 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:35 2015 ] COLLECTION_NAME=Active sessions load balance
+[ Fri Apr 17 05:06:35 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:35 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:35 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:35 2015 ] OUTFILNAM=active_session_load_balance
+[ Fri Apr 17 05:06:41 2015 ] Started Merging
+[ Fri Apr 17 05:06:41 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:41 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-767881504B21A00BE040E50A1EC01174_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:41 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-767881504B21A00BE040E50A1EC01174_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:41 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:41 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_767881504B21A00BE040E50A1EC01174':
+[ Fri Apr 17 05:06:41 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:41 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:41 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:41 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-767881504B21A00BE040E50A1EC01174_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:41 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-767881504B21A00BE040E50A1EC01174_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:41 2015 ] /home/oracle/orachk/orachk_041715_050359/d_active_session_load_balance_-767881504B21A00BE040E50A1EC01174_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_active_session_load_balance_-mfsdb.out
+[ Fri Apr 17 05:06:41 2015 ] /home/oracle/orachk/orachk_041715_050359/d_active_session_load_balance_-767881504B21A00BE040E50A1EC01174_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_active_session_load_balance_-racdb.out
+[ Fri Apr 17 05:06:41 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:42 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:42 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:42 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:42 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:42 2015 ] CHECKID=64B4075A96FF21D3E0401490CACF3EC6
+[ Fri Apr 17 05:06:42 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:42 2015 ] COM_START=select i.instance_name||'.archive destination ID = '||dest_id||chr(10)||i.instance_name||'.archive standby logfile active = '||standby_logfile_active ||chr(10)||i.instance_name||'.archived Sequence Number = '||ARCHIVED_SEQ# ||chr(10)||i.instance_name||'.database Mode = '||database_mode||chr(10)||i.instance_name||'.recovery Mode = '||recovery_mode||chr(10)||i.instance_name||'.protection Mode = '||protection_mode||chr(10)||i.instance_name||'.standby Logfile Count ='standby_logfile_count from gv$archive_dest_status a,gv$instance i where a.inst_id=i.inst_id and a.destination is not null;
+[ Fri Apr 17 05:06:42 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:42 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:42 2015 ] COLLECTION_NAME=Archived Destination Status
+[ Fri Apr 17 05:06:42 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:42 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:42 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:42 2015 ] OUTFILNAM=archived_dest_status
+[ Fri Apr 17 05:06:42 2015 ] Started Merging
+[ Fri Apr 17 05:06:42 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:42 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B4075A96FF21D3E0401490CACF3EC6_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:42 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B4075A96FF21D3E0401490CACF3EC6_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:42 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:42 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_64B4075A96FF21D3E0401490CACF3EC6':
+[ Fri Apr 17 05:06:42 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:42 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:42 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:42 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B4075A96FF21D3E0401490CACF3EC6_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:42 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B4075A96FF21D3E0401490CACF3EC6_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:42 2015 ] /home/oracle/orachk/orachk_041715_050359/d_archived_dest_status_-64B4075A96FF21D3E0401490CACF3EC6_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_archived_dest_status_-mfsdb.out
+[ Fri Apr 17 05:06:42 2015 ] /home/oracle/orachk/orachk_041715_050359/d_archived_dest_status_-64B4075A96FF21D3E0401490CACF3EC6_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_archived_dest_status_-racdb.out
+[ Fri Apr 17 05:06:42 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:43 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:43 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:43 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:43 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:43 2015 ] CHECKID=5ADCECF64754E914E0401490CACF4BBD
+[ Fri Apr 17 05:06:43 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:43 2015 ] COM_START=select name_skgxpia||'_is_public_'||inst_id||' = '||pub_skgxpia||chr(10)||name_skgxpia||'_source_'||inst_id||' = '||picked_skgxpia||chr(10)||name_skgxpia||'_ip_address_'||inst_id||' = '||ip_skgxpia||chr(10) from x$skgxpia;
+[ Fri Apr 17 05:06:43 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:43 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:43 2015 ] COLLECTION_NAME=Cluster Interconnect Config
+[ Fri Apr 17 05:06:43 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:43 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:43 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:43 2015 ] OUTFILNAM=clus_interconnect
+[ Fri Apr 17 05:06:43 2015 ] Started Merging
+[ Fri Apr 17 05:06:43 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:43 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADCECF64754E914E0401490CACF4BBD_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:43 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADCECF64754E914E0401490CACF4BBD_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:43 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:43 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_5ADCECF64754E914E0401490CACF4BBD':
+[ Fri Apr 17 05:06:43 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:43 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:43 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:43 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADCECF64754E914E0401490CACF4BBD_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:43 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADCECF64754E914E0401490CACF4BBD_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:43 2015 ] /home/oracle/orachk/orachk_041715_050359/d_clus_interconnect_-5ADCECF64754E914E0401490CACF4BBD_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_clus_interconnect_-mfsdb.out
+[ Fri Apr 17 05:06:43 2015 ] /home/oracle/orachk/orachk_041715_050359/d_clus_interconnect_-5ADCECF64754E914E0401490CACF4BBD_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_clus_interconnect_-racdb.out
+[ Fri Apr 17 05:06:43 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:44 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:44 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:44 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:44 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:44 2015 ] CHECKID=64B23BAC4751B396E0401490CACF0B96
+[ Fri Apr 17 05:06:44 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:44 2015 ] COM_START=select i.instance_name||'.archive destination ID = '||dest_id||chr(10)||i.instance_name||'.archive destination = '||destination||chr(10)||i.instance_name||'.archive destination status = '||a.status||chr(10)||i.instance_name||'.archive destination target = '||target||chr(10)||i.instance_name||'.archive schedule = '||schedule||chr(10)||i.instance_name||'.archive process = '||process||chr(10)||i.instance_name||'.archiev mount ID = '||mountid ||chr(10)||i.instance_name||'.archiver = '||a.archiver||chr(10)||i.instance_name||'.archive transmit mode = '||transmit_mode||chr(10)||i.instance_name||'.archive affirm = '||affirm||chr(10)||i.instance_name||'.archive async Blocks = '||async_blocks||chr(10)||i.instance_name||'.archive net timeout = '||net_timeout||chr(10)||i.instance_name||'.archive delay mintues = '||delay_mins||chr(10)||i.instance_name||'.Reopen Seconds = '||reopen_secs||chr(10)||i.instance_name||'.Register = '||register||chr(10)||i.instance_name||'.Binding = '||binding||chr(10)||i.instance_name||'.any error while archiving = '||error from gv$archive_dest a,gv$instance i where i.inst_id=a.inst_id and destination is not null order by dest_id;
+[ Fri Apr 17 05:06:44 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:44 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:44 2015 ] COLLECTION_NAME=Database Archive Destinations
+[ Fri Apr 17 05:06:44 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:44 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:44 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:44 2015 ] OUTFILNAM=archive_destinations
+[ Fri Apr 17 05:06:44 2015 ] Started Merging
+[ Fri Apr 17 05:06:44 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:44 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B23BAC4751B396E0401490CACF0B96_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:44 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B23BAC4751B396E0401490CACF0B96_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:44 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:44 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_64B23BAC4751B396E0401490CACF0B96':
+[ Fri Apr 17 05:06:44 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:44 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:44 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:44 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B23BAC4751B396E0401490CACF0B96_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:44 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B23BAC4751B396E0401490CACF0B96_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:44 2015 ] /home/oracle/orachk/orachk_041715_050359/d_archive_destinations_-64B23BAC4751B396E0401490CACF0B96_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_archive_destinations_-mfsdb.out
+[ Fri Apr 17 05:06:44 2015 ] /home/oracle/orachk/orachk_041715_050359/d_archive_destinations_-64B23BAC4751B396E0401490CACF0B96_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_archive_destinations_-racdb.out
+[ Fri Apr 17 05:06:44 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:45 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:46 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:46 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:46 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:46 2015 ] CHECKID=666EE65D7ACEFAFCE040E50A1EC01191
+[ Fri Apr 17 05:06:46 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:46 2015 ] COM_START=select 'controlfile = '||name from v$controlfile union select 'datafile (file#_name) = '||file#||'_'||name from v$datafile union select 'logfile (group_member) = '||group#||'_'||member from v$logfile;
+[ Fri Apr 17 05:06:46 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:46 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:46 2015 ] COLLECTION_NAME=Database Files
+[ Fri Apr 17 05:06:46 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:46 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:46 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:46 2015 ] OUTFILNAM=db_files
+[ Fri Apr 17 05:06:46 2015 ] Started Merging
+[ Fri Apr 17 05:06:46 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:46 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-666EE65D7ACEFAFCE040E50A1EC01191_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:46 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-666EE65D7ACEFAFCE040E50A1EC01191_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:46 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:46 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_666EE65D7ACEFAFCE040E50A1EC01191':
+[ Fri Apr 17 05:06:46 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:46 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:46 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:46 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-666EE65D7ACEFAFCE040E50A1EC01191_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:46 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-666EE65D7ACEFAFCE040E50A1EC01191_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:46 2015 ] /home/oracle/orachk/orachk_041715_050359/d_db_files_-666EE65D7ACEFAFCE040E50A1EC01191_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_db_files_-mfsdb.out
+[ Fri Apr 17 05:06:46 2015 ] /home/oracle/orachk/orachk_041715_050359/d_db_files_-666EE65D7ACEFAFCE040E50A1EC01191_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_db_files_-racdb.out
+[ Fri Apr 17 05:06:46 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:47 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:47 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:47 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:47 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:47 2015 ] CHECKID=594E09A832BDC864E0401490CACF200D
+[ Fri Apr 17 05:06:47 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:47 2015 ] COM_START=select instance_name||'.instance_number = '||instance_number||chr(10)||instance_name||'.host_name = '||host_name||chr(10)||instance_name||'.audit_version = '||version||chr(10)||instance_name||'.startup_time = '||startup_time||chr(10)||instance_name||'.status = '||status||chr(10)||instance_name||'.parallel = '||parallel||chr(10)||instance_name||'.thread# = '||thread#||chr(10)||instance_name||'.archiver = '||archiver||chr(10)||instance_name||'.log_switch_wait = '||log_switch_wait||chr(10)||instance_name||'.logins = '||logins||chr(10)||instance_name||'.shutdown_pending = '||shutdown_pending||chr(10)||instance_name||'.database_status = '||database_status||chr(10)||instance_name||'.instance_role = '||instance_role||chr(10)||instance_name||'.active_state = '||active_state||chr(10)||instance_name||'.blocked = '||blocked from gv$instance;
+[ Fri Apr 17 05:06:47 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:47 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:47 2015 ] COLLECTION_NAME=Database Instance Settings
+[ Fri Apr 17 05:06:47 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:47 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:47 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:47 2015 ] OUTFILNAM=gv_instance
+[ Fri Apr 17 05:06:47 2015 ] Started Merging
+[ Fri Apr 17 05:06:47 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:47 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-594E09A832BDC864E0401490CACF200D_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:47 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-594E09A832BDC864E0401490CACF200D_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:47 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:47 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_594E09A832BDC864E0401490CACF200D':
+[ Fri Apr 17 05:06:47 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:47 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:47 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:47 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-594E09A832BDC864E0401490CACF200D_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:47 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-594E09A832BDC864E0401490CACF200D_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:47 2015 ] /home/oracle/orachk/orachk_041715_050359/d_gv_instance_-594E09A832BDC864E0401490CACF200D_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_gv_instance_-mfsdb.out
+[ Fri Apr 17 05:06:47 2015 ] /home/oracle/orachk/orachk_041715_050359/d_gv_instance_-594E09A832BDC864E0401490CACF200D_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_gv_instance_-racdb.out
+[ Fri Apr 17 05:06:47 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:48 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:48 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:48 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:48 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:48 2015 ] CHECKID=594E09A832BCC864E0401490CACF200D
+[ Fri Apr 17 05:06:48 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:48 2015 ] COM_START=select i.instance_name||'.'||p.name || ' = ' || value from gv$parameter p,gv$instance i where p.inst_id = i.inst_id order by p.name,i.instance_name;
+[ Fri Apr 17 05:06:48 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:48 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:48 2015 ] COLLECTION_NAME=Database Parameters
+[ Fri Apr 17 05:06:48 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:48 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:48 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:48 2015 ] OUTFILNAM=v_parameter
+[ Fri Apr 17 05:06:48 2015 ] Started Merging
+[ Fri Apr 17 05:06:48 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:48 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-594E09A832BCC864E0401490CACF200D_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:48 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-594E09A832BCC864E0401490CACF200D_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:48 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:48 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_594E09A832BCC864E0401490CACF200D':
+[ Fri Apr 17 05:06:48 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:48 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:48 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:48 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-594E09A832BCC864E0401490CACF200D_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:48 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-594E09A832BCC864E0401490CACF200D_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:48 2015 ] /home/oracle/orachk/orachk_041715_050359/d_v_parameter_-594E09A832BCC864E0401490CACF200D_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_v_parameter_-mfsdb.out
+[ Fri Apr 17 05:06:48 2015 ] /home/oracle/orachk/orachk_041715_050359/d_v_parameter_-594E09A832BCC864E0401490CACF200D_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_v_parameter_-racdb.out
+[ Fri Apr 17 05:06:48 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:49 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:49 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:49 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:49 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:49 2015 ] CHECKID=9AD94FEDF63F8296E040E50A1EC06A28
+[ Fri Apr 17 05:06:49 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:49 2015 ] COM_START=select i.instance_name||'.'||p.name || ' = ' || value from gv$parameter p,gv$instance i where p.inst_id = i.inst_id order by p.name,i.instance_name;
+[ Fri Apr 17 05:06:49 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:49 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:49 2015 ] COLLECTION_NAME=Database Parameters
+[ Fri Apr 17 05:06:49 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:49 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:49 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:49 2015 ] OUTFILNAM=v_parameter
+[ Fri Apr 17 05:06:49 2015 ] Started Merging
+[ Fri Apr 17 05:06:49 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:49 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-9AD94FEDF63F8296E040E50A1EC06A28_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:49 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-9AD94FEDF63F8296E040E50A1EC06A28_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:49 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:49 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_9AD94FEDF63F8296E040E50A1EC06A28':
+[ Fri Apr 17 05:06:49 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:49 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:49 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:49 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-9AD94FEDF63F8296E040E50A1EC06A28_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:49 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-9AD94FEDF63F8296E040E50A1EC06A28_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:49 2015 ] /home/oracle/orachk/orachk_041715_050359/d_v_parameter_-9AD94FEDF63F8296E040E50A1EC06A28_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_v_parameter_-mfsdb.out
+[ Fri Apr 17 05:06:49 2015 ] /home/oracle/orachk/orachk_041715_050359/d_v_parameter_-9AD94FEDF63F8296E040E50A1EC06A28_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_v_parameter_-racdb.out
+[ Fri Apr 17 05:06:50 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:51 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:51 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:51 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:51 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:51 2015 ] CHECKID=64B5BF59AEFF4C47E0401490CACF3CD6
+[ Fri Apr 17 05:06:51 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:51 2015 ] COM_START=select 'Database Name = '||name||chr(10)||'Database Role = '||database_role||chr(10)||'Archive log mode = '||log_mode||chr(10)||'Protection mode = '||protection_mode||chr(10)||'Protection Level = '||protection_level||chr(10)||'Force Logging = '||force_logging||chr(10)||'Remove Archive = '||remote_archive||chr(10)||'Supplemental log data PK = '||supplemental_log_data_pk||chr(10)||'Supplemental log data UI = '||supplemental_log_data_ui||chr(10)||'Switchover Status = '||switchover_status||chr(10)||'Dataguard broker = '||dataguard_broker||chr(10)||'Flashback On = '||flashback_on from v$database;
+[ Fri Apr 17 05:06:51 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:51 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:51 2015 ] COLLECTION_NAME=Database Properties
+[ Fri Apr 17 05:06:51 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:51 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:51 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:51 2015 ] OUTFILNAM=database_properties
+[ Fri Apr 17 05:06:51 2015 ] Started Merging
+[ Fri Apr 17 05:06:51 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:51 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B5BF59AEFF4C47E0401490CACF3CD6_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:51 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B5BF59AEFF4C47E0401490CACF3CD6_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:51 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:51 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_64B5BF59AEFF4C47E0401490CACF3CD6':
+[ Fri Apr 17 05:06:51 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:51 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:51 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:51 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B5BF59AEFF4C47E0401490CACF3CD6_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:51 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B5BF59AEFF4C47E0401490CACF3CD6_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:51 2015 ] /home/oracle/orachk/orachk_041715_050359/d_database_properties_-64B5BF59AEFF4C47E0401490CACF3CD6_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_database_properties_-mfsdb.out
+[ Fri Apr 17 05:06:51 2015 ] /home/oracle/orachk/orachk_041715_050359/d_database_properties_-64B5BF59AEFF4C47E0401490CACF3CD6_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_database_properties_-racdb.out
+[ Fri Apr 17 05:06:51 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:52 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:52 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:52 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:52 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:52 2015 ] CHECKID=64B1B17271D35182E0401490CACF4F46
+[ Fri Apr 17 05:06:52 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:52 2015 ] COM_START=select comp_name || ' version = '||d.version||chr(10)||comp_name || ' org_version = '||org_version||chr(10)||comp_name || ' prv_version = '||prv_version||chr(10)|| comp_name || ' modified date = '||d.modified||chr(10)|| comp_name || ' status = '||d.status from dba_registry d,registry$ r where r.cid=d.comp_id;
+[ Fri Apr 17 05:06:52 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:52 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:52 2015 ] COLLECTION_NAME=Database Registry
+[ Fri Apr 17 05:06:52 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:52 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:52 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:52 2015 ] OUTFILNAM=dba_registry
+[ Fri Apr 17 05:06:52 2015 ] Started Merging
+[ Fri Apr 17 05:06:52 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:52 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B1B17271D35182E0401490CACF4F46_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:52 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B1B17271D35182E0401490CACF4F46_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:52 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:52 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_64B1B17271D35182E0401490CACF4F46':
+[ Fri Apr 17 05:06:52 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:52 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:52 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:52 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B1B17271D35182E0401490CACF4F46_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:52 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B1B17271D35182E0401490CACF4F46_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:52 2015 ] /home/oracle/orachk/orachk_041715_050359/d_dba_registry_-64B1B17271D35182E0401490CACF4F46_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_dba_registry_-mfsdb.out
+[ Fri Apr 17 05:06:52 2015 ] /home/oracle/orachk/orachk_041715_050359/d_dba_registry_-64B1B17271D35182E0401490CACF4F46_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_dba_registry_-racdb.out
+[ Fri Apr 17 05:06:52 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:53 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:53 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:53 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:53 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:53 2015 ] CHECKID=5ADD88EC8E0CFF2EE0401490CACF0C10
+[ Fri Apr 17 05:06:53 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:53 2015 ] COM_START=select * from (select sequence_owner||'_'||sequence_name||'_INCREMENT_BY = '||increment_by||chr(10)||sequence_owner||'_'||sequence_name||'_ORDER_FLAG = '||order_flag||chr(10)||sequence_owner||'_'||sequence_name||'_CACHE_SIZE = '||cache_size||chr(10) from dba_sequences where sequence_owner not in ('SYS','CTXSYS','DBSNMP','DMSYS','EXFSYS','MDSYS','OLAPSYS','SYSTEM','WMSYS','XDB','SYSMAN') union select sequence_owner||'_'||sequence_name||'_INCREMENT_BY = '||increment_by||chr(10)||sequence_owner||'_'||sequence_name||'_ORDER_FLAG = '||order_flag||chr(10)||sequence_owner||'_'||sequence_name||'_CACHE_SIZE = '||cache_size||chr(10) from dba_sequences where sequence_name in ('AUDSES$','IDGEN1$'));
+[ Fri Apr 17 05:06:53 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:53 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:53 2015 ] COLLECTION_NAME=Database Sequences
+[ Fri Apr 17 05:06:53 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:53 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:53 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:53 2015 ] OUTFILNAM=sequences
+[ Fri Apr 17 05:06:53 2015 ] Started Merging
+[ Fri Apr 17 05:06:53 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:53 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADD88EC8E0CFF2EE0401490CACF0C10_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:53 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADD88EC8E0CFF2EE0401490CACF0C10_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:53 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:53 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_5ADD88EC8E0CFF2EE0401490CACF0C10':
+[ Fri Apr 17 05:06:53 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:53 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:53 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:53 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADD88EC8E0CFF2EE0401490CACF0C10_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:53 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADD88EC8E0CFF2EE0401490CACF0C10_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:53 2015 ] /home/oracle/orachk/orachk_041715_050359/d_sequences_-5ADD88EC8E0CFF2EE0401490CACF0C10_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_sequences_-mfsdb.out
+[ Fri Apr 17 05:06:53 2015 ] /home/oracle/orachk/orachk_041715_050359/d_sequences_-5ADD88EC8E0CFF2EE0401490CACF0C10_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_sequences_-racdb.out
+[ Fri Apr 17 05:06:53 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:54 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:54 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:54 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:54 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:54 2015 ] CHECKID=6FB67DA9843581AAE040E50A1EC0057B
+[ Fri Apr 17 05:06:54 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:54 2015 ] COM_START=select ksppinm || ' = ' || ksppstdvl from sys.x$ksppi n,sys.x$ksppsv v where n.indx = v.indx and instr(ksppinm,'_') = 1;
+[ Fri Apr 17 05:06:54 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:54 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:54 2015 ] COLLECTION_NAME=Database Undocumented Parameters
+[ Fri Apr 17 05:06:54 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:54 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:54 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:54 2015 ] OUTFILNAM=v_parameter_u
+[ Fri Apr 17 05:06:54 2015 ] Started Merging
+[ Fri Apr 17 05:06:54 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:54 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-6FB67DA9843581AAE040E50A1EC0057B_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:54 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-6FB67DA9843581AAE040E50A1EC0057B_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:54 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:54 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_6FB67DA9843581AAE040E50A1EC0057B':
+[ Fri Apr 17 05:06:54 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:54 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:54 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:54 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-6FB67DA9843581AAE040E50A1EC0057B_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:54 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-6FB67DA9843581AAE040E50A1EC0057B_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:54 2015 ] /home/oracle/orachk/orachk_041715_050359/d_v_parameter_u_-6FB67DA9843581AAE040E50A1EC0057B_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_v_parameter_u_-mfsdb.out
+[ Fri Apr 17 05:06:54 2015 ] /home/oracle/orachk/orachk_041715_050359/d_v_parameter_u_-6FB67DA9843581AAE040E50A1EC0057B_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_v_parameter_u_-racdb.out
+[ Fri Apr 17 05:06:54 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:56 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:56 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:56 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:56 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:56 2015 ] CHECKID=9AD8F72CFE1DC95BE040E50A1EC050D0
+[ Fri Apr 17 05:06:56 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:56 2015 ] COM_START=select ksppinm || ' = ' || ksppstdvl from sys.x$ksppi n,sys.x$ksppsv v where n.indx = v.indx and instr(ksppinm,'_') = 1;
+[ Fri Apr 17 05:06:56 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:56 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:56 2015 ] COLLECTION_NAME=Database Undocumented Parameters
+[ Fri Apr 17 05:06:56 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:56 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:56 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:56 2015 ] OUTFILNAM=v_parameter_u
+[ Fri Apr 17 05:06:56 2015 ] Started Merging
+[ Fri Apr 17 05:06:56 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:56 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-9AD8F72CFE1DC95BE040E50A1EC050D0_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:56 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-9AD8F72CFE1DC95BE040E50A1EC050D0_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:56 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:56 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_9AD8F72CFE1DC95BE040E50A1EC050D0':
+[ Fri Apr 17 05:06:56 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:56 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:56 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:56 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-9AD8F72CFE1DC95BE040E50A1EC050D0_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:56 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-9AD8F72CFE1DC95BE040E50A1EC050D0_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:56 2015 ] /home/oracle/orachk/orachk_041715_050359/d_v_parameter_u_-9AD8F72CFE1DC95BE040E50A1EC050D0_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_v_parameter_u_-mfsdb.out
+[ Fri Apr 17 05:06:56 2015 ] /home/oracle/orachk/orachk_041715_050359/d_v_parameter_u_-9AD8F72CFE1DC95BE040E50A1EC050D0_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_v_parameter_u_-racdb.out
+[ Fri Apr 17 05:06:56 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:57 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:57 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:57 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:57 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:57 2015 ] CHECKID=5ADCE5776C0CE6C0E0401490CACF5622
+[ Fri Apr 17 05:06:57 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:57 2015 ] COM_START=select 'service_id'||service_id||'_name = '||name||chr(10)||'service_id'||service_id||'_network_name = '||network_name||chr(10)||'service_id'||service_id||'_failover_method = '||failover_method||chr(10)||'service_id'||service_id||'_failover_type = '||failover_type||chr(10)||'service_id'||service_id||'_failover_retries = '||failover_retries||chr(10)||'service_id'||service_id||'_failover_delay = '||failover_delay||chr(10)||'service_id'||service_id||'_goal = '||goal||chr(10)||'service_id'||service_id||'_dtp = '||dtp||chr(10)||'service_id'||service_id||'_enabled = '||enabled||chr(10)||'service_id'||service_id||'_aq_ha_notifications = '||aq_ha_notifications||chr(10)||'service_id'||service_id||'_clb_goal = '||clb_goal||chr(10) from dba_services;
+[ Fri Apr 17 05:06:57 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:57 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:57 2015 ] COLLECTION_NAME=Database Workload Services
+[ Fri Apr 17 05:06:57 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:57 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:57 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:57 2015 ] OUTFILNAM=services
+[ Fri Apr 17 05:06:57 2015 ] Started Merging
+[ Fri Apr 17 05:06:57 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:57 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADCE5776C0CE6C0E0401490CACF5622_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:57 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADCE5776C0CE6C0E0401490CACF5622_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:57 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:57 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_5ADCE5776C0CE6C0E0401490CACF5622':
+[ Fri Apr 17 05:06:57 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:57 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:57 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:57 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADCE5776C0CE6C0E0401490CACF5622_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:57 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-5ADCE5776C0CE6C0E0401490CACF5622_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:57 2015 ] /home/oracle/orachk/orachk_041715_050359/d_services_-5ADCE5776C0CE6C0E0401490CACF5622_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_services_-mfsdb.out
+[ Fri Apr 17 05:06:57 2015 ] /home/oracle/orachk/orachk_041715_050359/d_services_-5ADCE5776C0CE6C0E0401490CACF5622_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_services_-racdb.out
+[ Fri Apr 17 05:06:57 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:58 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:58 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:58 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:58 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:58 2015 ] CHECKID=64B430519CC1F07CE0401490CACF4434
+[ Fri Apr 17 05:06:58 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:58 2015 ] COM_START=select 'Message = '||message||chr(10)||' Timestamp = '||timestamp    from v$dataguard_status    where severity in ('Error','Fatal')    order by timestamp;
+[ Fri Apr 17 05:06:58 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:58 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:58 2015 ] COLLECTION_NAME=Dataguard Status
+[ Fri Apr 17 05:06:58 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:58 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:58 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:58 2015 ] OUTFILNAM=dataguard_status
+[ Fri Apr 17 05:06:58 2015 ] Started Merging
+[ Fri Apr 17 05:06:58 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:06:58 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B430519CC1F07CE0401490CACF4434_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:06:58 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B430519CC1F07CE0401490CACF4434_-racdb.sql_collect.prt
+[ Fri Apr 17 05:06:58 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:06:58 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_64B430519CC1F07CE0401490CACF4434':
+[ Fri Apr 17 05:06:58 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:06:58 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:06:58 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:06:58 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B430519CC1F07CE0401490CACF4434_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:06:58 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B430519CC1F07CE0401490CACF4434_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:06:58 2015 ] /home/oracle/orachk/orachk_041715_050359/d_dataguard_status_-64B430519CC1F07CE0401490CACF4434_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_dataguard_status_-mfsdb.out
+[ Fri Apr 17 05:06:58 2015 ] /home/oracle/orachk/orachk_041715_050359/d_dataguard_status_-64B430519CC1F07CE0401490CACF4434_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_dataguard_status_-racdb.out
+[ Fri Apr 17 05:06:58 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:06:59 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:06:59 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:06:59 2015 ] User: oracle
+
+[ Fri Apr 17 05:06:59 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:06:59 2015 ] CHECKID=64B30441FF203E12E0401490CACF65A4
+[ Fri Apr 17 05:06:59 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:06:59 2015 ] COM_START=select i.instance_name||'destination ID = '||ads.dest_id||chr(10)||i.instance_name||'.current archive sequence # = '||max(sequence#) ||chr(10)||i.instance_name||'.last archived = '||max(log_sequence) from gv$archived_log al, gv$archive_dest ad, gv$archive_dest_status ads,gv$instance i where ad.dest_id=al.dest_id and al.dest_id=ads.dest_id and ad.inst_id=i.inst_id group by ads.dest_id,i.instance_name;
+[ Fri Apr 17 05:06:59 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:06:59 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:06:59 2015 ] COLLECTION_NAME=Log Sequence Numbers
+[ Fri Apr 17 05:06:59 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:06:59 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:06:59 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:06:59 2015 ] OUTFILNAM=log_sequence
+[ Fri Apr 17 05:07:00 2015 ] Started Merging
+[ Fri Apr 17 05:07:00 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:07:00 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B30441FF203E12E0401490CACF65A4_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:07:00 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B30441FF203E12E0401490CACF65A4_-racdb.sql_collect.prt
+[ Fri Apr 17 05:07:00 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:07:00 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_64B30441FF203E12E0401490CACF65A4':
+[ Fri Apr 17 05:07:00 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:07:00 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:07:00 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:07:00 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B30441FF203E12E0401490CACF65A4_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:07:00 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B30441FF203E12E0401490CACF65A4_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:07:00 2015 ] /home/oracle/orachk/orachk_041715_050359/d_log_sequence_-64B30441FF203E12E0401490CACF65A4_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_log_sequence_-mfsdb.out
+[ Fri Apr 17 05:07:00 2015 ] /home/oracle/orachk/orachk_041715_050359/d_log_sequence_-64B30441FF203E12E0401490CACF65A4_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_log_sequence_-racdb.out
+[ Fri Apr 17 05:07:00 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:07:01 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:07:01 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:07:01 2015 ] User: oracle
+
+[ Fri Apr 17 05:07:01 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:07:01 2015 ] CHECKID=64B42BAD015B0207E0401490CACF3F6D
+[ Fri Apr 17 05:07:01 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:07:01 2015 ] COM_START=select 'Process = '||process||chr(10)||'Status = '||status||chr(10)||'Client Process = '||client_process||chr(10)||'Sequence Number = '||sequence# from v$managed_standby;
+[ Fri Apr 17 05:07:01 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:07:01 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:07:01 2015 ] COLLECTION_NAME=Process for shipping Redo to standby
+[ Fri Apr 17 05:07:01 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:07:01 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:07:01 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:07:01 2015 ] OUTFILNAM=ship_redo_processes
+[ Fri Apr 17 05:07:01 2015 ] Started Merging
+[ Fri Apr 17 05:07:01 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:07:01 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B42BAD015B0207E0401490CACF3F6D_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:07:01 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B42BAD015B0207E0401490CACF3F6D_-racdb.sql_collect.prt
+[ Fri Apr 17 05:07:01 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:07:01 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_64B42BAD015B0207E0401490CACF3F6D':
+[ Fri Apr 17 05:07:01 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:07:01 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:07:01 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:07:01 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B42BAD015B0207E0401490CACF3F6D_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:07:01 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B42BAD015B0207E0401490CACF3F6D_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:07:01 2015 ] /home/oracle/orachk/orachk_041715_050359/d_ship_redo_processes_-64B42BAD015B0207E0401490CACF3F6D_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_ship_redo_processes_-mfsdb.out
+[ Fri Apr 17 05:07:01 2015 ] /home/oracle/orachk/orachk_041715_050359/d_ship_redo_processes_-64B42BAD015B0207E0401490CACF3F6D_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_ship_redo_processes_-racdb.out
+[ Fri Apr 17 05:07:01 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:07:02 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:07:02 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:07:02 2015 ] User: oracle
+
+[ Fri Apr 17 05:07:02 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:07:02 2015 ] CHECKID=E60A5838BBE772AAE04312C0E50A297F
+[ Fri Apr 17 05:07:02 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:07:02 2015 ] COM_START=select 'Feature_Name = '||name||chr(10)||'Version = '|| version ||chr(10)||'Detected_Usages = '|| detected_usages ||chr(10)||'Currently_Used = '||currently_used ||chr(10)||'First_Usage_Date = '||first_usage_date ||chr(10)||'Last_Usage_Date = '|| last_usage_date   
+[ Fri Apr 17 05:07:02 2015 ] COM_REPORT_START=select 'Feature_Name = '||name||chr(10)||'Version = '|| version ||chr(10)||'Detected_Usages = '|| detected_usages ||chr(10)||'Currently_Used = '||currently_used ||chr(10)||'First_Usage_Date = '||first_usage_date ||chr(10)||'Last_Usage_Date = '|| last_usage_date from dba_feature_usage_statistics  where currently_used = 'TRUE';
+[ Fri Apr 17 05:07:02 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:07:02 2015 ] COLLECTION_NAME=RDBMS Feature Usage
+[ Fri Apr 17 05:07:02 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:07:02 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:07:02 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:07:02 2015 ] OUTFILNAM=feature_usage
+[ Fri Apr 17 05:07:02 2015 ] Started Merging
+[ Fri Apr 17 05:07:02 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:07:02 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-E60A5838BBE772AAE04312C0E50A297F_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:07:02 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-E60A5838BBE772AAE04312C0E50A297F_-racdb.sql_collect.prt
+[ Fri Apr 17 05:07:02 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:07:02 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_E60A5838BBE772AAE04312C0E50A297F':
+[ Fri Apr 17 05:07:02 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:07:02 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:07:02 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:07:02 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-E60A5838BBE772AAE04312C0E50A297F_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:07:02 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-E60A5838BBE772AAE04312C0E50A297F_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:07:02 2015 ] /home/oracle/orachk/orachk_041715_050359/d_feature_usage_-E60A5838BBE772AAE04312C0E50A297F_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_feature_usage_-mfsdb.out
+[ Fri Apr 17 05:07:02 2015 ] /home/oracle/orachk/orachk_041715_050359/d_feature_usage_-E60A5838BBE772AAE04312C0E50A297F_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_feature_usage_-racdb.out
+[ Fri Apr 17 05:07:02 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:07:03 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:07:03 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:07:03 2015 ] User: oracle
+
+[ Fri Apr 17 05:07:03 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:07:03 2015 ] CHECKID=64B5E7CC20FE1711E0401490CACF6017
+[ Fri Apr 17 05:07:03 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:07:03 2015 ] COM_START=select i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Sequence# = '||l.sequence#||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_redo log file size(mb) = '||l.bytes/1024/1024||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Archived = '||l.archived||chr(10)||i.instance_name||'.Group'||l.group#||'_Thread'||l.thread#||'_Status = '||l.status from gv$log l,gv$instance i where i.inst_id=l.inst_id ;
+[ Fri Apr 17 05:07:03 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:07:03 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:07:03 2015 ] COLLECTION_NAME=Redo Log information
+[ Fri Apr 17 05:07:03 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:07:03 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:07:03 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:07:03 2015 ] OUTFILNAM=redo_logs
+[ Fri Apr 17 05:07:03 2015 ] Started Merging
+[ Fri Apr 17 05:07:03 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:07:03 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B5E7CC20FE1711E0401490CACF6017_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:07:03 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B5E7CC20FE1711E0401490CACF6017_-racdb.sql_collect.prt
+[ Fri Apr 17 05:07:03 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:07:03 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_64B5E7CC20FE1711E0401490CACF6017':
+[ Fri Apr 17 05:07:03 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:07:03 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:07:03 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:07:03 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B5E7CC20FE1711E0401490CACF6017_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:07:03 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B5E7CC20FE1711E0401490CACF6017_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:07:03 2015 ] /home/oracle/orachk/orachk_041715_050359/d_redo_logs_-64B5E7CC20FE1711E0401490CACF6017_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_redo_logs_-mfsdb.out
+[ Fri Apr 17 05:07:03 2015 ] /home/oracle/orachk/orachk_041715_050359/d_redo_logs_-64B5E7CC20FE1711E0401490CACF6017_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_redo_logs_-racdb.out
+[ Fri Apr 17 05:07:03 2015 ] 
+----------------
+
+
+[ Fri Apr 17 05:07:04 2015 ] Number of Processors: 48
+
+[ Fri Apr 17 05:07:04 2015 ] Processes Generated : 12
+[ Fri Apr 17 05:07:04 2015 ] User: oracle
+
+[ Fri Apr 17 05:07:04 2015 ] CHECK META FILE CONTENT:
+[ Fri Apr 17 05:07:04 2015 ] CHECKID=64B42BAD015D0207E0401490CACF3F6D
+[ Fri Apr 17 05:07:04 2015 ] COMTYPE=SQL_COLLECT
+[ Fri Apr 17 05:07:04 2015 ] COM_START=select 'Group # = '||group#||chr(10)||'Sequence # = '||sequence#||chr(10)||'Log file size in MB ='||bytes/1024/1024 from v$standby_log;
+[ Fri Apr 17 05:07:04 2015 ] COM_REPORT_START=
+[ Fri Apr 17 05:07:04 2015 ] AUDIT_CHECK_NAME=
+[ Fri Apr 17 05:07:04 2015 ] COLLECTION_NAME=Standby redo log creation status before switchover
+[ Fri Apr 17 05:07:04 2015 ] STACK_ASM_SID=+ASM1
+[ Fri Apr 17 05:07:04 2015 ] STACK_ASM_HOME=
+[ Fri Apr 17 05:07:04 2015 ] RAT_RUNMODE_INTERNAL=master
+[ Fri Apr 17 05:07:04 2015 ] OUTFILNAM=standby_redo_log_status
+[ Fri Apr 17 05:07:04 2015 ] Started Merging
+[ Fri Apr 17 05:07:04 2015 ] Below Files merged into '/home/oracle/.orachk/psqlplus_sql_collect.prt':
+[ Fri Apr 17 05:07:04 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B42BAD015D0207E0401490CACF3F6D_-mfsdb.sql_collect.prt
+[ Fri Apr 17 05:07:04 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B42BAD015D0207E0401490CACF3F6D_-racdb.sql_collect.prt
+[ Fri Apr 17 05:07:04 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_skipped_checks.log':
+[ Fri Apr 17 05:07:04 2015 ] Below Files merged into '/home/oracle/orachk/.input_041715_050359/.chk_stat.out_64B42BAD015D0207E0401490CACF3F6D':
+[ Fri Apr 17 05:07:04 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_checks_timings.out':
+[ Fri Apr 17 05:07:04 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_error.log':
+[ Fri Apr 17 05:07:04 2015 ] Below Files merged into '/home/oracle/orachk/orachk_041715_050359/orachk_epoch_checks_timings.out':
+[ Fri Apr 17 05:07:04 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B42BAD015D0207E0401490CACF3F6D_-mfsdb_-epoch_timings.out
+[ Fri Apr 17 05:07:04 2015 ] /home/oracle/orachk/.input_041715_050359/rac2_-64B42BAD015D0207E0401490CACF3F6D_-racdb_-epoch_timings.out
+[ Fri Apr 17 05:07:04 2015 ] /home/oracle/orachk/orachk_041715_050359/d_standby_redo_log_status_-64B42BAD015D0207E0401490CACF3F6D_-mfsdb.out -> /home/oracle/orachk/orachk_041715_050359/d_standby_redo_log_status_-mfsdb.out
+[ Fri Apr 17 05:07:04 2015 ] /home/oracle/orachk/orachk_041715_050359/d_standby_redo_log_status_-64B42BAD015D0207E0401490CACF3F6D_-racdb.out -> /home/oracle/orachk/orachk_041715_050359/d_standby_redo_log_status_-racdb.out
+[ Fri Apr 17 05:07:04 2015 ] 
+----------------
+
+

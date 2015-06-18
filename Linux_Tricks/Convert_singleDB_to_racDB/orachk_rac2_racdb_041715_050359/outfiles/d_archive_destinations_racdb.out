@@ -1,0 +1,39 @@
+
+racdb1.archive destination ID = 1                                               
+racdb1.archive destination = USE_DB_RECOVERY_FILE_DEST                          
+racdb1.archive destination status = VALID                                       
+racdb1.archive destination target = PRIMARY                                     
+racdb1.archive schedule = ACTIVE                                                
+racdb1.archive process = ARCH                                                   
+racdb1.archiev mount ID = 0                                                     
+racdb1.archiver = ARCH                                                          
+racdb1.archive transmit mode = SYNCHRONOUS                                      
+racdb1.archive affirm = NO                                                      
+racdb1.archive async Blocks = 0                                                 
+racdb1.archive net timeout = 0                                                  
+racdb1.archive delay mintues = 0                                                
+
+racdb1.Reopen Seconds = 0                                                       
+racdb1.Register = NO                                                            
+racdb1.Binding = MANDATORY                                                      
+racdb1.any error while archiving =                                              
+                                                                                
+racdb2.archive destination ID = 1                                               
+racdb2.archive destination = USE_DB_RECOVERY_FILE_DEST                          
+racdb2.archive destination status = VALID                                       
+racdb2.archive destination target = PRIMARY                                     
+racdb2.archive schedule = ACTIVE                                                
+racdb2.archive process = ARCH                                                   
+racdb2.archiev mount ID = 0                                                     
+racdb2.archiver = ARCH                                                          
+
+racdb2.archive transmit mode = SYNCHRONOUS                                      
+racdb2.archive affirm = NO                                                      
+racdb2.archive async Blocks = 0                                                 
+racdb2.archive net timeout = 0                                                  
+racdb2.archive delay mintues = 0                                                
+racdb2.Reopen Seconds = 0                                                       
+racdb2.Register = NO                                                            
+racdb2.Binding = MANDATORY                                                      
+racdb2.any error while archiving =                                              
+                                                                                

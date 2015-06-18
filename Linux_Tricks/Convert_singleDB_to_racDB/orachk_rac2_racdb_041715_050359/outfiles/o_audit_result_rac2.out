@@ -1,0 +1,4 @@
+Audit check # -361@oradism executable permission@s@s@PASS =>   $ORACLE_HOME/bin/oradism setuid bit is set for /u01/app/oracle/product/11.2.0.4/db_1
+Audit check # -360@oradism executable ownership@root@root@PASS =>   $ORACLE_HOME/bin/oradism ownership is root for /u01/app/oracle/product/11.2.0.4/db_1
+Audit check # -355@DB shell limits hard nproc@1@1@PASS =>   Shell limit hard nproc for DB is configured according to recommendation
+Audit check # -362@RDBMS software owner UID across cluster@2@1@PASS =>   RDBMS software owner UID matches across cluster

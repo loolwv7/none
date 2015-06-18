@@ -1,0 +1,35 @@
+一、乐清市公安局
+门户网站运行很慢。
+1, 首先排查网站前端应用，IIS，发现日志运行并没有明显的错误，
+只是从web页面上来看，加载的内容很多，包括本地的静态图片和flash图片。
+系统运行时资源占用率大约40%上下。
+
+2, 排查网站主机所在的ESXi群集配制，网站配制为1000M，流量正常，硬盘读写也在可用的范围内。
+但发现所有虚拟机系统集中在一个LUN中运行，建议他们优化组合，迁移一些VM至空闲的LUN中。
+
+3, 排查后端的数据库系统，系统资源利用率很小，CPU占用率只有不到10%，内存只占用了5G（系统内存为32G）。
+查看系统日志，无明显性能方面的异常。
+
+4, 登录VM所在的EMC 5100存储，没有发现异常。
+
+5, 登录Oracle数据库，查询当前SGA,PGA和连接会话数（其中SGA为1.5G，PGA为3.2G，会话数为80左右。）
+此处SGA偏小，但尚不能确定这个是主要原因。
+在数据库中导出最后3天的性能报告，发现数据DB time为 ELA time的两倍！！因此推断为数据库负载过大！
+而SQL执行会话中也显示部分语句花费了大量的DB time，而执行时间却不多。
+
+最后给出的调整方案为:
+1) 增加SGA值: 由原来的1.5G调整为16G。
+
+SQL> alter system set sga_max_size=16G scope=spfile;
+SQL> alter system set sga_target_size=12G scope=spfile;
+SQL> shutdown immediate
+SQL> startup
+SQL> show parameter sga;
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- -----------
+lock_sga                             boolean     FALSE
+pre_page_sga                         boolean     FALSE
+sga_max_size                         big integer 16G
+sga_target                           big integer 12G$ 
+

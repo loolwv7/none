@@ -1,0 +1,22 @@
+
+Process = ARCH                                                                  
+Status = CLOSING                                                                
+Client Process = ARCH                                                           
+Sequence Number = 5                                                             
+                                                                                
+Process = ARCH                                                                  
+Status = CONNECTED                                                              
+Client Process = ARCH                                                           
+Sequence Number = 0                                                             
+                                                                                
+Process = ARCH                                                                  
+Status = CLOSING                                                                
+Client Process = ARCH                                                           
+
+Sequence Number = 3                                                             
+                                                                                
+Process = ARCH                                                                  
+Status = CLOSING                                                                
+Client Process = ARCH                                                           
+Sequence Number = 4                                                             
+                                                                                

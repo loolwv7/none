@@ -1,0 +1,7 @@
+connect target sys/dewcwtso85@primfsdb
+connect auxiliary sys/dewcwtso85@newmfsdb
+run{
+duplicate target database to mfsdb from active database;
+}
+exit;
+

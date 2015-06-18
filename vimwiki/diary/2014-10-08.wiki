@@ -1,0 +1,10 @@
+一、乐清公共资源交易中心
+1, 存储硬盘已经更换成功。
+但存储中报unreadable sectores信息，经排查存储日志并没有发现更换之后的相关信息，
+运行show subsystemSystem unreadableSectors命令也没有发现相关信息。
+已经确认该提示对存储本身没有影响，可能需要升级微码解决。
+
+https://rogerluethy.wordpress.com/tag/ds4000/
+
+2, 另一台存储也报电池过期错误和其中一块硬盘错误，
+经确认发现是存在两块热备盘，而阵列本身没有受到保护。

@@ -1,0 +1,32 @@
+<hr>
+<a name="841E706550975C68E040E50A1EC05EFB_details"></a>
+<a href="#841E706550975C68E040E50A1EC05EFB_summary" class="a_bgw">Top</a><br>
+<h3>DB shell limits hard nproc</h3>
+<table width=800 summary=Summary of audit check and SF role=presentation>
+<tr><td scope="row">Recommendation</td><td scope="row"><pre> The hard nproc shell limit for the Oracle DB software install owner as defined in /etc/security/limits.conf should be &gt;= 16384.
+ </pre></td></tr>
+<tr><td scope="row">Links</td><td scope="row"><ul><li><a href="http://docs.oracle.com/cd/E11882_01/install.112/e41961/prelinux.htm#CWLIN249" target="_blank">Setting Resource Limits for the Oracle Software Installation Users </a></li></ul></td></tr>
+<tr><td scope="row"><a name="841E706550975C68E040E50A1EC05EFB_machines"></a>Needs attention on</td><td scope="row">PLACEHOLDER_TO_REPLACE_FAIL</td></tr>
+<tr><td scope="row"></a>Passed on</td><td>rac2, rac1</td></tr>
+</table>
+<br>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on rac2</b>:<br/><span class="status_PASS">PASS</span> => Shell limit hard nproc for DB is configured according to recommendation</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="841E706550975C68E040E50A1EC05EFB_rac2_report_out_more_text27713_a"></a>
+DATA FROM RAC2 - DB SHELL LIMITS HARD NPROC 
+
+
+
+oracle hard nproc 16384
+</pre></td></tr>
+</table>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on rac1</b>:<br/><span class="status_PASS">PASS</span> => Shell limit hard nproc for DB is configured according to recommendation</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="841E706550975C68E040E50A1EC05EFB_rac1_report_out_more_text31296_a"></a>
+DATA FROM RAC1 - DB SHELL LIMITS HARD NPROC 
+
+
+
+oracle hard nproc 16384
+</pre></td></tr>
+</table>

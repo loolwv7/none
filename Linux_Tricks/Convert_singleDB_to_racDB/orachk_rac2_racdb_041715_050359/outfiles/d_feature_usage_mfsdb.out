@@ -1,0 +1,279 @@
+
+Feature_Name = Audit Options                                                    
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Automatic Maintenance - Optimizer Statistics Gathering           
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+
+                                                                                
+Feature_Name = Automatic Maintenance - Space Advisor                            
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Automatic Maintenance - SQL Tuning Advisor                       
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Automatic Segment Space Management (system)                      
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Automatic Segment Space Management (user)                        
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Character Set                                                    
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Locally Managed Tablespaces (system)                             
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Locally Managed Tablespaces (user)                               
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Partitioning (system)                                            
+Version = 11.2.0.1.0                                                            
+
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Server Parameter File                                            
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = SecureFiles (system)                                             
+
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Partitioning (system)                                            
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+
+Feature_Name = Recovery Area                                                    
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Server Parameter File                                            
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+
+                                                                                
+Feature_Name = Automatic SQL Tuning Advisor                                     
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 4                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 21-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Object                                                           
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 4                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 21-MAR-15                                                    
+
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Result Cache                                                     
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 4                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 21-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = SecureFiles (system)                                             
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Oracle Java Virtual Machine (system)                             
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Locally Managed Tablespaces (system)                             
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Automatic Memory Tuning                                          
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Automatic Segment Space Management (system)                      
+Version = 11.2.0.4.0                                                            
+
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Automatic Undo Management                                        
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Extensibility                                                    
+
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 4                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 21-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = HeapCompression                                                  
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+
+Feature_Name = Oracle Java Virtual Machine (system)                             
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Automatic Memory Tuning                                          
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+
+                                                                                
+Feature_Name = Automatic Undo Management                                        
+Version = 11.2.0.1.0                                                            
+Detected_Usages = 1                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 14-MAR-15                                                     
+                                                                                
+Feature_Name = Audit Options                                                    
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Automatic Maintenance - Optimizer Statistics Gathering           
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Automatic Maintenance - Space Advisor                            
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Automatic Maintenance - SQL Tuning Advisor                       
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Automatic Segment Space Management (user)                        
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Character Set                                                    
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Deferred Segment Creation                                        
+Version = 11.2.0.4.0                                                            
+
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                
+Feature_Name = Locally Managed Tablespaces (user)                               
+Version = 11.2.0.4.0                                                            
+Detected_Usages = 5                                                             
+Currently_Used = TRUE                                                           
+First_Usage_Date = 14-MAR-15                                                    
+Last_Usage_Date = 12-APR-15                                                     
+                                                                                

@@ -1,0 +1,6 @@
+TO REVIEW COLLECTED DATA FROM RAC2 - BRANCH TO EXECUTE CONSOLIDATION CHECKS 
+
+
+
+oracle   10919     1  0 03:51 ?        00:00:01 ora_pmon_racdb2
+oracle   20276     1  0 04:25 ?        00:00:00 ora_pmon_mfsdb2

@@ -1,0 +1,29 @@
+
+
+exachk_patchlist_for_version_matrix
+
+Oracle Interim Patch Installer version 11.2.0.3.4
+Copyright (c) 2012, Oracle Corporation.  All rights reserved.
+
+
+Oracle Home       : /u01/app/oracle/product/11.2.0.4/db_1
+Central Inventory : /u01/app/oraInventory
+   from           : /u01/app/oracle/product/11.2.0.4/db_1/oraInst.loc
+OPatch version    : 11.2.0.3.4
+OUI version       : 11.2.0.4.0
+Log file location : /u01/app/oracle/product/11.2.0.4/db_1/cfgtoollogs/opatch/opatch2015-04-17_05-06-57AM_1.log
+
+Lsinventory Output file location : /u01/app/oracle/product/11.2.0.4/db_1/cfgtoollogs/opatch/lsinv/lsinventory2015-04-17_05-06-57AM.txt
+
+------------------------------------------------------------------------------------------------------
+Installed Top-level Products (1): 
+
+Oracle Database 11g                                                  11.2.0.4.0
+There are 1 products installed in this Oracle Home.
+
+
+There are no Interim patches installed in this Oracle Home.
+
+------------------------------------------------------------------------------------------------------
+
+OPatch succeeded.

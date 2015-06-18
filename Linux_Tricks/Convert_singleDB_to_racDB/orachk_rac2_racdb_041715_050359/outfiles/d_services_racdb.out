@@ -1,0 +1,78 @@
+
+service_id1_name = SYS$BACKGROUND                                               
+service_id1_network_name =                                                      
+service_id1_failover_method =                                                   
+service_id1_failover_type =                                                     
+service_id1_failover_retries =                                                  
+service_id1_failover_delay =                                                    
+service_id1_goal = NONE                                                         
+service_id1_dtp = N                                                             
+service_id1_enabled = NO                                                        
+service_id1_aq_ha_notifications = NO                                            
+service_id1_clb_goal = SHORT                                                    
+                                                                                
+service_id2_name = SYS$USERS                                                    
+
+service_id2_network_name =                                                      
+service_id2_failover_method =                                                   
+service_id2_failover_type =                                                     
+service_id2_failover_retries =                                                  
+service_id2_failover_delay =                                                    
+service_id2_goal = NONE                                                         
+service_id2_dtp = N                                                             
+service_id2_enabled = NO                                                        
+service_id2_aq_ha_notifications = NO                                            
+service_id2_clb_goal = SHORT                                                    
+                                                                                
+service_id3_name = SYS.KUPC$C_1_20150303123405                                  
+service_id3_network_name = SYS$SYS.KUPC$C_1_20150303123405.RACDB                
+
+service_id3_failover_method =                                                   
+service_id3_failover_type =                                                     
+service_id3_failover_retries =                                                  
+service_id3_failover_delay =                                                    
+service_id3_goal = NONE                                                         
+service_id3_dtp = N                                                             
+service_id3_enabled = NO                                                        
+service_id3_aq_ha_notifications = NO                                            
+service_id3_clb_goal = LONG                                                     
+                                                                                
+service_id4_name = SYS.KUPC$S_1_20150303123405                                  
+service_id4_network_name = SYS$SYS.KUPC$S_1_20150303123405.RACDB                
+service_id4_failover_method =                                                   
+
+service_id4_failover_type =                                                     
+service_id4_failover_retries =                                                  
+service_id4_failover_delay =                                                    
+service_id4_goal = NONE                                                         
+service_id4_dtp = N                                                             
+service_id4_enabled = NO                                                        
+service_id4_aq_ha_notifications = NO                                            
+service_id4_clb_goal = LONG                                                     
+                                                                                
+service_id5_name = racdbXDB                                                     
+service_id5_network_name = racdbXDB                                             
+service_id5_failover_method =                                                   
+service_id5_failover_type =                                                     
+
+service_id5_failover_retries =                                                  
+service_id5_failover_delay =                                                    
+service_id5_goal =                                                              
+service_id5_dtp = N                                                             
+service_id5_enabled = NO                                                        
+service_id5_aq_ha_notifications = NO                                            
+service_id5_clb_goal = LONG                                                     
+                                                                                
+service_id6_name = racdb                                                        
+service_id6_network_name = racdb                                                
+service_id6_failover_method =                                                   
+service_id6_failover_type =                                                     
+service_id6_failover_retries =                                                  
+
+service_id6_failover_delay =                                                    
+service_id6_goal =                                                              
+service_id6_dtp = N                                                             
+service_id6_enabled = NO                                                        
+service_id6_aq_ha_notifications = NO                                            
+service_id6_clb_goal = LONG                                                     
+                                                                                

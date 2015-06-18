@@ -1,0 +1,63 @@
+<Checks>
+    <Check id="7EDDA570A1827FBAE040E50A1EC02EB1">
+        <Recommendation><![CDATA[<pre> 
+Benefit / Impact:
+
+The oradism executable is invoked after database startup to change the scheduling priority of LMS and other database background processes to the realtime scheduling class in order to maximize the ability of these key processes to be scheduled on the CPU in a timely way at times of high CPU utilization.
+
+Risk:
+
+The oradism executable should be owned by root and the owner s-bit should be set, e.g., -rwsr-x---, where the s is the setuid bit (s-bit) for root in this case.  If the LMS process is not running at the proper scheduling priority it can lead to instance evictions due to IPC send timeouts or ORA-29740 errors.  oradism must be owned by root and it's s-bit set in order to be able to change the scheduling priority.   If oradism ownership is not root and the owner s-bit is not set then something must have gone wrong in the installation process or the ownership or the permission was otherwise changed.
+
+Action / Repair:
+
+Please check with Oracle Support to determine the best course to take for your platform to correct the problem.
+ </pre>]]></Recommendation>
+        <Links><![CDATA[]]></Links>
+    </Check>
+    <Check id="7EDE9EBEC9429FBAE040E50A1EC03AED">
+        <Recommendation><![CDATA[<pre> 
+Benefit / Impact:
+
+The oradism executable is invoked after database startup to change the scheduling priority of LMS and other database background processes to the realtime scheduling class in order to maximize the ability of these key processes to be scheduled on the CPU in a timely way at times of high CPU utilization.
+
+
+
+Risk:
+
+The oradism executable should be owned by root and the owner s-bit should be set, e.g., -rwsr-x---, where the s is the setuid bit (s-bit) for root in this case.  If the LMS process is not running at the proper scheduling priority it can lead to instance evictions due to IPC send timeouts or ORA-29740 errors.  oradism must be owned by root and it's s-bit set in order to be able to change the scheduling priority.   If oradism ownership is not root and the owner s-bit is not set then something must have gone wrong in the installation process or the ownership or the permission was otherwise changed.  
+
+
+
+Action / Repair:
+
+Please check with Oracle Support to determine the best course to take for your platform to correct the problem.
+ </pre>]]></Recommendation>
+        <Links><![CDATA[]]></Links>
+    </Check>
+    <Check id="841E706550975C68E040E50A1EC05EFB">
+        <Recommendation><![CDATA[<pre> The hard nproc shell limit for the Oracle DB software install owner as defined in /etc/security/limits.conf should be &gt;= 16384.
+ </pre>]]></Recommendation>
+        <Links><![CDATA[<li><a href="http://docs.oracle.com/cd/E11882_01/install.112/e41961/prelinux.htm#CWLIN249" target="_blank">Setting Resource Limits for the Oracle Software Installation Users </a></li>]]></Links>
+    </Check>
+    <Check id="7E3FAC1843F137ABE040E50A1EC0139B">
+        <Recommendation><![CDATA[<pre> 
+Benefit / Impact:
+
+Availability, stability
+
+
+
+Risk:
+
+Potential OCR logical corruptions and permission problems accessing OCR keys when multiple O/S users share the same UID which are difficult to diagnose.
+
+
+
+Action / Repair:
+
+For GI/CRS, ASM and RDBMS software owners ensure one unique user ID with a single name is in use across the cluster.
+ </pre>]]></Recommendation>
+        <Links><![CDATA[]]></Links>
+    </Check>
+</Checks>

@@ -1,0 +1,65 @@
+
+mfsdb2.Group6_Thread2_Sequence# = 3                                             
+mfsdb2.Group6_Thread2_redo log file size(mb) = 50                               
+mfsdb2.Group6_Thread2_Archived = YES                                            
+mfsdb2.Group6_Thread2_Status = INACTIVE                                         
+                                                                                
+mfsdb2.Group5_Thread2_Sequence# = 5                                             
+mfsdb2.Group5_Thread2_redo log file size(mb) = 50                               
+mfsdb2.Group5_Thread2_Archived = NO                                             
+mfsdb2.Group5_Thread2_Status = CURRENT                                          
+                                                                                
+mfsdb2.Group4_Thread2_Sequence# = 4                                             
+mfsdb2.Group4_Thread2_redo log file size(mb) = 50                               
+mfsdb2.Group4_Thread2_Archived = YES                                            
+
+mfsdb2.Group4_Thread2_Status = INACTIVE                                         
+                                                                                
+mfsdb2.Group3_Thread1_Sequence# = 9                                             
+mfsdb2.Group3_Thread1_redo log file size(mb) = 50                               
+mfsdb2.Group3_Thread1_Archived = NO                                             
+mfsdb2.Group3_Thread1_Status = CURRENT                                          
+                                                                                
+mfsdb2.Group2_Thread1_Sequence# = 8                                             
+mfsdb2.Group2_Thread1_redo log file size(mb) = 50                               
+mfsdb2.Group2_Thread1_Archived = YES                                            
+mfsdb2.Group2_Thread1_Status = INACTIVE                                         
+                                                                                
+mfsdb2.Group1_Thread1_Sequence# = 7                                             
+
+mfsdb2.Group1_Thread1_redo log file size(mb) = 50                               
+mfsdb2.Group1_Thread1_Archived = YES                                            
+mfsdb2.Group1_Thread1_Status = INACTIVE                                         
+                                                                                
+mfsdb1.Group6_Thread2_Sequence# = 3                                             
+mfsdb1.Group6_Thread2_redo log file size(mb) = 50                               
+mfsdb1.Group6_Thread2_Archived = YES                                            
+mfsdb1.Group6_Thread2_Status = INACTIVE                                         
+                                                                                
+mfsdb1.Group5_Thread2_Sequence# = 5                                             
+mfsdb1.Group5_Thread2_redo log file size(mb) = 50                               
+mfsdb1.Group5_Thread2_Archived = NO                                             
+mfsdb1.Group5_Thread2_Status = CURRENT                                          
+
+                                                                                
+mfsdb1.Group4_Thread2_Sequence# = 4                                             
+mfsdb1.Group4_Thread2_redo log file size(mb) = 50                               
+mfsdb1.Group4_Thread2_Archived = YES                                            
+mfsdb1.Group4_Thread2_Status = INACTIVE                                         
+                                                                                
+mfsdb1.Group3_Thread1_Sequence# = 9                                             
+mfsdb1.Group3_Thread1_redo log file size(mb) = 50                               
+mfsdb1.Group3_Thread1_Archived = NO                                             
+mfsdb1.Group3_Thread1_Status = CURRENT                                          
+                                                                                
+mfsdb1.Group2_Thread1_Sequence# = 8                                             
+mfsdb1.Group2_Thread1_redo log file size(mb) = 50                               
+
+mfsdb1.Group2_Thread1_Archived = YES                                            
+mfsdb1.Group2_Thread1_Status = INACTIVE                                         
+                                                                                
+mfsdb1.Group1_Thread1_Sequence# = 7                                             
+mfsdb1.Group1_Thread1_redo log file size(mb) = 50                               
+mfsdb1.Group1_Thread1_Archived = YES                                            
+mfsdb1.Group1_Thread1_Status = INACTIVE                                         
+                                                                                

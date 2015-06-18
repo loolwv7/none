@@ -1,0 +1,2 @@
+rac2 70.0.0.0.0.0.0.0.0.0 id -u `ls -l $ORACLE_HOME/bin/oracle|awk '{print $3}'` == 54321
+rac1 70.0.0.0.0.0.0.0.0.0 id -u `ls -l $ORACLE_HOME/bin/oracle|awk '{print $3}'` == 54321

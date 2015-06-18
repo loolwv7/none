@@ -1,0 +1,48 @@
+<hr>
+<a name="7E3FAC1843F137ABE040E50A1EC0139B_details"></a>
+<a href="#7E3FAC1843F137ABE040E50A1EC0139B_summary" class="a_bgw">Top</a><br>
+<h3>RDBMS software owner UID across cluster</h3>
+<table width=800 summary=Summary of audit check and SF role=presentation>
+<tr><td>Success Factor</td><td>ENSURE EACH ORACLE/ASM USER HAS A UNIQUE UID ACROSS THE CLUSTER</td></tr>
+<tr><td scope="row">Recommendation</td><td scope="row"><pre> 
+Benefit / Impact:
+
+Availability, stability
+
+
+
+Risk:
+
+Potential OCR logical corruptions and permission problems accessing OCR keys when multiple O/S users share the same UID which are difficult to diagnose.
+
+
+
+Action / Repair:
+
+For GI/CRS, ASM and RDBMS software owners ensure one unique user ID with a single name is in use across the cluster.
+ </pre></td></tr>
+<tr><td scope="row"><a name="7E3FAC1843F137ABE040E50A1EC0139B_machines"></a>Needs attention on</td><td scope="row">PLACEHOLDER_TO_REPLACE_FAIL</td></tr>
+<tr><td scope="row"></a>Passed on</td><td>Cluster Wide</td></tr>
+</table>
+<br>
+<table class="td_output" summary="Audit check output"><tr class="td_output"><td class="td_output" scope="row"><p class=a_bgw><b>Status on Cluster Wide</b>:<br/><span class="status_PASS">PASS</span> => RDBMS software owner UID matches across cluster</p></td></tr>
+<tr class="td_output"><td class="td_output" scope="row"><pre>
+<a name="7E3FAC1843F137ABE040E50A1EC0139B_report_out_more_text14815_a"></a>
+DATA FROM RAC2 - RDBMS SOFTWARE OWNER UID ACROSS CLUSTER 
+
+
+
+uid=54321(oracle) gid=54321(oinstall) groups=54321(oinstall),54322(dba),54323(asmdba),54324(asmadmin),54325(asmoper),54326(oper)
+
+
+
+DATA FROM RAC1 - RDBMS SOFTWARE OWNER UID ACROSS CLUSTER 
+
+
+
+uid=54321(oracle) gid=54321(oinstall) groups=54321(oinstall),54322(dba),54323(asmdba),54324(asmadmin),54325(asmoper),54326(oper)
+
+
+
+</pre></td></tr>
+</table>
