@@ -35,3 +35,64 @@ http://blog.softlayer.com/2011/iptables-tips-and-tricks-port-redirection/
 -A INPUT -j REJECT --reject-with icmp-host-prohibited
 -A FORWARD -j REJECT --reject-with icmp-host-prohibited
 COMMIT
+
+
+= NAT how to =
+== eth0 ==
+nc -vv -n -l -p 33 -w 18000 -s 192.168.8.111
+
+== wlan0 ==
+nc -vv -n -l -p 33 -s 192.168.1.101 -w 18889
+
+== iptables rules ==
+{{{
+iptables -t nat -A PREROUTING -p tcp --dport 33 -j DNAT --to-destination 192.168.1.101:33
+iptables -t nat -A POSTROUTING -p tcp -d 192.168.1.101 --dport 33 -j SNAT --to-source 192.168.8.111
+}}}
+
+#!/bin/sh
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+iptables -F
+iptables -t nat -F
+iptables -X
+
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.12.77:80
+iptables -t nat -A POSTROUTING -p tcp -d 192.168.12.77 --dport 80 -j SNAT --to-source 192.168.12.87
+
+{{{
+
+{{{
+iptables -L -n -v -t nat
+Chain PREROUTING (policy ACCEPT 9 packets, 2758 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    2   127 DNAT       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0            tcp dpt:33 to:192.168.1.101:33
+
+Chain INPUT (policy ACCEPT 3 packets, 159 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain OUTPUT (policy ACCEPT 2 packets, 172 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain POSTROUTING (policy ACCEPT 2 packets, 172 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 SNAT       tcp  --  *      *       0.0.0.0/0            192.168.1.101        tcp dpt:33 to:192.168.8.111
+}}}
+
+
+iptables -t nat -L -n -v
+Chain PREROUTING (policy ACCEPT 1026 packets, 136K bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    60  5948 NFQUEUE    tcp  --  br0    *       0.0.0.0/0  192.168.254.30      tcp dpt:80 NFQUEUE num 0
+
+    Chain POSTROUTING (policy ACCEPT 506 packets, 49229 bytes)
+     pkts bytes target     prot opt in     out     source
+     destination         
+
+     Chain OUTPUT (policy ACCEPT 19 packets, 1310 bytes)
+      pkts bytes target     prot opt in     out     source
+      destination   
+
+http://www.tecmint.com/setup-linux-as-router/
+https://beginlinux.com/sec_train_m/10-traincat/1310-set-up-the-bridge

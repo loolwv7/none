@@ -136,3 +136,59 @@ Would you like to enter the initial configuration mode?(yes/no): yes
 
 http://www.cisco.com/en/US/prod/collateral/ps4159/ps6409/ps4358/prod_white_paper09186a00801dc74d_ns514_Networking_Solutions_White_Paper.html
 http://www.cisco.com/en/US/docs/switches/datacenter/mds9000/sw/5_2/command/reference/CR04_f.html#wp1311152
+
+
+
+== UCS health check report ==
+https://jeremywaldrop.wordpress.com/2012/04/04/cisco-ucs-powershell-health-check-report/
+
+== System Board 0 SEL_FULLNESS ==
+http://www.cyberfella.co.uk/2012/04/16/ucs-management-logs/
+
+https://supportforums.cisco.com/discussion/11962486/system-board-0-selfullness-upper-critical-alert-100-unknown
+
+vCenter Server, with a fault of System Board 0 SEL_FULLNESS.
+
+This occurs when the UCS Management Log for a given blade breaches it’s own
+monitoring threshold of 90% full.
+
+To clear it, Log into UCS Manager, Equipment tab, Servers, Server n, SEL Logs
+tab, and Backup or Clear the log.
+
+Don’t forget to at least take a look at the log to make sure it hasn’t filled
+due to real, unresolved hardware problems.  The SEL Log logs absolutely
+everything that goes on to the extent of even logging LED’s as they turn on and
+off on the equipment, so these logs fill quite quickly.
+
+== Visual Guide to collect Tech Support files (B and C series) - Cisco ==
+http://www.cisco.com/c/en/us/support/docs/servers-unified-computing/ucs-manager/115023-visg-tsfiles-00.html
+
+== HOW TO: Upgrade Cisco UCS Manager, Fabric Interconnects, I/O Modules and
+1, Before you start downloading firmware and upgrading UCS Manager and the blades, it may be a
+good idea to go through some housekeeping:
+
+a.Login to UCS Manager. Verify overall status of Fabric Interconnects, I/O
+    Modules, Servers and Adapters;
+b.Navigate to Admin tab, Faults, Events and Audit Log. Make sure there
+         are no alerts or if they can be safely ignored;
+c.Equipment tab, Fabric Interconnects, Fabric Interconnect A/B. Make
+             sure you have enough space on bootflash;-Series blade server firmware ==
+d.Backup your current configuration. Admin tab, All node, select Backup
+Configuration, Create Backup Operation. Make sure you specify the file name and
+extension, Click OK
+
+2, Download firmware upgrade bundles from Cisco website
+Downloads Home > Products > Unified Computing and Servers > Cisco UCS Infrastructure and UCS Manager Software:
+a.UCS Infrastructure bundle – ucs-k9-bundle-infra.2.0.3a.A.bin
+b.UCS B-Series blade server products bundle – ucs-k9-bundle-b-series.2.0.3a.B.bin
+c.If you have any C-Series servers managed by UCS Manager then also download Software for the UCS C-Series rack-mount servers.
+    ucs-k9-bundle-c-series.2.0.3a.C.bin
+
+3, 
+
+
+== Collect logs ==
+show chassis inventory expand
+show fabric-interconnect inventory expand
+
+

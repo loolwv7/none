@@ -223,6 +223,69 @@ ansible dbservers -m raw -a 'cd /tmp/oswbb; tar -zcvf /tmp/oswbb_`hostname`.tar.
 ansible dbservers -m fetch -a 'src=/tmp/oswbb*.gz dest=/tmp/'
 }}}
 
+== Cisco switch/router ==
+Ansible for Cisco IOS SNMP modules.
+https://github.com/networklore/ansible-cisco-snmp
+pip install nelsnmp
+pip install nelsnmp --upgrade
+
+pip install pycsco
+
+ansible TEST -m raw --ask-pass -c paramiko -a 'show clock'
+
+=== Cisco docker ansible ===
+https://github.com/jedelman8/nxos-ansible
+
+
+
+=== Playbook how to ===
+http://jedelman.com/home/ansible-for-networking/
+
+test.yml
+{{{#!highlight python
+---
+- hosts: testsw
+  remote_user: zab
+  gather_facts: false
+  tasks: 
+  - name: copy tftp run
+  raw: copy tftp://10.1.78.153/test running-config
+}}}
+
+Excution it 
+
+{{{
+ansible-playbook test.yml --ask-pass
+}}}
+
+For openssh to work with Cisco devices I usually setup my local .ssh/config
+like the following:
+
+{{{#!highlight python
+Host *
+StrictHostKeyChecking no
+UserKnownHostsFile=/dev/null
+ServerAliveInterval 120
+ServerAliveCountMax 2
+ControlPath ~/.ssh/master-%r@%h:%p
+ControlMaster auto
+ControlPersist 60s
+}}}
+
+
+== Troubshooting ==
+=== ansible unsupported option gssapiauthentication ===
+
+* Your SSH client was built without Kerberos and GSSAPI support.  You
+need to rebuld it with "./configure --with-kerberos5" (assuming you
+have all of the required bits on your system).
+
+OR
+
+* line 141 of "service.c" has all of the ssh command line. If you remove
+-oGSSAPIAuthentication=no and -oVisualHostKey then recompile shellinabox it
+works fine. 
+
 
 https://serversforhackers.com/an-ansible-tutorial
 
@@ -233,3 +296,5 @@ http://www.saltstack.cn/
 http://www.saltstack.cn/projects/cssug-events/wiki/2013-06-30_中国SaltStack用户组之自动化运维专题
 
 http://stackoverflow.com/questions/26141536/run-ansible-single-command-via-ssh
+
+http://stackoverflow.com/questions/26295259/ansible-ad-hoc-commands-dont-work-with-cisco-devices

@@ -189,7 +189,7 @@ will fail to be parsed correctly on the command line. However,
            a credentials file (see below) or entered at the password prompt
            will be read correctly.
 {{{
-mount.cifs  -o iocharset=utf8,credentials=/root/pw.txt //192.168.200.252/share /mnt/zip/
+mount.cifs -v -o iocharset=utf8,credentials=/root/pw.txt //192.168.200.252/share /mnt/zip/
 mount.cifs -o username=cml,iocharset=utf8 //192.168.200.252/share /mnt/zip
 sudo mount -t cifs -o username=${USER},password=${PASSWORD},uid=<user>,gid=<group> //server-address/folder /mount/path/on/ubuntu
 [[http://unix.stackexchange.com/questions/68079/mount-cifs-network-drive-write-permissions-and-chown]]
@@ -706,6 +706,8 @@ cp /etc/sysctl.conf{,.`date +%Y%m%d-%H%M%S`} -v
 grep -lri sshd /var/log
 62, mplayer about
 mplayer -cdrom-device /dev/cdrom cdda://
+
+ffmpeg -f alsa -i default -f v4l2 -s 640x480 -i /dev/video0 output.mpg
 
 cdda2wav -vall -cddb=1 -paranoia -B
 
@@ -1366,6 +1368,7 @@ java -d64 -jar oswbba.jar -i /media/incoming/zjsos/wzygj_c/2015-04-10_check/oswb
 mpstat -P ALL 2 10
 
 # wicd failed to read stdin!
+https://forums.gentoo.org/viewtopic-t-844975-view-next.html?sid=df197b34b4337a2cd73045d24e0fa418
 # /usr/lib64/python2.7/site-packages/wicd/misc.py
 
     if return_obj:
@@ -1373,15 +1376,80 @@ mpstat -P ALL 2 10
     else:
         std_in = None
 #        return f
-
+OR:
+    http://debiantjw.blogspot.com/2014/07/wicd-authentication-timed-out-solved.html
+#        f = Popen(cmd, shell=False, stdout=PIPE, stdin=std_in, stderr=err,
+        f = Popen(cmd, shell=False, stdout=PIPE, stdin=none, stderr=err,
 
 # bootable 
 http://linux-sunxi.org/Bootable_SD_card
 
 == CSV to vCard ==
+https://convertio.co/zh/xls-csv/
 http://www.artistec.com/pages/CSV2vCard.html
 
 == Citrix ICA launch ==
 * sudo emerge -av net-misc/icaclient
 # to open it with /opt/Citrix/ICAClient/wfica, and tell Firefox to remember
 # that choice.
+
+== SSH run comman ==
+ssh server.com 'screen -d -m ~/myscript.sh'
+ffmpeg -f v4l2 -s 640x480 -i /dev/video0 output.mpg
+
+== Disable IPv6 ==
+{{{
+cat >> /etc/sysctl.conf <<"EOF"
+net.ipv6.conf.all.disable_ipv6 = 1
+EOF
+}}}
+
+== VLC fun ==
+Open VLC media player and press Ctrl+N. Then type screen:// in URL and click
+Play and see what happens!
+
+== VirtualBox ==
+=== graphic card support ===
+The graphics card can't be utilized in a virtual machine like you're thinking.
+There's very limited support with many caveats. Maybe in a few more years this
+will improve. If you need hardware accelerated 3D graphics then dual boot with
+Windows instead of using a virtual machine.
+
+If you just want to make the virtual machine use a different resolution install
+the VirtualBox guest additions in the Windows guest. They are available as an
+option for the optical drive, it says something like "Install Guest Addons"
+which will mount an image of the software in the guest so it can be installed.
+
+== RPM about ==
+=== Sort installed RPMs by size  ===
+rpm -qa --queryformat '%{size} %{name}\n' | sort -rn | more
+
+http://www.cyberciti.biz/howto/question/linux/linux-rpm-cheat-sheet.php
+
+== tomcat ==
+java.net.BindException: Cannot assign requested address
+ifconfig lo up
+cat /etc/hosts
+
+== Quiet Console Login ==
+touch .hushlogin
+
+== Run script after login in ==
+{{{
+#! /bin/bash
+# ~/.bash_profile
+
+MAC=`ifconfig eth0 | sed -n '/HWaddr/p' | awk '{ print $5 }'`
+CONFIRM_FILE="/opt/apps/.netconfig"
+
+if [ $MAC  != '02:00:27:bb:f3:3e' ] && [[ ! -e "$CONFIRM_FILE" ]]
+then
+	/sbin/netconfig
+else
+	source ~/.bashrc
+fi
+}}}
+
+== VPN how to ==
+http://www.theusefulvpn.com/
+http://www.adminsehow.com/2010/04/connect-to-pptp-vpn-from-linux-only-by-one-command/

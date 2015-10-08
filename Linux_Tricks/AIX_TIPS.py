@@ -288,3 +288,68 @@ http://www.unixwerk.eu/aix/cluster-cmd.html
 
 == Oracle install ==
 export DISPLAY="localhost:0"
+
+
+
+
+To see the details of installed file sets:
+#lslpp -l
+To list the installation history of all file set in bos.net packages:
+#lslpp -ha bos.net.*
+To list the files in the bos.rte package:
+#lslpp -f bos.rte
+To list the file set which contain /etc/hosts file:
+#lslpp -w /etc/hosts
+To list the pre requisites for bos.net.nfs.server file set:
+#lslpp -p bos.net.nfs.server
+To list the installable products on the device rmt0:
+#installp -L -d /dev/rmt0.1
+To install all filesets within bos.net and expands file system if it requires:
+#installp -aX -d /dev/rmt0.1 bos.net
+To remove bos.net:
+#installp -u bos.net
+To reject the applied software:
+#installp -r
+To commit the <package>:
+#installp -c -f <package>
+To cleanup an incomplete installation:
+#installp -C
+To check the <package>:
+#lppchk -c <package> Verifies that the / (root), /usr and /usr/share parts of the system are valid with each other: #lppchk -v
+To install the file set associated with fix IX9999 from rmt0:
+#instfix -k IX9999 -d /dev/rmt0.1
+To verify fix IY6969 installed:
+#instfix -ik IY6969
+How to display missing filesets from service pack:
+#instfix -icqv | grep ':-:'
+To verify if you have all packages installed for the current ML and why after upgrade you cannot see the newer version:
+
+# instfix -i |grep ML
+    All filesets for 6100-00_AIX_ML were found.
+    All filesets for 6100-01_AIX_ML were found.
+    All filesets for 6100-02_AIX_ML were found.
+    All filesets for 6100-03_AIX_ML were found.
+    All filesets for 6100-04_AIX_ML were found.
+    All filesets for 6100-05_AIX_ML were found.
+    All filesets for 6100-06_AIX_ML were found.
+    All filesets for 6.1.0.0_AIX_ML were found.
+    Not all filesets for 6100-07_AIX_ML were found.
+	
+# oslevel -s
+6100-06-05-1115
+
+
+== swap usage ==
+svmon -Pt10 | perl -e 'while(<>){print if($.==2||$&&&!$s++);$.=0 if(/^-+$/)}'
+#I need to see the following output:
+
+    vmo -a
+
+    vmstat 1 10
+
+    lsps -a
+
+    lsps -s
+
+    svmon -G
+

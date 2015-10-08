@@ -91,3 +91,11 @@ https://wiki.sabayon.org/?title=How_to_optimize_and_accelerate_your_system
 == Usefull tools ==
 http://nsat.sourceforge.net/
 http://knocker.sourceforge.net
+
+== Exchange Server certificate ==
+http://davmail.sourceforge.net/advanced.html
+
+Manually accepted server certificate hash, contains the SHA1 hash of a manually
+accepted certificate (invalid or self signed) 
+
+davmail.server.certificate.hash=39\:47\:18\:63\:BE\:73\:32\:80\:5B\:76\:B5\:6D\:2B\:D2\:34\:94\:58\:AD\:84\:B6

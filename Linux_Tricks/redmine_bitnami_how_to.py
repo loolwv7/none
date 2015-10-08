@@ -707,3 +707,8 @@ Gemfile.lock
       selenium-webdriver (= 2.35.1)
       shoulda (~> 3.3.2)
       yard
+
+
+
+--nginx_modules_http_upload_progress --pcre --ssl
+

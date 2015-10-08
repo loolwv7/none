@@ -2,19 +2,40 @@ http://wiki.otterhub.org/index.php?title=Installation_on_Debian_6_with_Postgres
 http://hirantha.wikidot.com/setting-up-nginx-for-otrs
 
 
-1, emerge -av otrs
+1, emerge -av otrs yaml dev-perl/Crypt-SSLeay dev-perl/GD dev-perl/GDGraph dev-perl/Archive-Zip
+dev-perl/Net-DNS
+
 make error ``Could not set permissions''
 http://bytesandbones.wordpress.com/2013/10/18/gentoo-otrs-emerge-error-chown-s-not-allowed/
 
 2, $ pwd
 /var/lib/otrs/bin
 $ perl otrs.CheckModules.pl  | less
+cpan DBD::Pg
+cpan Net:SSL
+cpan YAML:XS
+cpan Encode:HanExtra
+cpan GD::Text
+cpan JSON::XS
+cpan Mail::IMAPClient
+cpan PDF::API2
+cpan Template
+cpan Net::LDAP
+cpan Template
+cpan Crypt::Eksblowfish::Bcrypt
 
 perl -e shell -MCPAN
+OR:
 # install needed modules!
-cpan[2]> install Net:SSL
-cpan[2]> install YAML:XS
-cpan[2]> install Encode:HanExtra
+
+
+cd /opt/otrs/
+cp Kernel/Config.pm.dist Kernel/Config.pm
+cp Kernel/Config/GenericAgent.pm.dist Kernel/Config/GenericAgent.pm
+
+perl -cw /opt/otrs/bin/cgi-bin/index.pl
+perl -cw /opt/otrs/bin/cgi-bin/customer.pl
+perl -cw /opt/otrs/bin/otrs.PostMaster.pl
 
 $ perl -cw bin/cgi-bin/index.pl
 bin/cgi-bin/index.pl syntax OK
@@ -26,11 +47,16 @@ $  perl -cw bin/otrs.PostMaster.pl
 bin/otrs.PostMaster.pl syntax OK
 
 
-3, connect with PostgreSQL
+3, connect with PostgreSQL OR http://127.0.0.1:802/otrs/installer.pl
 postgres=# create user otrs password 'otrs' nosuperuser;
 CREATE ROLE
 postgres=# create database otrs owner otrs;
 CREATE DATABASE
+
+psql otrs < /opt/otrs/scripts/database/otrs-schema.postgresql.sql
+psql otrs <  /opt/otrs/scripts/database/otrs-initial_insert.postgresql.sql 
+psql otrs < /opt/otrs/scripts/database/otrs-schema-post.postgresql.sql
+
 
 http://itsm-demo.otrs.com/otrs/public.pl?Action=PublicFAQZoom;ItemID=53
 
@@ -39,6 +65,14 @@ postgres=# \conninfo
 You are connected to database ``postgres'' as user ``postgres'' via socket in ``/run/postgresql'' at port ``5432''.
 postgres=# \connect otrs
 You are now connected to database ``otrs'' as user ``postgres''.
+
+== troubleshooting ==
+[Mon Aug 17 22:33:59 2015] otrs.CheckDB.pl: DBD::Pg::st execute failed: ERROR:
+    permission denied for relation valid at /opt/otrs/Kernel/System/DB.pm line
+    629.
+    ERROR: OTRS-otrs.CheckDB.pl-10 Perl: 5.20.2 OS: linux Time: Mon Aug 17
+    22:33:59 2015
+
 otrs=# GRANT SELECT on valid TO PUBLIC;
 GRANT
 otrs=# 
@@ -157,3 +191,19 @@ http://127.0.0.1:802/otrs/index.pl
 root@localhost
 密码:
 6ZsnKwsTFZlFDSLk 
+
+=== Reset web login PASSWORD ===
+./bin/otrs.SetPassword.pl root@localhost PASSWORD
+
+
+20150817
+Start page:
+http://127.0.0.1:802/otrs/index.pl
+User:
+root@localhost
+Password:
+IkJ7KJEmgTXC9iJP
+
+((enjoy))
+
+Your OTRS Team

@@ -930,3 +930,6 @@ select sum(pins),sum(reloads),sum(reloads)/sum(pins) hits from v$librarycache;
 
   I. shared pool reserved size一般是shared pool size的10％，不能超过50％。V$shared_pool_reserved中的request misses＝0或没有持续增长，或者free_memory大于shared pool reserved size的50%，表明shared pool reserved size过大，可以压缩。
 
+
+== Orion how to ==
+http://hesonogoma.com/linux/oracle_orion_disk_performance_benchmark.html
