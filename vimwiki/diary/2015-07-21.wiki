@@ -1,0 +1,23 @@
+工作
+一、金鹰基金项目
+1，原计划下午前往通电测试，但下午用户临时有急时，推迟到明天前往实施加电测试。
+
+二、海南雅创旅游开发有限公司（雅居乐）
+1，两台服务器的日志还没有收集好，原因是收集日志的工具运行异常。
+
+三、广东白云山药业集团H3C CAS
+1, 刚才用户发过来的截图表明H3C CAS云计算管理平台的License已经过期。
+2, 确认该license只有1年，但公司服务有三年。
+
+四、湛江环保局和公积金项目
+1, 由于明天上午要去金鹰基金，将安排明天下午前往。
+
+五、魅族WEBEX无法发送邮件的问题
+初步分析为webex服务器在连接Exchange邮件服务器的时候遇到问题（该Exchange没有负载均衡？直接使用了DNS的Roubin Balance算法？）。
+因为看不到日志，我只好进行他们后台去查找相应的日志。
+find /opt/webex -iname "*.conf" -o -iname "*.xml" -o -iname "*.cfg" -o -iname "*.properties" -exec grep -il "mail.meizu.com" '{}' \;
+find /opt/webex/log -type f -exec grep -i --color 'mail.meizu.com.cn' '{}' \;
+最后找到了相应的错误代码。
+
+六、信诚人寿UCS巡检
+1, 微码升级问题，需要确定版本。

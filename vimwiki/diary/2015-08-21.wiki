@@ -1,0 +1,4 @@
+工作
+一、远程处理快尚VMware vCenter迁移故障。
+经排查原因是新的ESXi中的VM Network没有增加相应的vlan ID
+

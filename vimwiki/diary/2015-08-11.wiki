@@ -1,0 +1,15 @@
+VMware NSX
+EMAIL: wangpeijiu@vmware.com
+
+1) VXLAN layer2 to layer3
+2) Minimal 1 NSX manager & vCenter
+3) 由vmkernel封装
+4) 整合不同厂商网络设备资源
+
+2,NSX Edge gateway
+firewall
+nat
+dhcp 
+routing
+Load blancing
+VPN/SSL VPN

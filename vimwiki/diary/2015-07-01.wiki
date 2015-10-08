@@ -1,0 +1,32 @@
+工作
+
+一、分析和筛选带蓝牙、或USB的标签打印机
+1, Epson LabelWorks LW-600P无键盘、支持蓝牙和USB打印。
+The LW-600P took 14 seconds to print, from a PC, a 3.5-inch label with the text.
+A Printer Test. It was a little faster when printing from the iPhone (10.7 seconds).
+
+http://www.epson.com.cn/products/label/LW-600P/
+
+http://item.jd.com/1168701.html#none
+
+http://www.pcmag.com/article2/0%2c2817%2c2460235%2c00.asp
+
+2, 兄弟（brother） PT-P700无键盘、通过USB打印。
+a 6-inch label with the text PCMag: Printer Speed Test took 9.3 seconds. A 4-inch version with the same text, using a smaller font, took 6.9 seconds.
+I timed it at 10.9 seconds with a 6-inch label.
+
+http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=p700eus
+
+http://item.jd.com/1177744.html#comment
+
+http://www.ask.com/youtube?q=brother+pt+p700+review&v=4a_OB__zLzg&qsrc=472
+
+http://www.pcmag.com/article2/0,2817,2429946,00.asp
+
+二、测试UCS巡检脚本，有问题。效果不理想。
+
+三、更新了金鹰基金项目的实施方案文档。
+
+
+生活
+大学同学倩想来广州找我玩。

@@ -1,0 +1,11 @@
+工作
+
+UR-2240B> vol create CtrlB_lun5_vol aggr_hybrid 2t
+Creation of volume 'CtrlB_lun5_vol' with size 2t on containing aggregate
+'aggr_hybrid' has completed.
+
+
+vol options CtrlB_lun5_vol fractional_reserve 0
+lun create 
+snap reserve CtrlB_lun5_vol 0
+lun map /vol/CtrlB_lun5_vol/CtrlB_lun5 ucs_vmware

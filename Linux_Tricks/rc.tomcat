@@ -1,0 +1,63 @@
+#! /bin/bash
+
+JAVA_HOME=/opt/apps/jre1.7.0_80/
+export JAVA_HOME
+PATH=$JAVA_HOME/bin:$PATH
+export PATH
+CATALINA_HOME=/opt/apps/apache-tomcat-7.0.63/
+TOMCAT_PID=$(ps aux | grep [o0]rg.apache.juli.ClassLoaderLogManager | awk '{ printf $2 " "}' | awk '{ print $1 }')
+
+case "$1" in
+start)
+	if [ -f $CATALINA_HOME/bin/startup.sh ] && [[ -z $TOMCAT_PID ]];
+	then
+		logger -s "Starting Tomcat..."
+		$CATALINA_HOME/bin/startup.sh
+		RETVAL=$?
+		[ $RETVAL = 0 ] && touch /var/lock/subsys/tomcat
+		sleep 5
+	else
+		echo -n "tomcat ( pid $TOMCAT_PID ) is alreading running..."
+		echo -n "Please stop it first!"
+		echo
+	fi
+	;;
+stop)   
+	if [ -z $TOMCAT_PID ];then
+		echo -n "tomcat is not running..."
+		echo
+	else
+		logger -s "Stopping Tomcat..."
+		$CATALINA_HOME/bin/shutdown.sh
+		RETVAL=$?
+		[ $RETVAL = 0 ] && rm -f /var/lock/subsys/tomcat
+		kill -9 $TOMCAT_PID
+	fi
+	;;
+restart)
+	$0 stop
+	$0 start
+;;
+version)
+	if [ -f $CATALINA_HOME/bin/version.sh ];
+	then
+    		logger -s "Display Tomcat Version"
+    		$CATALINA_HOME/bin/version.sh
+    		RETVAL=$?
+    	fi
+;;
+status)
+	if [ ! -z $TOMCAT_PID ]; then
+		echo -n "Tomcat ( pid $TOMCAT_PID ) is running..."
+		echo
+	else
+		echo "Tomcat is stopped"
+	fi
+	;;
+*)
+echo "usage $0 start|stop|restart|version|status"
+;; 
+esac    
+exit 0
+
+
