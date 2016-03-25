@@ -163,7 +163,7 @@ root@localhost
 6ZsnKwsTFZlFDSLk 
 }}}
 
-{{{
+
 20150817
 Start page:
 http://127.0.0.1:802/otrs/index.pl
@@ -175,7 +175,6 @@ IkJ7KJEmgTXC9iJP
 ((enjoy))
 
 Your OTRS Team
-}}}
 
 = Troubleshooting =
 == 你使用的游览器太旧了. OTRS 已确认下列的游览器可正常显示 ==

@@ -85,11 +85,13 @@ OKAY [ 44.240s]
 finished. total time: 44.240s
 
 
-# ROOT & twrp
+== ROOT & twrp ==
+{{{
 adb reboot bootloader
 tools/fastboot-linux boot image/CF-Auto-Root-shamu-shamu-nexus6.img
 adb reboot bootloader
 fastboot flash recovery twrp-2.8.7.1-shamu.img 
+}}}
 
 http://www.ibtimes.co.uk/how-install-android-5-1-build-lmy47e-stock-firmware-nexus-6-1492430
 

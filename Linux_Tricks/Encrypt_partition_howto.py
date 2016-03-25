@@ -124,3 +124,53 @@ http://silvexis.com/2011/11/26/encrypting-your-data-on-amazon-ec2/
 
 https://www.howtoforge.com/tutorial/how-to-encrypt-a-linux-partition-with-dm-crypt-luks/
 
+== extend LUKFS lv ==
+{{{
+root@darkstar:~# df -h
+Filesystem        Size  Used Avail Use% Mounted on
+/dev/root         1.4G  341M  1.1G  24% /
+/dev/sda1          54M  9.3M   42M  19% /boot
+tmpfs             496M     0  496M   0% /dev/shm
+/dev/mapper/apps  1.6G  208M  1.4G  13% /opt/apps
+
+root@darkstar:~# pvcreate /dev/sdb
+Physical volume "/dev/sdb" successfully created
+root@darkstar:~# vgextend vg_systec /dev/sdb 
+
+root@darkstar:~# ls /opt/apps/
+apache-tomcat-7.0.63/  jre1.7.0_80/  lost+found/  mysql/
+root@darkstar:~# umount  /opt/apps/
+
+root@darkstar:~# cryptsetup luksClose apps
+root@darkstar:~# lvextend -L +1G /dev/vg_systec/apps 
+Extending logical volume apps to 2.61 GiB
+Logical volume apps successfully resized
+
+root@darkstar:~# cryptsetup luksOpen /dev/mapper/vg_systec-apps apps --key-file /opt/.mykeyfile
+root@darkstar:~# cryptsetup --verbose resize apps
+Command successful.
+
+root@darkstar:~# fsck.ext4 -f /dev/mapper/apps 
+e2fsck 1.41.14 (22-Dec-2010)
+Pass 1: Checking inodes, blocks, and sizes
+Pass 2: Checking directory structure                                           
+Pass 3: Checking directory connectivity
+Pass 4: Checking reference counts
+Pass 5: Checking group summary information
+/dev/mapper/apps: 1706/105664 files (0.8% non-contiguous), 59761/422400  blocks 
+
+root@darkstar:~# resize2fs /dev/mapper/apps 
+resize2fs 1.41.14 (22-Dec-2010)
+Resizing the filesystem on /dev/mapper/apps to 684544 (4k) blocks.
+The filesystem on /dev/mapper/apps is now 684544 blocks long.
+
+root@darkstar:~# mount /dev/mapper/apps /opt/apps/
+root@darkstar:~# df -h
+Filesystem        Size  Used Avail Use% Mounted on
+/dev/root         1.4G  341M  1.1G  24% /
+/dev/sda1          54M  9.3M   42M  19% /boot
+tmpfs             496M     0  496M   0% /dev/shm
+/dev/mapper/apps  2.6G  208M  2.4G   8% /opt/apps
+}}}
+http://www.gigahype.com/resize-luks-encryped-lvm-partition/
+http://jordanconway.com/grow-luks-encrypted-lvm-home-partition/

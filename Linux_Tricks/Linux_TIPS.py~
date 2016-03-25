@@ -709,9 +709,6 @@ mplayer -cdrom-device /dev/cdrom cdda://
 
 ffmpeg -f alsa -i default -f v4l2 -s 640x480 -i /dev/video0 output.mpg
 
-ffmpeg -i /home/merlyn/張婧懿\ -\ 斑馬斑馬\ \(完整版\)\ -\ YouTube\
-\[720p\].mp4 -vn -acodec copy  張婧懿\ -\ 斑馬斑馬.aac
-
 cdda2wav -vall -cddb=1 -paranoia -B
 
 echo 'wget -c www.example.com/files.iso' | at 09:00 

@@ -227,3 +227,12 @@ Add Additional Space to the Virtual Hard Drive
 == Disk Provisioned Size Greyed Out ==
 Just seeing the -000 in the disk name suggests you have an existing snapshot.
 You can expand with a snapshot. You would need to delete the snapshot first.
+
+== To see the default gateway of VMKernel ==
+
+esxcfg-route
+
+== To set the default gateway of VMKernel ==
+esxcfg-route 192.168.1.1
+
+https://www.vmadmin.co.uk/resources/35-esxserver/53-vmkernelgwcmd
