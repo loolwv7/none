@@ -28,3 +28,5 @@ Hi, Brian,
    the error in the future.
 
     
+docker ps
+docker exec -it zabbix bash
