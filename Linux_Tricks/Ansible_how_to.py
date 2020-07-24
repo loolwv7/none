@@ -268,7 +268,7 @@ UserKnownHostsFile=/dev/null
 ServerAliveInterval 120
 ServerAliveCountMax 2
 ControlPath ~/.ssh/master-%r@%h:%p
-ControlMaster auto
+ControlMain auto
 ControlPersist 60s
 }}}
 

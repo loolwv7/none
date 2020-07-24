@@ -22,7 +22,7 @@ $ gpg --list-keys
 
 $ pass init 74D27AA9
 Password store initialized for 74D27AA9
-[master 6f5097d] Set GPG id to 74D27AA9.
+[main 6f5097d] Set GPG id to 74D27AA9.
 1 file changed, 1 insertion(+), 1 deletion(-)
 
 $ gpg --edit-key 74D27AA9
@@ -63,7 +63,7 @@ Reinitialized existing Git repository in /home/merlyn/.password-store/.git/
 $ pass insert Gmail/bbbcccbobobo@gmail.com
 Enter password for Gmail/bbbcccbobobo@gmail.com: 
 Retype password for Gmail/bbbcccbobobo@gmail.com: 
-[master cf17704] Add given password for Gmail/bbbcccbobobo@gmail.com to store.
+[main cf17704] Add given password for Gmail/bbbcccbobobo@gmail.com to store.
 1 file changed, 0 insertions(+), 0 deletions(-)
 create mode 100644 Gmail/bbbcccbobobo@gmail.com.gpg
 
