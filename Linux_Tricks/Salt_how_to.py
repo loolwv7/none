@@ -23,16 +23,16 @@
 install Salt at Gentoo 
 emerge slat
 
-2, Start slat master server
-#/etc/salt/master
+2, Start slat main server
+#/etc/salt/main
 # The address of the interface to bind to:
 interface: 0.0.0.0
 
-/etc/init.d/slat-master start
+/etc/init.d/slat-main start
 
 3, install slat-minion Client
 # sed '/^#/d;/^$/d' /etc/salt/minion 
-master: 192.168.1.111
+main: 192.168.1.111
 
 /etc/init.d/slat-minion start
 
@@ -106,7 +106,7 @@ brightmoon:
         old:
 # Windows support
 # install Client!!!
-Salt-Minion-0.17.0-Setup-amd64.exe /S /master=yoursaltmaster /minion-name=yourminionname
+Salt-Minion-0.17.0-Setup-amd64.exe /S /main=yoursaltmain /minion-name=yourminionname
 
 brightmoon ~ #  salt 'windows2003-test01' user.list_users
 windows2003-test01:
@@ -132,7 +132,7 @@ salt '*' system.shutdown_hard
 # Salt group support
  Node Groups
        Often the convenience of having a predefined group of minions to execute targets on is desired. This can be accomplished  with  the  new  nodegroups
-       feature. Nodegroups allow for predefined compound targets to be declared in the master configuration file:
+       feature. Nodegroups allow for predefined compound targets to be declared in the main configuration file:
 
           nodegroups:
             group1: 'L@foo.domain.com,bar.domain.com,baz.domain.com and bl*.domain.com'

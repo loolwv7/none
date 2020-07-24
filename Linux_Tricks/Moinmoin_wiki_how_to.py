@@ -50,7 +50,7 @@ plugin = python27
 chdir = /var/www/moinmoin/wiki
 wsgi-file = /var/www/moinmoin/wiki/moin.wsgi
 
-master
+main
 workers = 2
 max-requests = 20
 harakiri = 60

@@ -1045,7 +1045,7 @@ sudo apt-get install lightdm gnome-terminal synaptic && sudo apt-get install --n
 ## ubuntu live cd 
 http://www.instalinux.com/cgi-bin/debian_image.cgi
 http://mijyn.github.io/relinux/#download
-http://www.remastersys.com/
+http://www.remainsys.com/
 
 # relinux how to 
 sudo add-apt-repository ppa:relinux-dev/testing
@@ -1056,8 +1056,8 @@ sudo apt-get update
 
 Paste below two lines.
 
-# Remastersys
-deb http://www.remastersys.com/repository lucid/
+# Remainsys
+deb http://www.remainsys.com/repository lucid/
 
 2.Update recently added source list by executing
 
@@ -1065,9 +1065,9 @@ sudo apt-get update
 
 3.Type
 
-sudo apt-get install remastersys
+sudo apt-get install remainsys
 
-You have successfully installed remastersys on your machine.
+You have successfully installed remainsys on your machine.
 
 
 
